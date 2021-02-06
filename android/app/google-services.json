@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "109282485053",
+    "project_id": "glacier-45d9b",
+    "storage_bucket": "glacier-45d9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109282485053:android:c7a571e429c643a9e09b54",
+        "android_client_info": {
+          "package_name": "com.glacier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109282485053-n356g90fe5v75rr4r7bo63r27mpn831g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.glacier",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "109282485053-mn0th038bj0d5h9spts0u9n9ntmrbnsh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNNivDOAost1fz5RhxfBbclHunyvlnVJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109282485053-mn0th038bj0d5h9spts0u9n9ntmrbnsh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
