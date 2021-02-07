@@ -15,6 +15,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./screens/HomeScreen";
 import SignUpScreen from "./screens/SignUpScreen"
+import LoginScreen from "./screens/LoginScreen"
 import {
   SafeAreaView,
   StyleSheet,
@@ -27,6 +28,24 @@ import {
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+
+const LoginStackScreen = () => {
+  return (
+    <Stack.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: 'green'
+      },
+      headerTintColor: '#000',
+      headerTitleStyle: {
+        fontWeight: 'bold'
+      }
+    }}>
+      <Stack.Screen name="Login" component={LoginScreen}  options={{title: 'Login'}}/>
+      <Stack.Screen name="Sign Up" component={SignUpScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} />
+    </Stack.Navigator>
+  );
+}
 
 const HomeStackScreen = () => {
   return (
@@ -41,6 +60,7 @@ const HomeStackScreen = () => {
     }}>
       <Stack.Screen name="Home" component={HomeScreen}  options={{title: 'Glacier'}}/>
       <Stack.Screen name="Sign Up" component={SignUpScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
     </Stack.Navigator>
   );
 }
@@ -56,8 +76,9 @@ const SignUpStackScreen = () => {
         fontWeight: 'bold'
       }
     }}>
-      <Stack.Screen name="Home" component={SignUpScreen}  options={{title: 'Sign Up'}}/>
-      <Stack.Screen name="Sign Up" component={HomeScreen} />
+      <Stack.Screen name="Sign Up" component={SignUpScreen}  options={{title: 'Sign Up'}}/>
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
     </Stack.Navigator>
   );
 }
@@ -89,6 +110,17 @@ const App = () => {
             tabBarColor: 'red',
             tabBarIcon: ({ color }) => (
               <Icon name="person" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Login"
+          component={LoginStackScreen}
+          options={{
+            tabBarLabel: 'Login',
+            tabBarColor: 'green',
+            tabBarIcon: ({ color }) => (
+              <Icon name="key-outline" color={color} size={26} />
             ),
           }}
         />
