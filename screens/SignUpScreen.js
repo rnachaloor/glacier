@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, Alert } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
 const SignUpScreen = ({navigation}) => {
@@ -11,8 +11,34 @@ const SignUpScreen = ({navigation}) => {
     let errors = "";
 
     function submit(pass, conf) {
-        if (pass === conf) {
-            console.log(password)
+        if (pass != conf) {
+            Alert.alert(
+                "Passwords Don't Match",
+                'Please try again.',
+                [
+                    {
+                        text: 'Ok',
+                        onPress: () => console.log("Trying Again")
+                    }
+                ],
+                {
+                    cancelable: false
+                }
+            );
+        } else if ((name == "") || (username == "") || (password == "") || (confirmPassword == "")) {
+            Alert.alert(
+                "Missing Fields",
+                'Please fill out every field.',
+                [
+                    {
+                        text: 'Ok',
+                        onPress: () => console.log("Trying Again")
+                    }
+                ],
+                {
+                    cancelable: false
+                }
+            );
         }
     }
 
@@ -33,7 +59,7 @@ const SignUpScreen = ({navigation}) => {
         </View>
         <Text>{errors}</Text>
         <Button title="Go To Home" onPress={() => navigation.navigate("Home")}/>
-        <Button title="Submit" onPress={submit(password, confirmPassword)}/>
+        <Button title="Submit" onPress={() => submit(password, confirmPassword)}/>
       </View>
     );
   }
