@@ -3,30 +3,18 @@ import { useState } from "react";
 import { View, Text, Button, StyleSheet, Alert } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { Linking } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 
 
 const LoginScreen = ({navigation}) => {
-    /*
+    
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    let errors = "";
+    let loggedIn = false;
+    let userId = ""
 
-    function submit(pass, conf) {
-        if (pass != conf) {
-            Alert.alert(
-                "Passwords Don't Match",
-                'Please try again.',
-                [
-                    {
-                        text: 'Ok',
-                        onPress: () => console.log("Trying Again")
-                    }
-                ],
-                {
-                    cancelable: false
-                }
-            );
-        } else if ((name == "") || (username == "") || (password == "") || (confirmPassword == "")) {
+    async function submit() {
+        if ((username == "") || (password == "")) {
             Alert.alert(
                 "Missing Fields",
                 'Please fill out every field.',
@@ -40,22 +28,61 @@ const LoginScreen = ({navigation}) => {
                     cancelable: false
                 }
             );
+        } else {
+            const userInfo = firestore().collection('userInfo');
+            const userInfoRes = await userInfo.where('username', '==', username).get();
+            if (userInfoRes.empty) {
+                Alert.alert(
+                    "Username or password not in the database",
+                    'Please check your username and password.',
+                    [
+                        {
+                            text: 'Ok',
+                            onPress: () => console.log("Trying Again")
+                        }
+                    ],
+                    {
+                        cancelable: false
+                    }
+                );
+            } else {
+                userInfoRes.forEach(doc => {
+                    if ((doc.data().username == username) == (doc.data().password == password)) {
+                        loggedIn = true;
+                        userId = doc.id;
+                    } else {
+                        Alert.alert(
+                            "Username or password not in the database",
+                            'Please check your username and password.',
+                            [
+                                {
+                                    text: 'Ok',
+                                    onPress: () => console.log("Trying Again")
+                                }
+                            ],
+                            {
+                                cancelable: false
+                            }
+                        );
+                    }
+                })
+            }
         }
     }
-*/
+
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>Login: </Text>
         <View style={styles.group}>
-            <TextInput onChangeText={(value) => setName(value)} style={styles.textBoxes} placeholder="Username"/>
+            <TextInput onChangeText={(value) => setUsername(value)} style={styles.textBoxes} placeholder="Username"/>
         </View>
         <View style={styles.group}>
-            <TextInput onChangeText={(value) => setUsername(value)} style={styles.textBoxes} placeholder="Password" style={styles.passwordBox} secureTextEntry={true} textContentType="password"/>
+            <TextInput onChangeText={(value) => setPassword(value)} style={styles.textBoxes} placeholder="Password" style={styles.passwordBox} secureTextEntry={true} textContentType="password"/>
         </View>
         <Text onPress={() => navigation.navigate("Sign Up")}>
             Don't have an account? Sign up here!
         </Text>
-        <TouchableOpacity  title="Submit" onPress={() => submit(password, confirmPassword)} style={styles.button}>
+        <TouchableOpacity  title="Submit" onPress={() => submit()} style={styles.button}>
             <Text>
                 Submit
             </Text>
