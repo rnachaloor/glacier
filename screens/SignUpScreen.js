@@ -2,9 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { View, Text, Button, StyleSheet, Alert } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import firestore from '@react-native-firebase/firestore';
 
 const SignUpScreen = ({navigation}) => {
-    const [name, setName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -25,7 +27,7 @@ const SignUpScreen = ({navigation}) => {
                     cancelable: false
                 }
             );
-        } else if ((name == "") || (username == "") || (password == "") || (confirmPassword == "")) {
+        } else if ((firstName == "") || (username == "") || (password == "") || (confirmPassword == "")) {
             Alert.alert(
                 "Missing Fields",
                 'Please fill out every field.',
@@ -39,6 +41,13 @@ const SignUpScreen = ({navigation}) => {
                     cancelable: false
                 }
             );
+        } else {
+            firestore().collection('userInfo').add({
+                firstName: firstName,
+                lastName: lastName, 
+                password: password,
+                username: username
+            })
         }
     }
 
@@ -46,7 +55,10 @@ const SignUpScreen = ({navigation}) => {
       <View style={styles.container}>
         <Text style={styles.titleText}>Sign Up: </Text>
         <View style={styles.group}>
-            <TextInput onChangeText={(value) => setName(value)} style={styles.textBoxes} placeholder="Your Name"/>
+            <TextInput onChangeText={(value) => setFirstName(value)} style={styles.textBoxes} placeholder="Your First Name"/>
+        </View>
+        <View style={styles.group}>
+            <TextInput onChangeText={(value) => setLastName(value)} style={styles.textBoxes} placeholder="Your Last Name"/>
         </View>
         <View style={styles.group}>
             <TextInput onChangeText={(value) => setUsername(value)} style={styles.textBoxes} placeholder="Username"/>
