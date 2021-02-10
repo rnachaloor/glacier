@@ -14,8 +14,9 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./screens/HomeScreen";
-import SignUpScreen from "./screens/SignUpScreen"
-import LoginScreen from "./screens/LoginScreen"
+import SignUpScreen from "./screens/SignUpScreen";
+import LoginScreen from "./screens/LoginScreen";
+import SettingScreen from "./screens/SettingScreen";
 import {
   SafeAreaView,
   StyleSheet,
@@ -29,6 +30,25 @@ const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
+const SettingStackScreen = () => {
+  return (
+    <Stack.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: 'orange'
+      },
+      headerTintColor: '#000',
+      headerTitleStyle: {
+        fontWeight: 'bold'
+      }
+    }}>
+      
+     
+      
+      <Stack.Screen name="Settings" component={SettingScreen} options={{title: 'Settings'}} />
+    </Stack.Navigator>
+  );
+}
+
 const LoginStackScreen = () => {
   return (
     <Stack.Navigator screenOptions={{
@@ -40,9 +60,10 @@ const LoginStackScreen = () => {
         fontWeight: 'bold'
       }
     }}>
-      <Stack.Screen name="Login" component={LoginScreen}  options={{title: 'Login'}}/>
+      <Stack.Screen name="Login" component={LoginScreen} options={{title: 'Login'}}/>
       <Stack.Screen name="Sign Up" component={SignUpScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Settings" component={SettingScreen}/>
     </Stack.Navigator>
   );
 }
@@ -61,6 +82,7 @@ const HomeStackScreen = () => {
       <Stack.Screen name="Home" component={HomeScreen}  options={{title: 'Glacier'}}/>
       <Stack.Screen name="Sign Up" component={SignUpScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Settings" component={SettingScreen}/>
     </Stack.Navigator>
   );
 }
@@ -79,6 +101,7 @@ const SignUpStackScreen = () => {
       <Stack.Screen name="Sign Up" component={SignUpScreen}  options={{title: 'Sign Up'}}/>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Settings" component={SettingScreen}/>
     </Stack.Navigator>
   );
 }
@@ -121,6 +144,17 @@ const App = () => {
             tabBarColor: 'green',
             tabBarIcon: ({ color }) => (
               <Icon name="key-outline" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingStackScreen}
+          options={{
+            tabBarLabel: 'Settings',
+            tabBarColor: 'orange',
+            tabBarIcon: ({ color }) => (
+              <Icon name="cog-outline" color={color} size={26} />
             ),
           }}
         />
