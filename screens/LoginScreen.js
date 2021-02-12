@@ -5,13 +5,17 @@ import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { Linking } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
+export let loggedIn = false;
+export let userId = ""
+export let user
+export let name
+export let firstName
+export let lastName
 
 const LoginScreen = ({navigation}) => {
     
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    let loggedIn = false;
-    let userId = ""
 
     async function submit() {
         if ((username == "") || (password == "")) {
@@ -50,6 +54,10 @@ const LoginScreen = ({navigation}) => {
                     if ((doc.data().username == username) == (doc.data().password == password)) {
                         loggedIn = true;
                         userId = doc.id;
+                        user = doc.data().username;
+                        firstName = doc.data().firstName
+                        lastName = doc.data().lastName
+                        name = firstName + " " + lastName
                     } else {
                         Alert.alert(
                             "Username or password not in the database",

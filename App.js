@@ -25,10 +25,27 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import PostScreen from './screens/PostScreen';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+
+const PostStackScreen = () => {
+  return (
+    <Stack.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: '#9E34EB'
+      },
+      headerTintColor: '#000',
+      headerTitleStyle: {
+        fontWeight: 'bold'
+      }
+    }}>
+      <Stack.Screen name="NewPost" component={PostScreen} options={{title: 'New Post'}} />
+    </Stack.Navigator>
+  );
+}
 
 const SettingStackScreen = () => {
   return (
@@ -41,9 +58,6 @@ const SettingStackScreen = () => {
         fontWeight: 'bold'
       }
     }}>
-      
-     
-      
       <Stack.Screen name="Settings" component={SettingScreen} options={{title: 'Settings'}} />
     </Stack.Navigator>
   );
@@ -133,6 +147,17 @@ const App = () => {
             tabBarColor: 'red',
             tabBarIcon: ({ color }) => (
               <Icon name="person" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="NewPost"
+          component={PostStackScreen}
+          options={{
+            tabBarLabel: 'New Post',
+            tabBarColor: '#9E34EB',
+            tabBarIcon: ({ color }) => (
+              <Icon name="add-circle-outline" color={color} size={26} />
             ),
           }}
         />

@@ -1,33 +1,73 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   StyleSheet,
   View,
   Text,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert,
+  Platform
 } from "react-native";
+import firestore from '@react-native-firebase/firestore';
+import {loggedIn, userId, user, name, firstName, lastName} from "./LoginScreen";
+import { Tile } from "react-native-elements";
 
-function PostScreen(props) {
+const PostScreen = ({navigation}) => {
+  const [content, setContent] = useState("");
+  const [title, setTitle] = useState("")
+
+  function submit() {
+    let conditionOne = content == "" || content == " "
+    let conditionTwo = title == "" || title == " "
+    if (conditionOne || conditionTwo) {
+      Alert.alert(
+        "Missing Fields",
+        'Please fill out every field.',
+        [
+            {
+                text: 'Ok',
+                onPress: () => console.log("Trying Again")
+            }
+        ],
+        {
+            cancelable: false
+        }
+      );
+    } else {
+      firestore().collection('posts').add({
+        title: title, 
+        content: content, 
+        firstName: firstName,
+        lastName: lastName,
+        username: user,
+        likes: 0
+      })
+    }
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.postTitleContainer}>
-        <Text style={styles.postTitleHeading}>Post Title:</Text>
+        {/*<Text style={styles.postTitleHeading}>Post Title:</Text>*/}
         <TextInput
           placeholder="Post Title"
           style={styles.postTitle}
+          onChangeText={(value) => setTitle(value)}
         ></TextInput>
       </View>
       <View style={styles.group}>
-        <Text style={styles.postContentHeading}>Post Title:</Text>
+       {/* <Text style={styles.postContentHeading}>Post Content:</Text> */}
         <TextInput
-          placeholder="Post Title"
+          placeholder="Post Content"
+          multiline={true}
           numberOfLines={7}
           maxLength={250}
           style={styles.postContent}
+          onChangeText={(value) => setContent(value)}
         ></TextInput>
       </View>
       <View style={styles.group2}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => submit()}>
           <Text style={styles.post2}>Post</Text>
         </TouchableOpacity>
       </View>
@@ -42,33 +82,36 @@ const styles = StyleSheet.create({
   postTitleContainer: {
     width: 332,
     height: 75,
-    marginTop: 80,
+    marginTop: 100,
     alignSelf: "center"
   },
   postTitleHeading: {
-    fontFamily: "roboto-700",
+    fontFamily: "System",
     color: "#121212",
     fontSize: 24
   },
   postTitle: {
-    fontFamily: "roboto-regular",
+    fontFamily: 'System',
+    fontWeight: 'bold',
+    fontSize: 32,
     color: "#121212",
     width: 332,
-    height: 45
+    height: 45,
   },
   group: {
     width: 332,
     height: 383,
     marginTop: 2,
-    marginLeft: 22
+    marginLeft: 40
   },
   postContentHeading: {
-    fontFamily: "roboto-700",
+    fontFamily: "System",
     color: "#121212",
     fontSize: 24
   },
   postContent: {
-    fontFamily: "roboto-regular",
+    fontFamily: "System",
+    fontSize: 24,
     color: "#121212",
     width: 332,
     height: 462
@@ -77,8 +120,8 @@ const styles = StyleSheet.create({
     width: 332,
     height: 58,
     backgroundColor: "rgba(230, 230, 230,1)",
-    marginTop: 113,
-    marginLeft: 22
+    marginTop: 10,
+    marginLeft: 45
   },
   button: {
     width: 332,
@@ -89,10 +132,11 @@ const styles = StyleSheet.create({
     borderRadius: 50
   },
   post2: {
-    fontFamily: "roboto-regular",
+    fontFamily: "System",
+    fontSize: 24,
     color: "#121212",
-    marginTop: 20,
-    marginLeft: 151
+    marginTop: 15,
+    marginLeft: 140
   }
 });
 

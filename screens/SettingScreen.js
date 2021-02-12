@@ -1,6 +1,9 @@
 import React, { useState, Component } from "react";
 import { StyleSheet, View, Text, Switch, TouchableOpacity } from "react-native";
 import Svg, { Ellipse } from "react-native-svg";
+import { Avatar } from "react-native-elements";
+import {loggedIn, userId, user, name, firstName, lastName} from "./LoginScreen";
+import firestore from '@react-native-firebase/firestore';
 
 const SettingScreen = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -16,20 +19,10 @@ const SettingScreen = ({navigation}) => {
       </View>
       <View style={styles.profileName}>
         <View style={styles.avatarRow}>
-          <Svg viewBox="0 0 67 68" style={styles.avatar}>
-            <Ellipse
-              stroke="rgba(230, 230, 230,1)"
-              strokeWidth={0}
-              fill="rgba(230, 230, 230,1)"
-              cx={34}
-              cy={34}
-              rx={34}
-              ry={34}
-            ></Ellipse>
-          </Svg>
+          <Avatar size="large" rounded title={(firstName.substring(0,1) + lastName.substring(0,1)).toUpperCase()} overlayContainerStyle={styles.avatar} activeOpacity={0.7} titleStyle={styles.avatarText}/>
           <View style={styles.namePlaceholderColumn}>
-            <Text style={styles.namePlaceholder}>Name Placeholder</Text>
-            <Text style={styles.username}>Username</Text>
+            <Text style={styles.namePlaceholder}>{name}</Text>
+            <Text style={styles.username}>{user}</Text>
           </View>
         </View>
       </View>
@@ -69,7 +62,7 @@ const styles = StyleSheet.create({
     marginLeft: 42
   },
   notifications: {
-    fontFamily: "roboto-regular",
+    fontFamily: "System",
     color: "#121212",
     fontSize: 18,
     marginTop: 1
@@ -85,24 +78,29 @@ const styles = StyleSheet.create({
   },
   avatar: {
     width: 67,
-    height: 68
+    height: 68,
+    marginLeft: 5,
+    backgroundColor:"#BDBDBD",
+    padding: 38
   },
   namePlaceholder: {
-    fontFamily: "roboto-regular",
+    fontFamily: "System",
     color: "#121212",
     lineHeight: 14,
-    fontSize: 24
+    fontSize: 24,
+    padding: 8
   },
   username: {
-    fontFamily: "roboto-regular",
+    fontFamily: "System",
     color: "#121212",
     fontSize: 18,
-    marginTop: 5
+    marginTop: 5,
+    marginLeft: 8
   },
   namePlaceholderColumn: {
     width: 197,
     marginLeft: 26,
-    marginTop: 20,
+    marginTop: 15,
     marginBottom: 8
   },
   avatarRow: {
@@ -122,7 +120,7 @@ const styles = StyleSheet.create({
     marginLeft: 44
   },
   reportAProblem: {
-    fontFamily: "roboto-regular",
+    fontFamily: "System",
     color: "#121212",
     alignSelf: "center"
   },
@@ -138,7 +136,7 @@ const styles = StyleSheet.create({
     marginLeft: 44
   },
   signOut: {
-    fontFamily: "roboto-regular",
+    fontFamily: "System",
     color: "#121212",
     alignSelf: "center"
   },
@@ -154,7 +152,7 @@ const styles = StyleSheet.create({
     marginLeft: 44
   },
   termsOfService2: {
-    fontFamily: "roboto-regular",
+    fontFamily: "System",
     color: "#121212",
     alignSelf: "center"
   },
@@ -170,7 +168,7 @@ const styles = StyleSheet.create({
     marginLeft: 44
   },
   connectToGoogle: {
-    fontFamily: "roboto-regular",
+    fontFamily: "System",
     color: "#121212",
     alignSelf: "center"
   },
@@ -186,7 +184,7 @@ const styles = StyleSheet.create({
     marginLeft: 44
   },
   connectToFacebook: {
-    fontFamily: "roboto-regular",
+    fontFamily: "System",
     color: "#121212",
     alignSelf: "center"
   },
@@ -202,8 +200,11 @@ const styles = StyleSheet.create({
     marginLeft: 43
   },
   connectToTwitter: {
-    fontFamily: "roboto-regular",
+    fontFamily: "System",
     color: "#121212",
     alignSelf: "center"
+  },
+  avatarText: {
+    color: "white"
   }
 });
