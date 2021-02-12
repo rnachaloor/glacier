@@ -8,7 +8,7 @@ import {
   Alert,
   Platform
 } from "react-native";
-import firestore from '@react-native-firebase/firestore';
+import firestore, { firebase } from '@react-native-firebase/firestore';
 import {loggedIn, userId, user, name, firstName, lastName} from "./LoginScreen";
 import { Tile } from "react-native-elements";
 
@@ -40,7 +40,8 @@ const PostScreen = ({navigation}) => {
         firstName: firstName,
         lastName: lastName,
         username: user,
-        likes: 0
+        likes: 0,
+        time: firebase.firestore.FieldValue.serverTimestamp()
       })
     }
   }

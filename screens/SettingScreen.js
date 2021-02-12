@@ -33,7 +33,7 @@ const SettingScreen = ({navigation}) => {
         <Text style={styles.signOut}>Sign Out</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.termsOfService}>
-        <Text style={styles.termsOfService2}>Terms of Service</Text>
+        <Text style={styles.termsOfService2}>Terms and Conditions</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.group}>
         <Text style={styles.connectToGoogle}>Connect to Google</Text>
