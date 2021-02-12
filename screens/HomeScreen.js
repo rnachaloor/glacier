@@ -5,7 +5,6 @@ import Post from "../components/PostComponent";
 const HomeScreen = ({navigation}) => {
     return (
       <View style={styles.container}>
-        <Text>Glacier</Text>
         <Post title="Hello" content="It's me" postId=" " />
       </View>
     );
