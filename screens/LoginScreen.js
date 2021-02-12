@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { View, Text, Button, StyleSheet, Alert } from "react-native";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { View, Text, Button, StyleSheet, Alert, TouchableOpacity } from "react-native";
+import { TextInput } from "react-native-gesture-handler";
 import { Linking } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
