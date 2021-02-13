@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
     width: 332,
     height: 75,
     marginTop: 100,
-    alignSelf: "center"
+    alignSelf: "center",
+    marginLeft: 19
   },
   postTitleHeading: {
     fontFamily: "System",
@@ -98,12 +99,14 @@ const styles = StyleSheet.create({
     color: "#121212",
     width: 332,
     height: 45,
+    padding: -20,
   },
   group: {
     width: 332,
-    height: 383,
+    height: 350,
     marginTop: 2,
-    marginLeft: 40
+    marginLeft: 40,
+    
   },
   postContentHeading: {
     fontFamily: "System",
@@ -114,13 +117,14 @@ const styles = StyleSheet.create({
     fontFamily: "System",
     fontSize: 24,
     color: "#121212",
-    width: 332,
-    height: 462
+    width: 200,
+    height: 39,
+    padding: -100
+    
   },
   group2: {
     width: 332,
     height: 58,
-    backgroundColor: "rgba(230, 230, 230,1)",
     marginTop: 10,
     marginLeft: 45
   },
@@ -130,7 +134,8 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,1)",
     borderWidth: 1,
     borderColor: "#000000",
-    borderRadius: 50
+    borderRadius: 50,
+    marginLeft: -15
   },
   post2: {
     fontFamily: "System",
@@ -138,7 +143,13 @@ const styles = StyleSheet.create({
     color: "#121212",
     marginTop: 15,
     marginLeft: 140
-  }
+  },
+  ...Platform.select({
+    android: {
+      padding: 20,
+    }
+  })  
 });
+
 
 export default PostScreen;
