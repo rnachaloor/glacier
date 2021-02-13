@@ -8,7 +8,7 @@ import styles from "./PostListStyles";
 export default class PostList extends React.Component {
     //Define your state for your component. 
     state = {
-        //Assing a array to your pokeList state
+        //Assing a array to your postList state
         postList: [],
         //Have a loading state where when data retrieve returns data. 
         loading: true

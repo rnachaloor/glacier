@@ -8,19 +8,35 @@ import Svg, { Ellipse } from "react-native-svg";
 
 export default class Post extends React.Component {
   
-  isLikeOn = false
-  likesIconName = "heart-outline"
-  
   constructor(props) {
         super(props);
     }
   
   state = {
-    likes: this.props.likes
+    likes: this.props.likes,
+    isLikeOn: false,
+    likesIconName: "heart-outline"
   }
 
-  increaseLikes = () => {
-    console.log("Likes");
+  increaseLikes = async () => {
+    let newCount, newBool, newIcon
+    const document = firestore().collection('posts').doc(this.props.postId)
+    if (!this.state.isLikeOn){
+      newCount = this.state.likes + 1
+      newBool = true
+      newIcon = "heart"
+    }
+    else {
+      newCount = this.state.likes - 1
+      newBool = false,
+      newIcon = "heart-outline"
+    }
+    const res = await document.update({likes: newCount})
+    this.setState({
+      likes: newCount,
+      isLikeOn: newBool,
+      likesIconName: newIcon
+    })
   }
   
   render(props) {
@@ -39,8 +55,8 @@ export default class Post extends React.Component {
             <Text style={styles.contentPlaceholder}>{this.props.content}</Text>
             <View style={styles.rect2Row}>
               <View style={styles.rect2}>
-                <TouchableOpacity onClick={this.increaseLikes}>
-                  <Icon style={styles.rect3} name={this.likesIconName} color={likesIconColor} size={40} />
+                <TouchableOpacity onPress={() => this.increaseLikes()}>
+                  <Icon style={styles.rect3} name={this.state.likesIconName} color={likesIconColor} size={40} />
                 </TouchableOpacity>
               </View>
               <Text style={styles.likes0}>Likes: {this.state.likes}</Text>
