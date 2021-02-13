@@ -1,50 +1,54 @@
 import React, { Component, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import PropTypes from 'prop-types';
 import Icon from "react-native-vector-icons/Ionicons";
+import { Avatar } from "react-native-elements";
 import firestore from '@react-native-firebase/firestore';
 import Svg, { Ellipse } from "react-native-svg";
 
 export default class Post extends React.Component {
-    constructor(props) {
+  
+  isLikeOn = false
+  likesIconName = "heart-outline"
+  
+  constructor(props) {
         super(props);
     }
+  
+  state = {
+    likes: this.props.likes
+  }
 
-    render(props) {
-        let likesIconName = "thumbs-up-outline"
-        let likesIconColor = "black"
-        return (
-          <View style={[styles.container]}>
-            <View style={styles.rect}>
-              <View style={styles.ellipseRow}>
-                <Svg viewBox="0 0 40 40" style={styles.ellipse}>
-                  <Ellipse
-                    stroke="rgba(230, 230, 230,1)"
-                    strokeWidth={0}
-                    fill="rgba(66,123,210,1)"
-                    cx={20}
-                    cy={20}
-                    rx={20}
-                    ry={20}
-                  ></Ellipse>
-                </Svg>
-                <View style={styles.namePlaceholderColumn}>
-                  <Text style={styles.namePlaceholder}>Name Placeholder</Text>
-                  <Text style={styles.usernamePlaceholder}>Username Placeholder</Text>
-                </View>
-              </View>
-              <Text style={styles.titlePlaceholder}>Title Placeholder</Text>
-              <Text style={styles.contentPlaceholder}>Content Placeholder</Text>
-              <View style={styles.rect2Row}>
-                <View style={styles.rect2}>
-                  <Icon style={styles.rect3} name="heart-outline" color={likesIconColor} size={40} />
-                </View>
-                <Text style={styles.likes0}>Likes: 0</Text>
+  increaseLikes = () => {
+    console.log("Likes");
+  }
+  
+  render(props) {
+      let likesIconColor = "black"
+      return (
+        <View style={[styles.container, this.props.style]}>
+          <View style={styles.rect}>
+            <View style={styles.ellipseRow}>
+            <Avatar size="large" rounded title={this.props.initial} overlayContainerStyle={styles.ellipse} activeOpacity={0.7} titleStyle={styles.avatarText}/>
+              <View style={styles.namePlaceholderColumn}>
+                <Text style={styles.namePlaceholder}>{this.props.name}</Text>
+                <Text style={styles.usernamePlaceholder}>{this.props.username}</Text>
               </View>
             </View>
+            <Text style={styles.titlePlaceholder}>{this.props.title}</Text>
+            <Text style={styles.contentPlaceholder}>{this.props.content}</Text>
+            <View style={styles.rect2Row}>
+              <View style={styles.rect2}>
+                <TouchableOpacity onClick={this.increaseLikes}>
+                  <Icon style={styles.rect3} name={this.likesIconName} color={likesIconColor} size={40} />
+                </TouchableOpacity>
+              </View>
+              <Text style={styles.likes0}>Likes: {this.state.likes}</Text>
+            </View>
           </View>
-        );
-    }
+        </View>
+      );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -61,7 +65,9 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     opacity: 0.5,
-    marginTop: 1
+    marginTop: 1,
+    backgroundColor: '#BDBDBD',
+    padding: 38
   },
   namePlaceholder: {
     fontFamily: "System",
@@ -76,7 +82,7 @@ const styles = StyleSheet.create({
   },
   namePlaceholderColumn: {
     width: 239,
-    marginLeft: 8
+    marginLeft: 20  
   },
   ellipseRow: {
     height: 42,
@@ -125,11 +131,18 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginLeft: 26,
     marginRight: 209
+  },
+  avatarText: {
+    color: "white"
   }
 });
 
 Post.propTypes = {
+    content: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    likes: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    postId: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired
+    username: PropTypes.string.isRequired,
+    initial: PropTypes.string.isRequired,
+    postId: PropTypes.string.isRequired
 }
