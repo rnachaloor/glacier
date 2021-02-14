@@ -10,6 +10,7 @@ FBLA Mobile Applicatin Development 2021
 Johns Creek High School
 
 ## What is Glacier?
+Glacier is an ios and android mobile and android app that adresses the topic of professional social media. Glacier allows people of all ages to share ideas and best practices with one another in a easy-to-use professional environment. In Glacier, one can simply create a post and publicly display it to all of Glaciers users. The users can in turn like the post, and share the post to other people on other different social media platforms like Google, Facebook, and Twitter. 
 
 
 # Installation Instructions
@@ -46,6 +47,7 @@ To sign out, navigate to the settings page denoted by the gear. Click the Sign O
 
 # Version
 Version 1.0
+
 2/14/2020
 
 # License
