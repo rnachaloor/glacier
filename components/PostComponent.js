@@ -65,7 +65,7 @@ export default class Post extends React.Component {
         <View style={[styles.container, this.props.style]}>
           <View style={styles.rect}>
             <View style={styles.ellipseRow}>
-            <Avatar size="large" rounded title={this.props.initial} overlayContainerStyle={styles.ellipse} activeOpacity={0.7} titleStyle={styles.avatarText}/>
+            <Avatar size="medium" rounded title={this.props.initial} overlayContainerStyle={styles.ellipse} activeOpacity={0.7} titleStyle={styles.avatarText}/>
               <View style={styles.namePlaceholderColumn}>
                 <Text style={styles.namePlaceholder}>{this.props.name}</Text>
                 <Text style={styles.usernamePlaceholder}>{this.props.username}</Text>
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     marginTop: 1,
     backgroundColor: '#BDBDBD',
-    padding: 38
+    padding: 25
   },
   namePlaceholder: {
     fontFamily: "System",
