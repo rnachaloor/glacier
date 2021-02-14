@@ -56,31 +56,15 @@ const SettingStackScreen = () => {
       headerTintColor: '#000',
       headerTitleStyle: {
         fontWeight: 'bold'
-      }
+      },
+      headerLeft: null
     }}>
       <Stack.Screen name="Settings" component={SettingScreen} options={{title: 'Settings'}} />
     </Stack.Navigator>
   );
 }
 
-const LoginStackScreen = () => {
-  return (
-    <Stack.Navigator screenOptions={{
-      headerStyle: {
-        backgroundColor: 'green'
-      },
-      headerTintColor: '#000',
-      headerTitleStyle: {
-        fontWeight: 'bold'
-      }
-    }}>
-      <Stack.Screen name="Login" component={LoginScreen} options={{title: 'Login'}}/>
-      <Stack.Screen name="Sign Up" component={SignUpScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Settings" component={SettingScreen}/>
-    </Stack.Navigator>
-  );
-}
+
 
 const HomeStackScreen = () => {
   return (
@@ -91,7 +75,8 @@ const HomeStackScreen = () => {
       headerTintColor: '#000',
       headerTitleStyle: {
         fontWeight: 'bold'
-      }
+      },
+      headerLeft: null
     }}>
       <Stack.Screen name="Home" component={HomeScreen}  options={{title: 'Glacier'}}/>
       <Stack.Screen name="Sign Up" component={SignUpScreen} />
@@ -103,26 +88,27 @@ const HomeStackScreen = () => {
 
 const SignUpStackScreen = () => {
   return (
-    <Stack.Navigator screenOptions={{
-      headerStyle: {
-        backgroundColor: 'red'
-      },
-      headerTintColor: '#000',
-      headerTitleStyle: {
-        fontWeight: 'bold'
-      }
-    }}>
-      <Stack.Screen name="Sign Up" component={SignUpScreen}  options={{title: 'Sign Up'}}/>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Settings" component={SettingScreen}/>
-    </Stack.Navigator>
+      <Stack.Navigator screenOptions={{
+        headerStyle: {
+          backgroundColor: 'red'
+        },
+        headerTintColor: '#000',
+        headerTitleStyle: {
+          fontWeight: 'bold'
+        },
+        headerLeft: null
+      }}>
+        <Stack.Screen name="Sign Up" component={SignUpScreen}  options={{title: 'Sign Up'}}/>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Settings" component={SettingScreen}/>
+      </Stack.Navigator>
   );
 }
 
-const App = () => {
+const App = ({navigation}) => {
   return (
-    <NavigationContainer>
+    
       <Tab.Navigator
         initialRouteName="Home"
         activeColor="white"
@@ -162,17 +148,6 @@ const App = () => {
           }}
         />
         <Tab.Screen
-          name="Login"
-          component={LoginStackScreen}
-          options={{
-            tabBarLabel: 'Login',
-            tabBarColor: 'green',
-            tabBarIcon: ({ color }) => (
-              <Icon name="key-outline" color={color} size={26} />
-            ),
-          }}
-        />
-        <Tab.Screen
           name="Settings"
           component={SettingStackScreen}
           options={{
@@ -184,7 +159,7 @@ const App = () => {
           }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
+    
   );
 }
 

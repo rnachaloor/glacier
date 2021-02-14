@@ -2,8 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { View, Text, Button, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
-import { Linking } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import SignUpScreen from "./SignUpScreen";
+import App from "../App";
 
 export let loggedIn = false;
 export let userId = ""
@@ -58,6 +61,7 @@ const LoginScreen = ({navigation}) => {
                         firstName = doc.data().firstName
                         lastName = doc.data().lastName
                         name = firstName + " " + lastName
+                        navigation.navigate("Home")
                     } else {
                         Alert.alert(
                             "Username or password not in the database",
@@ -82,7 +86,7 @@ const LoginScreen = ({navigation}) => {
       <View style={styles.container}>
         <Text style={styles.titleText}>Login: </Text>
         <View style={styles.group}>
-            <TextInput onChangeText={(value) => setUsername(value)} style={styles.textBoxes} placeholder="Username"/>
+            <TextInput autoCapitalize="none" autoCorrect={false} onChangeText={(value) => setUsername(value)} style={styles.textBoxes} placeholder="Username"/>
         </View>
         <View style={styles.group}>
             <TextInput onChangeText={(value) => setPassword(value)} style={styles.textBoxes} placeholder="Password" style={styles.passwordBox} secureTextEntry={true} textContentType="password"/>
@@ -99,7 +103,21 @@ const LoginScreen = ({navigation}) => {
     );
   }
 
-export default LoginScreen;
+  const Stack = createStackNavigator();
+
+  const LoginStackScreen = () => {
+    return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Login" component={LoginScreen} options={{title: 'Login'}}/>
+        <Stack.Screen name="Sign Up" component={SignUpScreen} />
+        <Stack.Screen name="Home" component={App}/>
+      </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
+
+export default LoginStackScreen
 
 const styles = StyleSheet.create({
     container: {

@@ -48,6 +48,8 @@ const SignUpScreen = ({navigation}) => {
                 password: password,
                 username: username
             })
+            loggedIn = true
+            navigation.navigate("Login")
         }
     }
 
@@ -55,13 +57,13 @@ const SignUpScreen = ({navigation}) => {
       <View style={styles.container}>
         <Text style={styles.titleText}>Sign Up: </Text>
         <View style={styles.group}>
-            <TextInput onChangeText={(value) => setFirstName(value)} style={styles.textBoxes} placeholder="Your First Name"/>
+            <TextInput autoCapitalize="none" autoCorrect={false} onChangeText={(value) => setFirstName(value)} style={styles.textBoxes} placeholder="Your First Name"/>
         </View>
         <View style={styles.group}>
-            <TextInput onChangeText={(value) => setLastName(value)} style={styles.textBoxes} placeholder="Your Last Name"/>
+            <TextInput autoCapitalize="none" autoCorrect={false} onChangeText={(value) => setLastName(value)} style={styles.textBoxes} placeholder="Your Last Name"/>
         </View>
         <View style={styles.group}>
-            <TextInput onChangeText={(value) => setUsername(value)} style={styles.textBoxes} placeholder="Username"/>
+            <TextInput autoCapitalize="none" autoCorrect={false} onChangeText={(value) => setUsername(value)} style={styles.textBoxes} placeholder="Username"/>
         </View>
         <View style={styles.group}>
             <TextInput onChangeText={(value) => setPassword(value)} placeholder="Password" style={styles.passwordBox} secureTextEntry={true} textContentType="password"/>
@@ -70,7 +72,6 @@ const SignUpScreen = ({navigation}) => {
             <TextInput onChangeText={(value) => setConfirmPassword(value)} placeholder="Confirm Password" style={styles.passwordBox} secureTextEntry={true} textContentType="password"/>
         </View>
         <Text>{errors}</Text>
-        <Button title="Go To Home" onPress={() => navigation.navigate("Home")}/>
         <Button title="Submit" onPress={() => submit(password, confirmPassword)}/>
       </View>
     );
