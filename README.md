@@ -1,6 +1,6 @@
 # Glacier
 
-<img src="glacier-logos.jpeg" width = "450" height = "450" align: "center">
+<img src="glacier-logos.jpeg" width = "450" height = "450" class = "center">
 
 Aakash Reddy, Rohit Nachaloor, and Aryan Shah
 FBLA Mobile Applicatin Development 2021
