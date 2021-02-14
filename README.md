@@ -1,5 +1,8 @@
 # Glacier
-![](glacier-logos.jpeg 100x20)
+
+<img src="glacier-logos.jpeg" width = "500" height = "500">
+
+![](glacier-logos.jpeg)
 
 Aakash Reddy, Rohit Nachaloor, and Aryan Shah
 FBLA Mobile Applicatin Development 2021
