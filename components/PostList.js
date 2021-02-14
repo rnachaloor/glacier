@@ -11,7 +11,8 @@ export default class PostList extends React.Component {
         //Assing a array to your postList state
         postList: [],
         //Have a loading state where when data retrieve returns data. 
-        loading: true
+        loading: true,
+        refresh: false
     }
 
     async componentDidMount() {
@@ -45,11 +46,17 @@ export default class PostList extends React.Component {
             name={data.item.name}
             initial={data.item.initial}
             likes={data.item.likes}
-            title={data.item.name}
+            title={data.item.title}
             username={data.item.username}
             postId={data.item.id}
             style={styles.post}
             />
+    }
+
+    async refreshFunc() {
+        this.state.refresh=true
+        this.componentDidMount()
+        this.state.refresh=false
     }
 
     render() {
@@ -59,7 +66,9 @@ export default class PostList extends React.Component {
             return <FlatList 
                     data={postList}
                     renderItem={this.renderItem}
-                    keyExtractor={(item) => item.key} 
+                    keyExtractor={(item) => item.key}
+                    refreshing={false}
+                    onRefresh={() => this.refreshFunc()} 
                     />
         } else {
             return <ActivityIndicator/>

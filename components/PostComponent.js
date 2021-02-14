@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Share } from "react-native";
 import PropTypes from 'prop-types';
 import Icon from "react-native-vector-icons/Ionicons";
 import { Avatar } from "react-native-elements";
@@ -38,6 +38,26 @@ export default class Post extends React.Component {
       likesIconName: newIcon
     })
   }
+
+  async onShare() {
+    try {
+      const result = await Share.share({
+        message:
+          this.props.title + " | " + this.props.content,
+      });
+      /*if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      } */
+    } catch (error) {
+      alert(error.message);
+    }
+  }
   
   render(props) {
       let likesIconColor = "black"
@@ -60,6 +80,9 @@ export default class Post extends React.Component {
                 </TouchableOpacity>
               </View>
               <Text style={styles.likes0}>Likes: {this.state.likes}</Text>
+              <TouchableOpacity onPress={() => this.onShare()}>
+                  <Icon style={styles.share} name="paper-plane-outline" color={likesIconColor} size={40} />
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -150,6 +173,11 @@ const styles = StyleSheet.create({
   },
   avatarText: {
     color: "white"
+  },
+  share: {
+    width: 40,
+    height: 40,
+    marginLeft: 145
   }
 });
 

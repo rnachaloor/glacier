@@ -4,9 +4,7 @@ import Svg, { Ellipse } from "react-native-svg";
 import { Avatar } from "react-native-elements";
 import {loggedIn, userId, user, name, firstName, lastName, setLoggedIn} from "./LoginScreen";
 import firestore from '@react-native-firebase/firestore';
-import auth from '@react-native-firebase/auth'
-import { GoogleSignin } from "@react-native-community/google-signin";
-import { client } from "../android/app/google-services.json";
+
 
 const SettingScreen = ({navigation}) => {
   
@@ -68,7 +66,7 @@ const styles = StyleSheet.create({
     height: 23,
     flexDirection: "row",
     marginTop: 171,
-    marginLeft: 50
+    marginLeft: 42
   },
   notifications: {
     fontFamily: "System",
@@ -77,7 +75,7 @@ const styles = StyleSheet.create({
     marginTop: 1
   },
   switch: {
-    marginLeft: 141
+    marginLeft: 134
   },
   profileName: {
     width: 289,
