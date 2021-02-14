@@ -31,3 +31,5 @@ target 'Glacier-tvOS' do
     # Pods for testing
   end
 end
+
+pod 'GoogleSignIn'

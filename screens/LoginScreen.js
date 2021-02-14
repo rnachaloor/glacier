@@ -15,7 +15,11 @@ export let name
 export let firstName
 export let lastName
 
-const LoginScreen = ({navigation}) => {
+export function setLoggedIn(boolean) {
+    loggedIn = boolean
+}
+
+export const LoginScreen = ({navigation}) => {
     
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

@@ -1,15 +1,24 @@
-import React, { useState, Component } from "react";
+import React, { useState, Component, useEffect } from "react";
 import { StyleSheet, View, Text, Switch, TouchableOpacity } from "react-native";
 import Svg, { Ellipse } from "react-native-svg";
 import { Avatar } from "react-native-elements";
-import {loggedIn, userId, user, name, firstName, lastName} from "./LoginScreen";
+import {loggedIn, userId, user, name, firstName, lastName, setLoggedIn} from "./LoginScreen";
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth'
+import { GoogleSignin } from "@react-native-community/google-signin";
+import { client } from "../android/app/google-services.json";
 
 const SettingScreen = ({navigation}) => {
+  
   const [isEnabled, setIsEnabled] = useState(false);
   const [isEnabledTwo, setIsEnabledTwo] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const toggleSwitchTwo = () => setIsEnabledTwo(previousState => !previousState);
+
+  const signOut = () => {
+    setLoggedIn(false)
+    navigation.navigate("Login")
+  }
 
   return (
     <View style={styles.container}>
@@ -29,14 +38,14 @@ const SettingScreen = ({navigation}) => {
       <TouchableOpacity style={styles.reportButton}>
         <Text style={styles.reportAProblem}>Report a Problem</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.signOutButton}>
+      <TouchableOpacity style={styles.signOutButton} onPress={() => signOut()}>
         <Text style={styles.signOut}>Sign Out</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.termsOfService}>
         <Text style={styles.termsOfService2}>Terms and Conditions</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.group}>
-        <Text style={styles.connectToGoogle}>Connect to Google</Text>
+        <Text onPress={() => google()} style={styles.connectToGoogle}>Connect to Google</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.group2}>
         <Text style={styles.connectToFacebook}>Connect to Facebook</Text>
@@ -59,7 +68,7 @@ const styles = StyleSheet.create({
     height: 23,
     flexDirection: "row",
     marginTop: 171,
-    marginLeft: 42
+    marginLeft: 50
   },
   notifications: {
     fontFamily: "System",
@@ -68,7 +77,7 @@ const styles = StyleSheet.create({
     marginTop: 1
   },
   switch: {
-    marginLeft: 134
+    marginLeft: 141
   },
   profileName: {
     width: 289,
@@ -117,7 +126,7 @@ const styles = StyleSheet.create({
     borderColor: "#000000",
     justifyContent: "center",
     marginTop: 315,
-    marginLeft: 44
+    marginLeft: 50
   },
   reportAProblem: {
     fontFamily: "System",
@@ -133,7 +142,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: "center",
     marginTop: 19,
-    marginLeft: 44
+    marginLeft: 50
   },
   signOut: {
     fontFamily: "System",
@@ -149,7 +158,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: "center",
     marginTop: -159,
-    marginLeft: 44
+    marginLeft: 50
   },
   termsOfService2: {
     fontFamily: "System",
@@ -165,7 +174,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: "center",
     marginTop: -215,
-    marginLeft: 44
+    marginLeft: 50
   },
   connectToGoogle: {
     fontFamily: "System",
@@ -181,7 +190,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: "center",
     marginTop: 17,
-    marginLeft: 44
+    marginLeft: 50
   },
   connectToFacebook: {
     fontFamily: "System",
@@ -197,7 +206,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: "center",
     marginTop: 20,
-    marginLeft: 43
+    marginLeft: 50
   },
   connectToTwitter: {
     fontFamily: "System",

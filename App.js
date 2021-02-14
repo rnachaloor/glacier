@@ -15,7 +15,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./screens/HomeScreen";
 import SignUpScreen from "./screens/SignUpScreen";
-import LoginScreen from "./screens/LoginScreen";
+import LoginStackScreen, {LoginScreen} from "./screens/LoginScreen";
 import SettingScreen from "./screens/SettingScreen";
 import {
   SafeAreaView,
@@ -63,8 +63,6 @@ const SettingStackScreen = () => {
     </Stack.Navigator>
   );
 }
-
-
 
 const HomeStackScreen = () => {
   return (
@@ -125,17 +123,7 @@ const App = ({navigation}) => {
             ),
           }}
         />
-        <Tab.Screen
-          name="Sign Up"
-          component={SignUpStackScreen}
-          options={{
-            tabBarLabel: 'Sign Up',
-            tabBarColor: 'red',
-            tabBarIcon: ({ color }) => (
-              <Icon name="person" color={color} size={26} />
-            ),
-          }}
-        />
+        
         <Tab.Screen
           name="NewPost"
           component={PostStackScreen}
