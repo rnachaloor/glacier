@@ -12,6 +12,7 @@ Johns Creek High School
 ## What is Glacier?
 Glacier is an ios and android mobile and android app that adresses the topic of professional social media. Glacier allows people of all ages to share ideas and best practices with one another in a easy-to-use professional environment. In Glacier, one can simply create a post and publicly display it to all of Glaciers users. The users can in turn like the post, and share the post to other people on other different social media platforms like Google, Facebook, and Twitter. 
 
+---
 
 # Installation Instructions
 
@@ -21,12 +22,15 @@ Glacier is an ios and android mobile and android app that adresses the topic of 
 | -----------------------------|
 | ios 9 or higher              |
 | android 7.1 or higher        |
----
+
 
 ## Installation Guide for IOS
 
 
 ## Installation Guide for Android
+
+
+---
 
 
 # Frequently Asked Questions
@@ -45,10 +49,15 @@ To report a bug, navigate to the settings page on the navigation bar, denoted by
 ## How to sign out?
 To sign out, navigate to the settings page denoted by the gear. Click the Sign Out bar. This will re-direct you back to the login screen
 
+
+---
+
 # Version
 Version 1.0
 
 2/14/2020
+
+---
 
 # License
 [GPL3.0](https://choosealicense.com/licenses/gpl-3.0/)
