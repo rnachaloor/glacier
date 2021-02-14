@@ -4,7 +4,6 @@
 Aakash Reddy, Rohit Nachaloor, and Aryan Shah
 FBLA Mobile Applicatin Development 2021
 Johns Creek High School
----
 
 ## What is Glacier?
 
