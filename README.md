@@ -39,7 +39,7 @@ Glacier is an ios and android mobile and android app that adresses the topic of 
 When you first launch Glacier, you will be directed with the app's login screen. If you are creating an account for the first time, click "Sign Up Here!". This will re-direct you to the sign up page, which may ask for your First and Last name, the Username that you want to be public, and a desired Password along with its confirmation. 
 
 ## How to create a post?
-To create a post, direct your attention to the navigation bar at the bottom of your screen. To create a post, click on the icon with a +. Here, you will automatically be set up with the post editor where you can add a title and comment what you want in the post content as long as it abides by our Terms of Service located in settings. After you have done that, you can click the Post button. 
+To create a post, direct your attention to the navigation bar at the bottom of your screen. To create a post, click on the icon with a +. Here, you will automatically be set up with the post editor where you can add a title and comment what you want in the post content as long as it abides by our Terms of Service located in settings. After you have done that, you can click the Post button. To see your post, pull down on the home page to refresh the posts, and you should see your post.
 
 ## How to share a post on glacier to another social media platform?
 
