@@ -31,7 +31,7 @@ export default class PostList extends React.Component {
                     title: doc.data().title,
                     username: doc.data().username,
                     id: doc.id,
-                    key: i.toString()
+                    key: doc.id
                 })
             })
             this.setState({postList: data, loading: false});
@@ -50,6 +50,7 @@ export default class PostList extends React.Component {
             username={data.item.username}
             postId={data.item.id}
             style={styles.post}
+            key={data.item.key}
             />
     }
 
@@ -66,7 +67,7 @@ export default class PostList extends React.Component {
             return <FlatList 
                     data={postList}
                     renderItem={this.renderItem}
-                    keyExtractor={(item) => item.key}
+                    keyExtractor={(item) => item.postId}
                     refreshing={false}
                     onRefresh={() => this.refreshFunc()} 
                     />

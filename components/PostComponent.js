@@ -8,15 +8,15 @@ import Svg, { Ellipse } from "react-native-svg";
 
 export default class Post extends React.Component {
   
-  constructor(props) {
-        super(props);
-    }
-  
   state = {
     likes: this.props.likes,
     isLikeOn: false,
     likesIconName: "heart-outline"
   }
+
+   constructor(props) {
+      super(props);
+    }
 
   increaseLikes = async () => {
     let newCount, newBool, newIcon
@@ -45,15 +45,6 @@ export default class Post extends React.Component {
         message:
           this.props.title + " | " + this.props.content,
       });
-      /*if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      } */
     } catch (error) {
       alert(error.message);
     }

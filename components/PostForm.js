@@ -4,13 +4,18 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Text
+  Text,
+  Alert
 } from "react-native";
 import PropTypes from 'prop-types';
 import firestore, { firebase } from '@react-native-firebase/firestore';
 import {loggedIn, userId, user, name, firstName, lastName} from "../screens/LoginScreen";
 
 export default class PostForm extends React.Component {
+
+    constructor(props) {
+      super(props)
+    }
 
     state = {
         title: "",
@@ -45,6 +50,20 @@ export default class PostForm extends React.Component {
             time: firebase.firestore.FieldValue.serverTimestamp()
           })
         }
+
+        Alert.alert(
+          "Success",
+          'Please refresh home screen to see post.',
+          [
+              {
+                  text: 'Ok',
+                  onPress: () => console.log("")
+              }
+          ],
+          {
+              cancelable: false
+          }
+        );
       }
 
     render(props) {
