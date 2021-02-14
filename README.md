@@ -49,6 +49,8 @@ To report a bug, navigate to the settings page on the navigation bar, denoted by
 ## How to sign out?
 To sign out, navigate to the settings page denoted by the gear. Click the Sign Out bar. This will re-direct you back to the login screen
 
+## How to view the source code?
+To find the source code, navigate to where you saved the folder titled "glacier". Once there, you can navigate to the screens folder to view the general screens that apeear on both android and ios. Please note that there are platform specific segments of code that wont translate to the other operating system. 
 
 ---
 
