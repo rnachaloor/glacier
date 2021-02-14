@@ -1,6 +1,6 @@
 # Glacier
 
-<img src="glacier-logos.jpeg" width = "450" height = "450" class = "center">
+<img src="glacier-logos.jpeg" width = "450" height = "450" >
 
 
 Aakash Reddy, Rohit Nachaloor, and Aryan Shah
@@ -30,13 +30,17 @@ Johns Creek High School
 
 # In app support
 
-## How to Create an Account?
+## How to create an account?
 
-## How to Create a Post
+## How to create a post?
 
-## How to Share a Post on Glacier to Another Social Media Platform?
+## How to share a post on glacier to another social media mlatform?
 
-## How to Report a Bug?
+## How to report a bug?
+
+## How to sign out?
+
+## How to re-sign back in?
 
 
 
