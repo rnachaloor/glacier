@@ -1,6 +1,8 @@
 # Glacier
 
 <img src="glacier-logos.jpeg" width = "450" height = "450" >
+<img src="glacier-logos_white.jpeg" width = "450" height = "450" >
+
 
 
 Aakash Reddy, Rohit Nachaloor, and Aryan Shah
