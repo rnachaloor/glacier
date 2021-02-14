@@ -40,7 +40,8 @@ const PostStackScreen = () => {
       headerTintColor: '#000',
       headerTitleStyle: {
         fontWeight: 'bold'
-      }
+      },
+      headerLeft: null
     }}>
       <Stack.Screen name="NewPost" component={PostScreen} options={{title: 'New Post'}} />
     </Stack.Navigator>
