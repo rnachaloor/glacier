@@ -9,10 +9,10 @@ FBLA 2021
 
 ## System Requirements
 
-||Requirements|
-|:--:|:--:|
-|Minimum System Version|iOS 9, android 7.1|
-|Network Access|Yes|
+| Operating System  | Wifi or network connection |
+| ------------------| ------------- |
+| ios 9 <           |   necessary   |
+| android 7.1 <     |   necessary   |
 
 ---
 
