@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
   group: {
     width: 332,
     height: 350,
-    marginTop: 2,
-    marginLeft: 40,
+    marginTop: 12,
+    marginLeft: 50,
     
   },
   postContentHeading: {
@@ -117,9 +117,10 @@ const styles = StyleSheet.create({
     fontFamily: "System",
     fontSize: 24,
     color: "#121212",
-    width: 200,
+    width: 350,
     height: 39,
-    padding: -100
+    padding: -100,
+    height: 200
     
   },
   group2: {
