@@ -12,7 +12,7 @@ Johns Creek High School
 ## What is Glacier?
 
 
-# Instructions
+# Installation Instructions
 
 ## System Requirements
 
@@ -21,8 +21,6 @@ Johns Creek High School
 | ios 9 or higher              |
 | android 7.1 or higher        |
 ---
-
-# Installation process
 
 ## Installation Guide for IOS
 
@@ -45,5 +43,12 @@ To report a bug, navigate to the settings page on the navigation bar, denoted by
 
 ## How to sign out?
 To sign out, navigate to the settings page denoted by the gear. Click the Sign Out bar. This will re-direct you back to the login screen
+
+# Version
+Version 1.0
+2/14/2020
+
+# License
+[GPL3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 
