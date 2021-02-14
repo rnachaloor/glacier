@@ -1,7 +1,7 @@
 # Glacier
 
 <img src="glacier-logos.jpeg" width = "450" height = "450" >
-<img src="glacier-logos_black.jpeg" width = "450" height = "450" >
+<img src="glacier-logos_black.png" width = "450" height = "450" >
 
 
 
