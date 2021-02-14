@@ -68,7 +68,7 @@ Version 1.0
 ---
 
 # Terms and Conditions
-Glacier was programmed and is owned by Rohit Nachaloor, Aakash Reddy, and Aryan Shah. Glacier was distributed under the GPL version 3 license, which is an open-source license that allows anyone to download and run the app; modify the app; freely redistribute the app; and distribute modified versions of the app as long as the modified works are also distributed under the same GPL license. Absolutely no form of harassment is allowed on the app, and the creators of this app are not responsible for any harassment that occurs on this app. The creators of the app are also not responsible for any inappropriate use of this app. If you are concerned with a user's comments or remarks on the app, please mention this in our Report a Problem page under settings.
+Glacier was programmed and is owned by Rohit Nachaloor, Aakash Reddy, and Aryan Shah. Glacier was distributed under the GPL version 3 license, which is an open-source license that allows anyone to download and run, modify, freely redistribute, and distribute modified versions of the app as long as the modified works are also distributed under the same GPL license. The creators of this app are not responsible for any harassment that occurs on this app, although measures will be taken against offending users if harassment is reported. The creators of the app are also not responsible for any inappropriate use of this app. If you are concerned with a user's comments or remarks on the app, please mention this in our Report a Problem page under settings. Thank you!
 
 ---
 
