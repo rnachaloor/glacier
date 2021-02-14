@@ -14,7 +14,7 @@ FBLA Mobile Applicatin Development 2021
 Johns Creek High School
 
 ## What is Glacier?
-Glacier is an ios and android mobile and android app that adresses the topic of professional social media. Glacier allows people of all ages to share ideas and best practices with one another in a easy-to-use professional environment. In Glacier, one can simply create a post and publicly display it to all of Glaciers users. The users can in turn like the post, and share the post to other people on other different social media platforms like Twitter and Facebook. 
+Glacier is an ios and android mobile and android app that adresses the topic of professional social media. Glacier allows people of all ages to share ideas and best practices with one another in a easy-to-use professional environment. In Glacier, one can simply create a post and publicly display it to all of Glaciers users. The users can in turn like the post, and share the post to other people on any social media platform that is installed on your device. 
 
 ---
 
@@ -47,6 +47,7 @@ When you first launch Glacier, you will be directed with the app's login screen.
 To create a post, direct your attention to the navigation bar at the bottom of your screen. To create a post, click on the icon with a +. Here, you will automatically be set up with the post editor where you can add a title and comment what you want in the post content as long as it abides by our Terms of Service located in settings. After you have done that, you can click the Post button. To see your post, pull down on the home page to refresh the posts, and you should see your post.
 
 ## How to share a post on glacier to another social media platform?
+To share a post on Glacier to another social media platform, click on the share button on the post, which is denoted by the paper airplane on the bottom-right hand side of the post. Once you do so, you can share the post to any social media platform that is installed on your device. You can also copy the text on the post by clicking copy or copy to clpboard on android and ios repsectively. 
 
 ## How to report a bug?
 To report a bug, navigate to the settings page on the navigation bar, denoted by the gear. Once there, you can click on Report a Problem, which will ask specifics on the error. Your feedback is valuable to us, and it allows us to make Glacier reliable and user friendly
