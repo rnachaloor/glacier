@@ -21,8 +21,6 @@ const SettingScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.notifGroup}>
-        <Text style={styles.notifications}>Notifications</Text>
-        <Switch value={true} style={styles.switch}></Switch>
       </View>
       <View style={styles.profileName}>
         <View style={styles.avatarRow}>
@@ -33,6 +31,7 @@ const SettingScreen = ({navigation}) => {
           </View>
         </View>
       </View>
+      <View style = {styles.buttonStyle}>
       <TouchableOpacity style={styles.reportButton}>
         <Text style={styles.reportAProblem}>Report a Problem</Text>
       </TouchableOpacity>
@@ -43,14 +42,12 @@ const SettingScreen = ({navigation}) => {
         <Text style={styles.termsOfService2}>Terms and Conditions</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.group}>
-        <Text onPress={() => google()} style={styles.connectToGoogle}>Connect to Google</Text>
+        <Text style={styles.instructions}>Instructions</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.group2}>
-        <Text style={styles.connectToFacebook}>Connect to Facebook</Text>
+        <Text style={styles.faq}>Frequently Asked Questions</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.group3}>
-        <Text style={styles.connectToTwitter}>Connect to Twitter</Text>
-      </TouchableOpacity>
+      </View>
     </View>
   );
   }
@@ -116,6 +113,7 @@ const styles = StyleSheet.create({
     marginRight: -1
   },
   reportButton: {
+    position: "absolute",
     width: 289,
     height: 40,
     backgroundColor: "rgba(230, 230, 230,0)",
@@ -123,7 +121,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000000",
     justifyContent: "center",
-    marginTop: 315,
+    marginTop: 235,
     marginLeft: 50
   },
   reportAProblem: {
@@ -132,6 +130,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   signOutButton: {
+    position: "absolute",
     width: 289,
     height: 40,
     backgroundColor: "rgba(230,230, 230,0)",
@@ -139,7 +138,7 @@ const styles = StyleSheet.create({
     borderColor: "#000000",
     borderRadius: 50,
     justifyContent: "center",
-    marginTop: 19,
+    marginTop: 292,
     marginLeft: 50
   },
   signOut: {
@@ -148,6 +147,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   termsOfService: {
+    position: "absolute",
     width: 289,
     height: 40,
     backgroundColor: "rgba(230,230, 230,0)",
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     borderColor: "#000000",
     borderRadius: 50,
     justifyContent: "center",
-    marginTop: -159,
+    marginTop: 178,
     marginLeft: 50
   },
   termsOfService2: {
@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   group: {
+    position: "absolute",
     width: 289,
     height: 40,
     backgroundColor: "rgba(230,230, 230,0)",
@@ -171,15 +172,16 @@ const styles = StyleSheet.create({
     borderColor: "#000000",
     borderRadius: 50,
     justifyContent: "center",
-    marginTop: -215,
-    marginLeft: 50
+    marginTop: 60,
+    marginLeft: 50.3
   },
-  connectToGoogle: {
+  instructions: {
     fontFamily: "System",
     color: "#121212",
     alignSelf: "center"
   },
   group2: {
+    position: "absolute",
     width: 289,
     height: 40,
     backgroundColor: "rgba(230,230, 230,0)",
@@ -187,10 +189,10 @@ const styles = StyleSheet.create({
     borderColor: "#000000",
     borderRadius: 50,
     justifyContent: "center",
-    marginTop: 17,
-    marginLeft: 50
+    marginTop: 120,
+    marginLeft: 50.2
   },
-  connectToFacebook: {
+  faq: {
     fontFamily: "System",
     color: "#121212",
     alignSelf: "center"
@@ -206,12 +208,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 50
   },
-  connectToTwitter: {
-    fontFamily: "System",
-    color: "#121212",
-    alignSelf: "center"
-  },
   avatarText: {
     color: "white"
-  }
+  },
 });
