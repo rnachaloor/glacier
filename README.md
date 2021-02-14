@@ -8,6 +8,8 @@ Johns Creek High School
 ## What is Glacier?
 
 
+# Instructions
+
 ## System Requirements
 
 | Compatible Operating Systems |
@@ -16,10 +18,24 @@ Johns Creek High School
 | android 7.1 or higher        |
 ---
 
-### Installation process
+# Installation process
 
-## How to install Glacier on ios
+## How to install Glacier on ios?
 
 
-## How to intsall Glacier on android
+## How to install Glacier on android?
+
+
+# In app support
+
+## How to Create an Account?
+
+## How to Create a Post
+
+## How to Share a Post on Glacier to Another Social Media Platform?
+
+## How to Report a Bug?
+
+
+
 
