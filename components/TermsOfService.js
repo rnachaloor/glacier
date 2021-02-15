@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
       fontFamily: "System",
       color: "#121212",
       width: 312,
-      height: 398,
+      height: 420,
       fontSize: 14,
       textAlign: "left",
       lineHeight: 23,

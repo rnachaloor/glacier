@@ -82,7 +82,7 @@ export default class ReportForm extends React.Component {
       })
       Alert.alert(
         "Submitted",
-        'Thanks for your feedback.',
+        'Thanks for your feedback. Swipe back or click the back button to go back.',
         [
             {
                 text: 'Ok',
