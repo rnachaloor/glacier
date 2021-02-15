@@ -28,12 +28,13 @@ Glacier is an ios and android mobile and android app that adresses the topic of 
 | android 7.1 or higher        |
 
 
-## Installation Guide for IOS
+## Installation Guide for iOS Emulator
 
 
-## Installation Guide for Android
+## Installation Guide for Android Emulator
 
 
+## Installation Guide for Android Emulator
 
 ---
 
