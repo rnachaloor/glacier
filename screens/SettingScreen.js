@@ -22,6 +22,10 @@ const SettingScreen = ({navigation}) => {
     navigation.navigate("ToS")
   }
 
+  const report = () => {
+    navigation.navigate("Report")
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.notifGroup}>
@@ -36,7 +40,7 @@ const SettingScreen = ({navigation}) => {
         </View>
       </View>
       <View style = {styles.buttonStyle}>
-      <TouchableOpacity style={styles.reportButton}>
+      <TouchableOpacity style={styles.reportButton} onPress={() => report()}>
         <Text style={styles.reportAProblem}>Report a Problem</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.signOutButton} onPress={() => signOut()}>
