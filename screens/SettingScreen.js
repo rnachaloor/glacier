@@ -26,6 +26,10 @@ const SettingScreen = ({navigation}) => {
     navigation.navigate("Report")
   }
 
+  const question = () => {
+    navigation.navigate("Question")
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.notifGroup}>
@@ -52,7 +56,7 @@ const SettingScreen = ({navigation}) => {
       <TouchableOpacity style={styles.group}>
         <Text style={styles.instructions}>Instructions</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.group2}>
+      <TouchableOpacity style={styles.group2} onPress={() => question()}>
         <Text style={styles.faq}>Frequently Asked Questions</Text>
       </TouchableOpacity>
       </View>

@@ -28,6 +28,7 @@ import {
   StatusBar,
 } from 'react-native';
 import PostScreen from './screens/PostScreen';
+import QuestionScreen from './screens/QuestionScreen';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -65,6 +66,7 @@ const SettingStackScreen = () => {
       <Stack.Screen name="Settings" component={SettingScreen} options={{title: 'Settings'}} />
       <Stack.Screen name="ToS" component={TermsOfServiceScreen} options={{title: 'Terms and Conditions'}} />
       <Stack.Screen name="Report" component={ReportScreen} options={{title: 'Report a Problem'}} />
+      <Stack.Screen name="Question" component={QuestionScreen} options={{title: 'Frequently Asked Questions'}} />
     </Stack.Navigator>
   );
 }
