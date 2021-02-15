@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     bg: {
       top: 0,
       width: 325,
-      height: 310,
+      height: 350,
       position: "absolute",
       borderWidth: 1,
       borderColor: "#000000",
@@ -51,13 +51,13 @@ const styles = StyleSheet.create({
       fontFamily: "System",
       color: "#121212",
       height: 240,
-      width: 306,
+      width: 310,
       fontSize: 14,
       marginLeft: 11
     },
     logoStack: {
       width: 325,
-      height: 310
+      height: 340
     }
 });
 
