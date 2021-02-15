@@ -9,7 +9,7 @@
 
 Aakash Reddy, Rohit Nachaloor, and Aryan Shah
 
-FBLA Mobile Applicatin Development 2021
+FBLA Mobile Application Development 2021
 
 Johns Creek High School
 
