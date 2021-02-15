@@ -18,6 +18,10 @@ const SettingScreen = ({navigation}) => {
     navigation.navigate("Login")
   }
 
+  const termsOfService = () => {
+    navigation.navigate("ToS")
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.notifGroup}>
@@ -38,7 +42,7 @@ const SettingScreen = ({navigation}) => {
       <TouchableOpacity style={styles.signOutButton} onPress={() => signOut()}>
         <Text style={styles.signOut}>Sign Out</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.termsOfService}>
+      <TouchableOpacity style={styles.termsOfService} onPress = {() => termsOfService()}>
         <Text style={styles.termsOfService2}>Terms and Conditions</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.group}>

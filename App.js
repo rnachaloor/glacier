@@ -17,6 +17,7 @@ import HomeScreen from "./screens/HomeScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import LoginStackScreen, {LoginScreen} from "./screens/LoginScreen";
 import SettingScreen from "./screens/SettingScreen";
+import TermsOfServiceScreen from "./screens/TermsOfServiceScreen"
 import {
   SafeAreaView,
   StyleSheet,
@@ -61,6 +62,7 @@ const SettingStackScreen = () => {
       headerLeft: null
     }}>
       <Stack.Screen name="Settings" component={SettingScreen} options={{title: 'Settings'}} />
+      <Stack.Screen name="ToS" component={TermsOfServiceScreen} options={{title: 'Terms and Conditions'}} />
     </Stack.Navigator>
   );
 }
