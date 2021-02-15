@@ -22,10 +22,10 @@ Glacier is an ios and android mobile and android app that adresses the topic of 
 
 ## System Requirements
 
-| Compatible Operating Systems |
-| -----------------------------|
-| ios 9 or higher              |
-| android 7.1 or higher        |
+| Compatible Operating Systems      |
+| ----------------------------------|
+| iOS 9 or higher                   |
+| Android 7.1 (Nougat) or higher    |
 
 
 ## Installation Guide for iOS Emulator
