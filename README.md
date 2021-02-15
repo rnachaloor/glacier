@@ -18,6 +18,7 @@ Glacier is an ios and android mobile and android app that adresses the topic of 
 
 ---
 
+
 # Installation Instructions
 
 ## System Requirements
@@ -44,7 +45,10 @@ To install an emulator for an android device, first, download android studio [he
 6. Open the phone's file explorer
 7. Tap the .apk file on your phone
 8. The app should be installed
+
 ---
+
+# Instructions on how to use the app
 
 
 # Frequently Asked Questions
@@ -68,6 +72,7 @@ To sign out, navigate to the settings page denoted by the gear. Click the Sign O
 To find the source code, navigate to where you saved the folder titled "glacier". Once there, you can navigate to the screens folder to view the general screens that apeear on both android and ios. Please note that there are platform specific segments of code that wont translate to the other operating system. 
 
 ---
+
 
 # Version
 Version 1.0
