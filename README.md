@@ -32,6 +32,7 @@ Glacier is an ios and android mobile and android app that adresses the topic of 
 
 
 ## Installation Guide for Android Emulator
+To install an emulator for an android device, first, download android studio [here] (https://developer.android.com/studio)
 
 
 ## Installation Guide for Android Device
