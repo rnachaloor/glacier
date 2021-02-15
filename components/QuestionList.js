@@ -70,8 +70,7 @@ export default class QuestionList extends React.Component {
                     data={questionList}
                     renderItem={this.renderItem}
                     keyExtractor={(item) => item.key}
-                    contentContainerStyle={{width: 312,
-                        height: 459,
+                    contentContainerStyle={{
                         alignSelf: 'center',
                         alignItems: 'center',
                         alignContent: 'center',}}
