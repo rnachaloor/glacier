@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   Text,
-  Alert
+  Image
 } from "react-native";
 import PropTypes from 'prop-types';
 import firestore, { firebase } from '@react-native-firebase/firestore';
@@ -20,6 +20,7 @@ export default class TermsOfService extends React.Component {
     render(props) {
       return (
         <View style={[styles.container]}>
+
           <Text style={styles.glacier}>
             Glacier was programmed and is owned by Rohit Nachaloor, Aakash Reddy,
             and Aryan Shah. Glacier was distributed under the GPL version 3 license,
@@ -35,7 +36,11 @@ export default class TermsOfService extends React.Component {
             {"\n"}Thank you!
           </Text>
           <Text style={styles.text}>Terms and Conditions</Text>
+          <View>
+            <Image style={styles.logo} source={require('../glacier-logos_black.png')}/>
+          </View>
         </View>
+        
       );
     }
 }
@@ -65,5 +70,10 @@ const styles = StyleSheet.create({
       fontSize: 25,
       marginTop: -459,
       marginLeft: 0
+    },
+    logo: {
+      height: 100,
+      width: 100,
+      marginTop: 420
     }
   });

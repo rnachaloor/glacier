@@ -5,7 +5,8 @@ import {
   TextInput,
   TouchableOpacity,
   Text,
-  Alert
+  Alert,
+  Image
 } from "react-native";
 import PropTypes from 'prop-types';
 import firestore, { firebase } from '@react-native-firebase/firestore';

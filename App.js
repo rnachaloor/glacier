@@ -8,6 +8,7 @@
 
 import 'react-native-gesture-handler'; //always first
 import React from 'react';
+import { Image } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -38,7 +39,7 @@ const PostStackScreen = () => {
   return (
     <Stack.Navigator screenOptions={{
       headerStyle: {
-        backgroundColor: '#9E34EB'
+        backgroundColor: '#27538C'
       },
       headerTintColor: '#000',
       headerTitleStyle: {
@@ -55,7 +56,7 @@ const SettingStackScreen = () => {
   return (
     <Stack.Navigator screenOptions={{
       headerStyle: {
-        backgroundColor: 'orange'
+        backgroundColor: '#4886D9'
       },
       headerTintColor: '#000',
       headerTitleStyle: {
@@ -75,7 +76,7 @@ const HomeStackScreen = () => {
   return (
     <Stack.Navigator screenOptions={{
       headerStyle: {
-        backgroundColor: '#0DE5EF'
+        backgroundColor: '#26488C'
       },
       headerTintColor: '#000',
       headerTitleStyle: {
@@ -124,7 +125,7 @@ const App = ({navigation}) => {
           component={HomeStackScreen}
           options={{
             tabBarLabel: 'Glacier',
-            tabBarColor: '#0DE5EF',
+            tabBarColor: '#26488C',
             tabBarIcon: ({ color }) => (
               <Icon name="home" color={color} size={26} />
             ),
@@ -136,7 +137,7 @@ const App = ({navigation}) => {
           component={PostStackScreen}
           options={{
             tabBarLabel: 'New Post',
-            tabBarColor: '#9E34EB',
+            tabBarColor: '#27538C',
             tabBarIcon: ({ color }) => (
               <Icon name="add-circle-outline" color={color} size={26} />
             ),
@@ -147,7 +148,7 @@ const App = ({navigation}) => {
           component={SettingStackScreen}
           options={{
             tabBarLabel: 'Settings',
-            tabBarColor: 'orange',
+            tabBarColor: '#4886D9',
             tabBarIcon: ({ color }) => (
               <Icon name="cog-outline" color={color} size={26} />
             ),

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { View, Text, Button, StyleSheet, Alert, TouchableOpacity } from "react-native";
+import { View, Text, Button, StyleSheet, Alert, TouchableOpacity, Image } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import firestore from '@react-native-firebase/firestore';
 import { createStackNavigator } from "@react-navigation/stack";
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginLeft: 10,
-        marginRight: 10
+        marginRight: 10,
     },
     group: {
         flexDirection: 'row'
@@ -169,8 +169,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         width: 200,
         marginTop: 20,
-        backgroundColor: "green",
+        backgroundColor: '#4886D9',
         padding: 15,
         borderRadius: 50,
-      },
+    },
+    logo: {
+        height: 100,
+        width: 100
+    }
 })
