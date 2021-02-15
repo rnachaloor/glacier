@@ -144,7 +144,7 @@ export default class ReportForm extends React.Component {
               <Icon style={styles.rect6} name={this.state.userIcon} color="black" size={19} />
             </TouchableOpacity>
             <Text style={styles.somethingIsBroken5}>
-              There is a user violating the terms and conditons
+              There is a user harassing other users
             </Text>
           </View>
           <View style={styles.group2}>

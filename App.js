@@ -20,6 +20,7 @@ import LoginStackScreen, {LoginScreen} from "./screens/LoginScreen";
 import SettingScreen from "./screens/SettingScreen";
 import TermsOfServiceScreen from "./screens/TermsOfServiceScreen"
 import ReportScreen from "./screens/ReportScreen";
+import InstructionScreen from "./screens/InstructionScreen"
 import {
   SafeAreaView,
   StyleSheet,
@@ -68,6 +69,7 @@ const SettingStackScreen = () => {
       <Stack.Screen name="ToS" component={TermsOfServiceScreen} options={{title: 'Terms and Conditions'}} />
       <Stack.Screen name="Report" component={ReportScreen} options={{title: 'Report a Problem'}} />
       <Stack.Screen name="Question" component={QuestionScreen} options={{title: 'Frequently Asked Questions'}} />
+      <Stack.Screen name="Instructions" component={InstructionScreen} options={{title: 'Instructions'}} />
     </Stack.Navigator>
   );
 }

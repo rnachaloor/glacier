@@ -30,6 +30,10 @@ const SettingScreen = ({navigation}) => {
     navigation.navigate("Question")
   }
 
+  const instructions = () => {
+    navigation.navigate("Instructions")
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.notifGroup}>
@@ -53,7 +57,7 @@ const SettingScreen = ({navigation}) => {
       <TouchableOpacity style={styles.termsOfService} onPress = {() => termsOfService()}>
         <Text style={styles.termsOfService2}>Terms and Conditions</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.group}>
+      <TouchableOpacity style={styles.group} onPress={() => instructions()}>
         <Text style={styles.instructions}>Instructions</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.group2} onPress={() => question()}>
