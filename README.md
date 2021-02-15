@@ -33,7 +33,7 @@ Glacier is an ios and android mobile and android app that adresses the topic of 
 
 
 ## Installation Guide for Android Emulator
-To install an emulator for an android device, first, download android studio [here](https://developer.android.com/studio)
+To install an emulator for an android device, first, [download android studio](https://developer.android.com/studio). Once you have done this, open the android studio application and click on the configure dropdown. Click on AVD manager. If not already selected, please select the target that has android 7.1 (nougat) or higher. You may click the green arrow to preview the emulator. To make the program output the contents of the app onto the emulator, create a file called local.properties under the android folder in the file structure. In this file, type sdk.dir= *the location of your sdk*. To find the location of your SDK, navigate back to the configure dropdown and select SDK manager. Copy the SDK location and paste it into the local.properties file, but add an extra "\" for every "\" that you see. Once you have done this, you will be able to see the app on your emulator when you execute it. 
 
 
 ## Installation Guide for Android Device
