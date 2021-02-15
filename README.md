@@ -18,6 +18,7 @@ Glacier is an ios and android mobile and android app that adresses the topic of 
 
 ---
 
+
 # Installation Instructions
 
 ## System Requirements
@@ -32,6 +33,7 @@ Glacier is an ios and android mobile and android app that adresses the topic of 
 
 
 ## Installation Guide for Android Emulator
+To install an emulator for an android device, first, [download android studio](https://developer.android.com/studio). Once you have done this, open the android studio application and click on the configure dropdown. Click on AVD manager. If not already selected, please select the target that has android 7.1 (nougat) or higher. You may click the green arrow to preview the emulator. To make the program output the contents of the app onto the emulator, create a file called local.properties under the android folder in the file structure. In this file, type sdk.dir= *the location of your sdk*. To find the location of your SDK, navigate back to the configure dropdown and select SDK manager. Copy the SDK location and paste it into the local.properties file, but add an extra "\" for every "\" that you see. Once you have done this, you will be able to see the app on your emulator when you execute it. 
 
 
 ## Installation Guide for Android Device
@@ -43,8 +45,11 @@ Glacier is an ios and android mobile and android app that adresses the topic of 
 6. Open the phone's file explorer
 7. Tap the .apk file on your phone
 8. The app should be installed
+
 ---
 
+# Instructions on how to use the app
+When you first open the app, you will be prompted to enter your login credentials. If you are a new user, click "Sign up here!". This will redirect you to the app's sign-in page. There, you will be asked to create your account. Remember, your information will be displayed across Glacier's wide array of professionals. Once you submit, you will be re-directed back to the login page, where you once again will be asked to enter your login credentials. Once you do, you will be sent to Glacier's home screen, which displays the posts of real people on the app. To create a post, navigate to the new post section, designated by a plus sign on the navigation bar. Here, you can create the post title and add the post content. When you click post, you can return to the home page and refresh the posts by pulling down and releasing the home page. Your post should appear momentarily. To like a post, you can click the heart sign located on the bottom left part of the post. You can also share the post to any social media platform by clicking the share button on the bottom right. You can share the post to any app that is present on your device. Once done, you can also navigate to the settings page, denoted by a gear on the navigation bar. Once there, you can access a wide array of resources and services such as our terms and Conditions, FAQ, and our Terms and Conditions. To sign out, you can click the sign out button on the very bottom, which will re-direct you back to the login page.
 
 # Frequently Asked Questions
 
@@ -67,6 +72,7 @@ To sign out, navigate to the settings page denoted by the gear. Click the Sign O
 To find the source code, navigate to where you saved the folder titled "glacier". Once there, you can navigate to the screens folder to view the general screens that apeear on both android and ios. Please note that there are platform specific segments of code that wont translate to the other operating system. 
 
 ---
+
 
 # Version
 Version 1.0
