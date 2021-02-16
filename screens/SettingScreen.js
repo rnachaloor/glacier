@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
     color: "#121212",
     lineHeight: 14,
     fontSize: 24,
-    padding: 8
+    padding: 8,
+    paddingTop: 9
   },
   username: {
     fontFamily: "System",

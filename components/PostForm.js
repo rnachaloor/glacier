@@ -102,7 +102,9 @@ const styles = StyleSheet.create({
       height: 60,
       width: 332,
       fontSize: 28,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      borderWidth: 1,
+      borderColor: '#bfbfbf'
     },
     placeholder: {
       fontFamily: "System",
@@ -111,12 +113,13 @@ const styles = StyleSheet.create({
       width: 332,
       fontSize: 24,
       textAlign: "left",
-      marginTop: 12
+      marginTop: 12,
+      borderWidth: 1,
+      borderColor: '#bfbfbf'
     },
     group2: {
       width: 332,
       height: 58,
-      backgroundColor: "rgba(230, 230, 230,1)",
       marginTop: 31
     },
     button: {
