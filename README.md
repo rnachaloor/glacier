@@ -57,6 +57,7 @@ To install on an iOS emulator, open the root folder (glacier) in terminal. Run t
 | Prequisites                                                  |
 | -------------------------------------------------------------|
 | node.js                                                      |
+| Java JDK 12+                                                 |
 | yarn (can get through npm install -g yarn)                   |
 | react (can get through npm install -g react)                 |
 | react-native (can get through npm install -g react-native)   |
