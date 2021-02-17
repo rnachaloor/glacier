@@ -40,22 +40,24 @@ Glacier is an iOS and android mobile and android app that adresses the topic of 
 8. The app should be installed
 
 ## Installation Guide for iOS Emulator
-| Prequisites                                  |
-| ---------------------------------------------|
-| A Mac                                        |
-| node.js                                      |
-| CocoaPods                                    |
-| Xcode                                        |
-| yarn (can get through npm install -g yarn)   |
+| Prequisites                                                  |
+| -------------------------------------------------------------|
+| A Mac                                                        |
+| node.js                                                      |
+| CocoaPods                                                    |
+| Xcode                                                        |
+| yarn (can get through npm install -g yarn)                   |
+| react-native (can get through npm install -g react-native)   |
 
 To install on an iOS emulator, open the root folder (glacier) in terminal. Run the command- "yarn" to install any node.js related dependcies. Then, run "cd ios && pod install && cd .." or "npm run pod-install" to install any iOS related dependencies. Finally, run "npm run ios" or "react-native run-ios" to run the app on an emulator. 
 
 ## Installation Guide for Android Emulator
 
-| Prequisites                                  |
-| ---------------------------------------------|
-| node.js                                      |
-| yarn (can get through npm install -g yarn)   |
+| Prequisites                                                  |
+| -------------------------------------------------------------|
+| node.js                                                      |
+| yarn (can get through npm install -g yarn)                   |
+| react-native (can get through npm install -g react-native)   |
 
 To install on an android emulator, first, [download android studio](https://developer.android.com/studio). Once you have done this, open the android studio application and click on the configure dropdown. Click on AVD manager. If not already selected, please select the target that has android 7.1 (nougat) or higher. You may click the green arrow to preview the emulator. To make the program output the contents of the app onto the emulator, create a file called local.properties under the android folder in the file structure. In this file, type sdk.dir= *the location of your sdk*. To find the location of your SDK, navigate back to the configure dropdown and select SDK manager. Copy the SDK location and paste it into the local.properties file, but add an extra "\\" for every "\\" that you see if you are on windows. Once you have done this, open the root directory of the app (glacier) in the terminal or command prompt. Run the command- "yarn". Finally, type in the command, "npm run android" or "react-native run-android" to run the app on an android emulator.
 
