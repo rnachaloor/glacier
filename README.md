@@ -30,7 +30,7 @@ Glacier is an iOS and android mobile and android app that adresses the topic of 
 
 
 ## Installation Guide for Android Device
-1. Download the .apk file in the releases folder to your computer
+1. Download the .apk file in the release folder to your computer
 2. Connect your android phone to your computer
 3. Copy the .apk file from your computer to the phone
 4. Disconnect the phone from the computer
