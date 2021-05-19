@@ -1,3 +1,4 @@
+// Imports
 import React from "react";
 import { useState } from "react";
 import { View, Text, Button, StyleSheet, Alert, TouchableOpacity, Image } from "react-native";
@@ -8,57 +9,69 @@ import { NavigationContainer } from "@react-navigation/native";
 import SignUpScreen from "./SignUpScreen";
 import App from "../App";
 
+// Exports
 export let loggedIn = false;
 export let userId = ""
 export let user
 export let name
 export let firstName
 export let lastName
-
 export function setLoggedIn(boolean) {
     loggedIn = boolean
 }
-
+// Exporting the LoginScreen
 export const LoginScreen = ({navigation}) => {
     
+    // Uses useState to have state variables in these functional components
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    // Returning an implicit submission
     async function submit() {
         if ((username == "") || (password == "")) {
+            // Alert Message
             Alert.alert(
                 "Missing Fields",
                 'Please fill out every field.',
                 [
                     {
                         text: 'Ok',
+                        // Writes "Try Again" to log on the debugging console
                         onPress: () => console.log("Trying Again")
                     }
                 ],
                 {
+                    // Not cancelable
                     cancelable: false
                 }
             );
         } else {
+            // Creating new constants
             const userInfo = firestore().collection('userInfo');
             const userInfoRes = await userInfo.where('username', '==', username).get();
+            // Selection for when the information hasn't been procured
             if (userInfoRes.empty) {
+                // Another alert message
                 Alert.alert(
                     "Username or password not in the database",
                     'Please check your username and password.',
                     [
                         {
                             text: 'Ok',
+                            // Writes "Try Again" to log on the debugging console
                             onPress: () => console.log("Trying Again")
                         }
                     ],
                     {
+                        // Not cancelable
                         cancelable: false
                     }
                 );
             } else {
+                // Checks with the database for the correct username and password
                 userInfoRes.forEach(doc => {
                     if ((doc.data().username == username) == (doc.data().password == password)) {
+                        // Affirms that the fields are all identified and true if the user and pass are confirmed
                         loggedIn = true;
                         userId = doc.id;
                         user = doc.data().username;
@@ -67,16 +80,19 @@ export const LoginScreen = ({navigation}) => {
                         name = firstName + " " + lastName
                         navigation.navigate("Home")
                     } else {
+                        // Alert message for when the selection above is not true
                         Alert.alert(
                             "Username or password not in the database",
                             'Please check your username and password.',
                             [
                                 {
                                     text: 'Ok',
+                                    // Writes "Try Again" to log on the debugging console
                                     onPress: () => console.log("Trying Again")
                                 }
                             ],
                             {
+                                // Not cancellable
                                 cancelable: false
                             }
                         );
@@ -86,18 +102,23 @@ export const LoginScreen = ({navigation}) => {
         }
     }
 
+    // Shows the login form
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>Login: </Text>
         <View style={styles.group}>
+            // Creating new text boxes for users to enter in their credentials
             <TextInput autoCapitalize="none" autoCorrect={false} onChangeText={(value) => setUsername(value)} style={styles.textBoxes} placeholder="Username"/>
         </View>
+        
         <View style={styles.group}>
             <TextInput onChangeText={(value) => setPassword(value)} style={styles.textBoxes} placeholder="Password" style={styles.passwordBox} secureTextEntry={true} textContentType="password"/>
         </View>
+        // Message below login telling the user to screate an account if they have not done so
         <Text onPress={() => navigation.navigate("Sign Up")}>
             Don't have an account? Sign up here!
         </Text>
+        // Logs you in. Once compared to the database, it submits it to the database
         <TouchableOpacity  title="Submit" onPress={() => submit()} style={styles.button}>
             <Text>
                 Submit
@@ -107,8 +128,10 @@ export const LoginScreen = ({navigation}) => {
     );
   }
 
+  // New navigator constant
   const Stack = createStackNavigator();
 
+  // Returning the text boxes and links to the LoginScreen Page when accessed
   const LoginStackScreen = () => {
     return (
     <NavigationContainer>
@@ -121,8 +144,10 @@ export const LoginScreen = ({navigation}) => {
     );
   }
 
+// Exporting the screen
 export default LoginStackScreen
 
+// Styling 
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
@@ -142,7 +167,7 @@ const styles = StyleSheet.create({
         fontSize: 24
     },
     titleText: {
-        alignItems: "center", //need to fix centering
+        alignItems: "center", 
         fontWeight: 'bold',
         color: 'black',
         marginTop: 10,
