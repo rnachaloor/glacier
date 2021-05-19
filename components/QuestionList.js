@@ -11,7 +11,8 @@ export default class QuestionList extends React.Component {
         //Have a loading state where when data retrieve returns data. 
         loading: true
     }
-
+    
+    //gets list of questions
     async componentDidMount() {
         //Have a try and catch block for catching errors.
         try {
@@ -53,7 +54,8 @@ export default class QuestionList extends React.Component {
             console.log("Error fetching data-----------", err);
         }
     }
-
+    
+    //adds questions to the faq component
     renderItem(data) {
         return <FAQ
         question={data.item.question}
@@ -61,7 +63,8 @@ export default class QuestionList extends React.Component {
         style={styles.post}
         />
     }
-
+    
+    //renders list of questions
     render() {
         const { questionList, loading } = this.state
 
