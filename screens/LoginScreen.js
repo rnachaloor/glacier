@@ -107,18 +107,18 @@ export const LoginScreen = ({navigation}) => {
       <View style={styles.container}>
         <Text style={styles.titleText}>Login: </Text>
         <View style={styles.group}>
-            // Creating new text boxes for users to enter in their credentials
+            
             <TextInput autoCapitalize="none" autoCorrect={false} onChangeText={(value) => setUsername(value)} style={styles.textBoxes} placeholder="Username"/>
         </View>
         
         <View style={styles.group}>
             <TextInput onChangeText={(value) => setPassword(value)} style={styles.textBoxes} placeholder="Password" style={styles.passwordBox} secureTextEntry={true} textContentType="password"/>
         </View>
-        // Message below login telling the user to screate an account if they have not done so
+        
         <Text onPress={() => navigation.navigate("Sign Up")}>
             Don't have an account? Sign up here!
         </Text>
-        // Logs you in. Once compared to the database, it submits it to the database
+        
         <TouchableOpacity  title="Submit" onPress={() => submit()} style={styles.button}>
             <Text>
                 Submit

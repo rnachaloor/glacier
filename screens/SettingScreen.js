@@ -34,38 +34,39 @@ const instructions = () => {
 }
 
 //JSX
-return (
-  <View style={styles.container}>
-  <View style={styles.notifGroup}>
-    </View>
-    <View style={styles.profileName}>
-      <View style={styles.avatarRow}>
-        <Avatar size="large" rounded title={(firstName.substring(0,1) + lastName.substring(0,1)).toUpperCase()} overlayContainerStyle={styles.avatar} activeOpacity={0.7} titleStyle={styles.avatarText}/>
-        <View style={styles.namePlaceholderColumn}>
-          <Text style={styles.namePlaceholder}>{name}</Text>
-          <Text style={styles.username}>{user}</Text>
+const SettingScreen = ({navigation}) => {
+  return (
+    <View style={styles.container}>
+    <View style={styles.notifGroup}>
+      </View>
+      <View style={styles.profileName}>
+        <View style={styles.avatarRow}>
+          <Avatar size="large" rounded title={(firstName.substring(0,1) + lastName.substring(0,1)).toUpperCase()} overlayContainerStyle={styles.avatar} activeOpacity={0.7} titleStyle={styles.avatarText}/>
+          <View style={styles.namePlaceholderColumn}>
+            <Text style={styles.namePlaceholder}>{name}</Text>
+            <Text style={styles.username}>{user}</Text>
+          </View>
         </View>
       </View>
+      <View style = {styles.buttonStyle}>
+      <TouchableOpacity style={styles.reportButton} onPress={() => report()}>
+        <Text style={styles.reportAProblem}>Report a Problem</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.signOutButton} onPress={() => signOut()}>
+        <Text style={styles.signOut}>Sign Out</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.termsOfService} onPress = {() => termsOfService()}>
+        <Text style={styles.termsOfService2}>Terms and Conditions</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.group} onPress={() => instructions()}>
+        <Text style={styles.instructions}>Instructions</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.group2} onPress={() => question()}>
+        <Text style={styles.faq}>Frequently Asked Questions</Text>
+      </TouchableOpacity>
+      </View>
     </View>
-    <View style = {styles.buttonStyle}>
-    <TouchableOpacity style={styles.reportButton} onPress={() => report()}>
-      <Text style={styles.reportAProblem}>Report a Problem</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.signOutButton} onPress={() => signOut()}>
-      <Text style={styles.signOut}>Sign Out</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.termsOfService} onPress = {() => termsOfService()}>
-      <Text style={styles.termsOfService2}>Terms and Conditions</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.group} onPress={() => instructions()}>
-      <Text style={styles.instructions}>Instructions</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.group2} onPress={() => question()}>
-      <Text style={styles.faq}>Frequently Asked Questions</Text>
-    </TouchableOpacity>
-    </View>
-  </View>
-);
+  );
 }
 
 //Exports screen
