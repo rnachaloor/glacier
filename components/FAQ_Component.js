@@ -6,6 +6,7 @@ import { Avatar } from "react-native-elements";
 import firestore from '@react-native-firebase/firestore';
 import Svg, { Ellipse } from "react-native-svg";
 
+//class returns the blueprint for the FAQ
 export default class FAQ extends React.Component {
     render(props) {
         return (
@@ -22,6 +23,7 @@ export default class FAQ extends React.Component {
     }
 }
 
+//styling
 const styles = StyleSheet.create({
     container: {},
     logo: {
@@ -61,6 +63,7 @@ const styles = StyleSheet.create({
     }
 });
 
+//describes parameters
 FAQ.propTypes = {
   question: PropTypes.string.isRequired,
   answer: PropTypes.string.isRequired
