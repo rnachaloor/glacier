@@ -1,3 +1,4 @@
+//Imports
 import React, { useState, Component, useEffect } from "react";
 import { StyleSheet, View, Text, Switch, TouchableOpacity } from "react-native";
 import Svg, { Ellipse } from "react-native-svg";
@@ -5,68 +6,67 @@ import { Avatar } from "react-native-elements";
 import {loggedIn, userId, user, name, firstName, lastName, setLoggedIn} from "./LoginScreen";
 import firestore from '@react-native-firebase/firestore';
 
+//Signs the user out by setting loggedIn boolean to false
+//Reroutes back to login page
+const signOut = () => {
+  setLoggedIn(false)
+  navigation.navigate("Login")
+}
 
-const SettingScreen = ({navigation}) => {
-  
-  const [isEnabled, setIsEnabled] = useState(false);
-  const [isEnabledTwo, setIsEnabledTwo] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  const toggleSwitchTwo = () => setIsEnabledTwo(previousState => !previousState);
+//When the Terms Of Service button is clicked, app reroutes to Terms Of Service page
+const termsOfService = () => {
+  navigation.navigate("ToS")
+}
 
-  const signOut = () => {
-    setLoggedIn(false)
-    navigation.navigate("Login")
-  }
+//When the Report A Problem button is clicked, app reroutes to Report A Problem page
+const report = () => {
+  navigation.navigate("Report")
+}
 
-  const termsOfService = () => {
-    navigation.navigate("ToS")
-  }
+//When the FAQ button is clicked, app reroutes to FAQ page
+const question = () => {
+  navigation.navigate("Question")
+}
 
-  const report = () => {
-    navigation.navigate("Report")
-  }
+//When the Instructions button is clicked, app reroutes to Instructions page
+const instructions = () => {
+  navigation.navigate("Instructions")
+}
 
-  const question = () => {
-    navigation.navigate("Question")
-  }
-
-  const instructions = () => {
-    navigation.navigate("Instructions")
-  }
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.notifGroup}>
-      </View>
-      <View style={styles.profileName}>
-        <View style={styles.avatarRow}>
-          <Avatar size="large" rounded title={(firstName.substring(0,1) + lastName.substring(0,1)).toUpperCase()} overlayContainerStyle={styles.avatar} activeOpacity={0.7} titleStyle={styles.avatarText}/>
-          <View style={styles.namePlaceholderColumn}>
-            <Text style={styles.namePlaceholder}>{name}</Text>
-            <Text style={styles.username}>{user}</Text>
-          </View>
+//Styling
+return (
+  <View style={styles.container}>
+  <View style={styles.notifGroup}>
+    </View>
+    <View style={styles.profileName}>
+      <View style={styles.avatarRow}>
+        <Avatar size="large" rounded title={(firstName.substring(0,1) + lastName.substring(0,1)).toUpperCase()} overlayContainerStyle={styles.avatar} activeOpacity={0.7} titleStyle={styles.avatarText}/>
+        <View style={styles.namePlaceholderColumn}>
+          <Text style={styles.namePlaceholder}>{name}</Text>
+          <Text style={styles.username}>{user}</Text>
         </View>
       </View>
-      <View style = {styles.buttonStyle}>
-      <TouchableOpacity style={styles.reportButton} onPress={() => report()}>
-        <Text style={styles.reportAProblem}>Report a Problem</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.signOutButton} onPress={() => signOut()}>
-        <Text style={styles.signOut}>Sign Out</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.termsOfService} onPress = {() => termsOfService()}>
-        <Text style={styles.termsOfService2}>Terms and Conditions</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.group} onPress={() => instructions()}>
-        <Text style={styles.instructions}>Instructions</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.group2} onPress={() => question()}>
-        <Text style={styles.faq}>Frequently Asked Questions</Text>
-      </TouchableOpacity>
-      </View>
     </View>
-  );
-  }
+    <View style = {styles.buttonStyle}>
+    <TouchableOpacity style={styles.reportButton} onPress={() => report()}>
+      <Text style={styles.reportAProblem}>Report a Problem</Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.signOutButton} onPress={() => signOut()}>
+      <Text style={styles.signOut}>Sign Out</Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.termsOfService} onPress = {() => termsOfService()}>
+      <Text style={styles.termsOfService2}>Terms and Conditions</Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.group} onPress={() => instructions()}>
+      <Text style={styles.instructions}>Instructions</Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.group2} onPress={() => question()}>
+      <Text style={styles.faq}>Frequently Asked Questions</Text>
+    </TouchableOpacity>
+    </View>
+  </View>
+);
+}
 
 export default SettingScreen;
 
