@@ -1,9 +1,11 @@
+//Imports
 import React from "react";
 import { useState } from "react";
 import { View, Text, Button, StyleSheet, Alert } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import firestore from '@react-native-firebase/firestore';
 
+//User input from signup fields is taken in 
 const SignUpScreen = ({navigation}) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -12,6 +14,9 @@ const SignUpScreen = ({navigation}) => {
     const [confirmPassword, setConfirmPassword] = useState("");
     let errors = "";
 
+    //Alerts user if password doesn't match confirm password
+    //Requires every field to be filled out
+    //If all fields are filled properly, new user is added to database
     function submit(pass, conf) {
         if (pass != conf) {
             Alert.alert(
@@ -53,6 +58,7 @@ const SignUpScreen = ({navigation}) => {
         }
     }
 
+    //Styling
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>Sign Up: </Text>
