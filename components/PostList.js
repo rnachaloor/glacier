@@ -14,7 +14,8 @@ export default class PostList extends React.Component {
         loading: true,
         refresh: false
     }
-
+    
+    //gathers post data from database
     async componentDidMount() {
         //Have a try and catch block for catching errors.
         try {
@@ -39,7 +40,8 @@ export default class PostList extends React.Component {
             console.log("Error fetching data-----------", err);
         }
     }
-
+    
+    //puts post data in the post component
     renderItem(data) {
         return <Post 
             content={data.item.content}
@@ -53,13 +55,15 @@ export default class PostList extends React.Component {
             key={data.item.key}
             />
     }
-
+    
+    //allows for the list to update for new posts
     async refreshFunc() {
         this.state.refresh=true
         this.componentDidMount()
         this.state.refresh=false
     }
-
+    
+    //renders list of posts
     render() {
         const { postList, loading } = this.state
 
