@@ -9,7 +9,8 @@ export default class InstructionsList extends React.Component {
         instructionsList: [],
         loading: true
     }
-
+    
+    //retreives data
     async componentDidMount() {
         //Have a try and catch block for catching errors.
         try {
@@ -36,7 +37,8 @@ export default class InstructionsList extends React.Component {
             console.log("Error fetching data-----------", err);
         }
     }
-
+    
+    //puts data in the card
     renderItem(data) {
         return (<InstructionCard
         question={data.item.instruction}
@@ -44,7 +46,8 @@ export default class InstructionsList extends React.Component {
         style={styles.post}
         />)
     }
-
+    
+    //returns list of cards
     render() {
         const { instructionsList, loading } = this.state
 
