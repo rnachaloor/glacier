@@ -1,3 +1,4 @@
+//Imports
 import React, { Component } from "react";
 import {
   StyleSheet,
@@ -13,6 +14,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 export default class ReportForm extends React.Component {
 
+    //Takes user input from each button
     state = {
       spellingCheck: false,
       brokenCheck: false,
@@ -31,6 +33,7 @@ export default class ReportForm extends React.Component {
       super(props)
     }  
 
+    //Functions update user input
     brokenClick() {
       if (!this.state.brokenCheck) {
       this.setState({brokenCheck: !this.state.brokenCheck, brokenIcon: "stop"})
@@ -95,6 +98,7 @@ export default class ReportForm extends React.Component {
       );
     }
 
+    //JSX
     render(props) {
       return (
         <View style={[styles.container]}>
@@ -163,6 +167,7 @@ export default class ReportForm extends React.Component {
     }
 }
 
+//Styling
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
