@@ -6,6 +6,7 @@ import { Avatar } from "react-native-elements";
 import firestore from '@react-native-firebase/firestore';
 import Svg, { Ellipse } from "react-native-svg";
 
+//returns blueprint for instructions card
 export default class InstructionCard extends React.Component {
     render(props) {
         return (
@@ -22,6 +23,7 @@ export default class InstructionCard extends React.Component {
     }
 }
 
+//styles
 const styles = StyleSheet.create({
     container: {},
     logo: {
@@ -61,6 +63,7 @@ const styles = StyleSheet.create({
     }
 });
 
+//parameters
 InstructionCard.propTypes = {
   question: PropTypes.string.isRequired,
   answer: PropTypes.string.isRequired
