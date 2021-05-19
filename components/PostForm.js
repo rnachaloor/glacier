@@ -22,7 +22,8 @@ export default class PostForm extends React.Component {
         title: "",
         content: ""
     }
-
+  
+    //takes the data in the form and puts it in the database
     submit() {
         let conditionOne = this.state.content == "" || this.state.content == " "
         let conditionTwo = this.state.title == "" || this.state.title == " "
@@ -66,7 +67,8 @@ export default class PostForm extends React.Component {
           }
         );
       }
-
+    
+    //renders the form to create a post
     render(props) {
 
         return (
@@ -89,6 +91,7 @@ export default class PostForm extends React.Component {
     }
 }
 
+//styles
 const styles = StyleSheet.create({
     container: {
         alignSelf: 'center',
@@ -138,6 +141,7 @@ const styles = StyleSheet.create({
     }
 });
 
+//parameters
 PostForm.propTypes = {
     style: PropTypes.object
 }
