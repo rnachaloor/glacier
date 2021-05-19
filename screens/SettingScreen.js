@@ -33,7 +33,7 @@ const instructions = () => {
   navigation.navigate("Instructions")
 }
 
-//Styling
+//JSX
 return (
   <View style={styles.container}>
   <View style={styles.notifGroup}>
@@ -68,8 +68,10 @@ return (
 );
 }
 
+//Exports screen
 export default SettingScreen;
 
+//Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1
