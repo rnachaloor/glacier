@@ -1,3 +1,4 @@
+//Imports
 import React, { Component } from "react";
 import {
   StyleSheet,
@@ -21,6 +22,7 @@ export default class TermsOfService extends React.Component {
       return (
         <View style={[styles.container]}>
 
+          //Our Terms And Conditions
           <Text style={styles.glacier}>
             Glacier was programmed and is owned by Rohit Nachaloor, Aakash Reddy,
             and Aryan Shah. Glacier was distributed under the GPL version 3 license,
@@ -45,6 +47,7 @@ export default class TermsOfService extends React.Component {
     }
 }
 
+//Styling
 const styles = StyleSheet.create({
     container: {
       width: 312,
