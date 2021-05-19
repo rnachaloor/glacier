@@ -58,7 +58,7 @@ const SignUpScreen = ({navigation}) => {
         }
     }
 
-    //Styling
+    //JSX
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>Sign Up: </Text>
@@ -83,8 +83,10 @@ const SignUpScreen = ({navigation}) => {
     );
   }
 
+//Exports screen
 export default SignUpScreen;
 
+//Styling
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
