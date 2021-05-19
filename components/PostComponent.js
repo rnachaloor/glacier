@@ -8,6 +8,7 @@ import Svg, { Ellipse } from "react-native-svg";
 
 export default class Post extends React.Component {
   
+  //sets up likes system
   state = {
     likes: this.props.likes,
     isLikeOn: false,
@@ -50,6 +51,7 @@ export default class Post extends React.Component {
     }
   }
   
+  //renders the blueprint for the post
   render(props) {
       let likesIconColor = "black"
       return (
@@ -81,6 +83,7 @@ export default class Post extends React.Component {
   }
 }
 
+//styles
 const styles = StyleSheet.create({
   container: {},
   rect: {
@@ -172,6 +175,7 @@ const styles = StyleSheet.create({
   }
 });
 
+//parameters
 Post.propTypes = {
     content: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
