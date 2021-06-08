@@ -112,6 +112,6 @@ Glacier was programmed and is owned by Rohit Nachaloor, Aakash Reddy, and Aryan 
 [GPL3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 # Sources
-[1](https://choosealicense.com/licenses/gpl-3.0/)
+[1] “GNU General Public License v3.0.” Choose a License, choosealicense.com/licenses/gpl-3.0/. 
 
 
