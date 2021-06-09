@@ -38,8 +38,10 @@ export default class PhotoText extends React.Component {
 const styles = StyleSheet.create({
   container: {},
   ellipse: {
+    left: -10,
     width: 53,
-    height: 52
+    height: 52, 
+    backgroundColor: "gray"
   },
   username: {
     top: 0,
@@ -48,7 +50,8 @@ const styles = StyleSheet.create({
     fontFamily: "system",
     color: "rgba(255,255,255,1)",
     height: 21,
-    width: 88
+    width: 88, 
+    fontWeight: "bold"
   },
   title: {
     top: 0,
@@ -57,7 +60,8 @@ const styles = StyleSheet.create({
     fontFamily: "system",
     color: "rgba(255,255,255,1)",
     height: 21,
-    width: 81
+    width: 81,
+    fontWeight: "bold"
   },
   usernameStack: {
     width: 163,

@@ -122,39 +122,39 @@ const styles = StyleSheet.create({
     top: 115,
     left: 65,
     position: "absolute",
-    color: "rgba(128,128,128,1)",
+    color: "white",
     fontSize: 20
   },
   icon3: {
     top: 115,
     left: 157,
     position: "absolute",
-    color: "rgba(128,128,128,1)",
+    color: "white",
     fontSize: 20
   },
   icon4: {
     top: 115,
     left: 250,
     position: "absolute",
-    color: "rgba(128,128,128,1)",
+    color: "white",
     fontSize: 20
   },
   commentTally: {
-    top: 117,
-    left: 87,
+    top: 114,
+    left: 95,
     position: "absolute",
     fontFamily: "nunito-regular",
-    color: "#121212",
+    color: "white",
     height: 19,
     width: 16,
     fontSize: 16
   },
   likeTally: {
-    top: 117,
-    left: 179,
+    top: 114,
+    left: 187,
     position: "absolute",
     fontFamily: "nunito-regular",
-    color: "#121212",
+    color: "white",
     height: 19,
     width: 20,
     fontSize: 16
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   testPostStack: {
     width: 328,
     height: 145,
-    marginLeft: 23
+    marginLeft: 23,
   },
   rect2: {
     width: 375,
