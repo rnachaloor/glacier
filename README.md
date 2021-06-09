@@ -22,10 +22,10 @@ Glacier is an iOS and android app that addresses FBLA's specification for Mobile
 
 ## Operating System Requirements
 
-| Compatible Operating Systems      |
-| ----------------------------------|
-| iOS 9 or higher                   |
-| Android 7.1 (Nougat) or higher    |
+| Compatible Operating System Versions    |
+| --------------------------------------- |
+| iOS 9 or higher                         |
+| Android 7.1 (Nougat) or higher          |
 
 
 ## Installation Guide for Android hardware
