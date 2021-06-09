@@ -14,14 +14,13 @@ FBLA Mobile Application Development 2021
 Johns Creek High School
 
 # What is Glacier?
-Glacier is an iOS and android app that addresses FBLA's specification for Mobile Application Development: The next new professional social media app. You can use Glacier to find a new job, enhance professional relationships, or even to learn new skills and techniques to be successful in your career path. In simplicity, users of Glacier can  create a post (that adheres to the app's Terms and Conditions) and publicly display it to all of Glacier's users. The Glacier community can in turn like the post, comment on the post, or share the post to other people on any locally stored social media platforms. 
+Glacier is an iOS and android app that addresses FBLA's specification for Mobile Application Development: The next new professional social media app. You can use Glacier to find a new job, enhance professional relationships, or even develop skills and techniques to be successful in your career path. In simplicity, users of Glacier can create a post (that adheres to the app's Terms and Conditions) and publicly display it to all of Glacier's users. The Glacier community can in turn like the post, comment on the post, or share the post to other people on any locally stored social media platforms.
 
 ---
 
-
 # Installation Instructions
 
-## System Requirements
+## Operating System Requirements
 
 | Compatible Operating Systems      |
 | ----------------------------------|
@@ -29,7 +28,7 @@ Glacier is an iOS and android app that addresses FBLA's specification for Mobile
 | Android 7.1 (Nougat) or higher    |
 
 
-## Installation Guide for Android Device
+## Installation Guide for Android hardware
 1. Download the .apk file in the release folder to your computer
 2. Connect your android phone to your computer
 3. Copy the .apk file from your computer to the phone
@@ -39,27 +38,27 @@ Glacier is an iOS and android app that addresses FBLA's specification for Mobile
 7. Tap the .apk file on your phone
 8. The app should be installed
 
-## Installation Guide for iOS Emulator
-| Prequisites                                                     |
+## Installation Guide for an iOS Emulator
+| Software and Command Line Prerequisites                         |
 | ----------------------------------------------------------------|
 | A Mac                                                           |
 | node.js                                                         |
 | CocoaPods                                                       |
 | Xcode                                                           |
-| yarn (can get through "npm install -g yarn")                   |
-| react (can get through "npm install -g react")                 |
+| yarn (can get through "npm install -g yarn")                    |
+| react (can get through "npm install -g react")                  |
 | react-native (can get through "npm install -g react-native)"    |
 
 To install on an iOS emulator, open the root folder (glacier) in terminal. Run the command- "yarn" to install any node.js related dependcies. Then, run "cd ios && pod install && cd .." or "npm run pod-install" to install any iOS related dependencies. Finally, run "npm run ios" or "react-native run-ios" to run the app on an emulator. 
 
 ## Installation Guide for Android Emulator
 
-| Prequisites                                                     |
+| Software and Command Line Prerequisites                         |
 | ----------------------------------------------------------------|
 | node.js                                                         |
 | Java JDK 12+                                                    |
-| yarn (can get through "npm install -g yarn")                   |
-| react (can get through "npm install -g react")                 |
+| yarn (can get through "npm install -g yarn")                    |
+| react (can get through "npm install -g react")                  |
 | react-native (can get through "npm install -g react-native")    |
 | Android Studio and Android SDK                                  |
 
