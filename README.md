@@ -14,7 +14,7 @@ FBLA Mobile Application Development 2021
 Johns Creek High School
 
 ## What is Glacier?
-Glacier is an iOS and android mobile and android app that adresses the topic of professional social media. Glacier allows people of all ages to share ideas and best practices with one another in a easy-to-use professional environment. In Glacier, one can simply create a post and publicly display it to all of Glaciers users. The users can in turn like the post, and share the post to other people on any social media platform that is installed on your device. 
+Glacier is an iOS and android app that addresses FBLA's specification for Mobile Application Development: The next new professional social media app. Glacier allows people of all ages to share ideas and best practices with one another in an convenient, yet, professional environment. Users of Glacier can simply create a post (that adheres to the app's Terms and Conditions) and publicly display it to all of Glacier's users. The users can in turn like the post, and share the post to other people on any social media platform that is installed on your device.
 
 ---
 
@@ -104,9 +104,14 @@ Version 1.0
 # Terms and Conditions
 Glacier was programmed and is owned by Rohit Nachaloor, Aakash Reddy, and Aryan Shah. Glacier was distributed under the GPL version 3 license, which is an open-source license that allows anyone to download and run, modify, freely redistribute, and distribute modified versions of the app as long as the modified works are also distributed under the same GPL license. The creators of this app are not responsible for any harassment that occurs on this app, although measures will be taken against offending users if harassment is reported. The creators of the app are also not responsible for any inappropriate use of this app. If you are concerned with a user's comments or remarks on the app, please mention this in our Report a Problem page under settings. Thank you!
 
+<img src = "3A2F404E-B83F-4BD6-8A0C-022AA76C4933_4_5005_c.jpeg" width = "600" height = "350" > [1]
+
 ---
 
 # License
 [GPL3.0](https://choosealicense.com/licenses/gpl-3.0/)
+
+# Sources
+[1] “GNU General Public License v3.0.” Choose a License, choosealicense.com/licenses/gpl-3.0/. 
 
 
