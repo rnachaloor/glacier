@@ -49,7 +49,7 @@ Glacier is an iOS and android app that addresses FBLA's specification for Mobile
 | react (can get through "npm install -g react")                  |
 | react-native (can get through "npm install -g react-native)"    |
 
-To install on an iOS emulator, open the root folder (glacier) in terminal. Run the command- "yarn" to install any node.js related dependcies. Then, run "cd ios && pod install && cd .." or "npm run pod-install" to install any iOS related dependencies. Finally, run "npm run ios" or "react-native run-ios" to run the app on an emulator. 
+To install Glacier on an iOS emulator, open the root folder (glacier) in terminal. Run the command- "yarn" to install any node.js related dependcies. Then, run "cd ios && pod install && cd .." or "npm run pod-install" to install any iOS related dependencies. Finally, run "npm run ios" or "react-native run-ios" to run the app on an emulator.
 
 ## Installation Guide for Android Emulator
 
