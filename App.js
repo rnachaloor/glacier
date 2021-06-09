@@ -78,13 +78,14 @@ const HomeStackScreen = () => {
   return (
     <Stack.Navigator screenOptions={{
       headerStyle: {
-        backgroundColor: '#26488C'
+        backgroundColor: '#5499c7'
       },
       headerTintColor: '#000',
       headerTitleStyle: {
         fontWeight: 'bold'
       },
-      headerLeft: null
+      headerLeft: null,
+      cardStyle: { backgroundColor: '#154360' }
     }}>
       <Stack.Screen name="Home" component={HomeScreen}  options={{title: 'Glacier'}}/>
       <Stack.Screen name="Sign Up" component={SignUpScreen} />
@@ -127,7 +128,7 @@ const App = ({navigation}) => {
           component={HomeStackScreen}
           options={{
             tabBarLabel: 'Glacier',
-            tabBarColor: '#26488C',
+            tabBarColor: '#5499c7',
             tabBarIcon: ({ color }) => (
               <Icon name="home" color={color} size={26} />
             ),

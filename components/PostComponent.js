@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Share } from "react-native";
 import PropTypes from 'prop-types';
+import PhotoText from './PhotoText'
 import Icon from "react-native-vector-icons/Ionicons";
 import { Avatar } from "react-native-elements";
 import firestore from '@react-native-firebase/firestore';
@@ -56,6 +57,30 @@ export default class Post extends React.Component {
       let likesIconColor = "black"
       return (
         <View style={[styles.container, this.props.style]}>
+          <View style={styles.testPostStack}>
+            <PhotoText 
+              style={styles.testPost}
+              content={this.props.content}
+              title={this.props.title}
+              username={this.props.username}
+              initial={this.props.initial}
+            />
+            <TouchableOpacity>
+              <Icon style={styles.icon2} name="chatbox-outline" color={likesIconColor} size={40} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.increaseLikes()}>
+              <Icon style={styles.icon3} name={this.state.likesIconName} color={likesIconColor} size={40} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.onShare()}>
+              <Icon style={styles.icon4} name="md-share" color={likesIconColor} size={40} />
+            </TouchableOpacity>
+            <Text style={styles.commentTally}>0</Text>
+            <Text style={styles.likeTally}>0</Text>
+          </View>
+          <View style={styles.rect2}></View>
+        </View>);
+      {/*
+        <View style={[styles.container, this.props.style]}>
           <View style={styles.rect}>
             <View style={styles.ellipseRow}>
             <Avatar size="medium" rounded title={this.props.initial} overlayContainerStyle={styles.ellipse} activeOpacity={0.7} titleStyle={styles.avatarText}/>
@@ -78,13 +103,75 @@ export default class Post extends React.Component {
               </TouchableOpacity>
             </View>
           </View>
-        </View>
-      );
+      </View>*/}
+      
   }
 }
 
 //styles
 const styles = StyleSheet.create({
+  container: {},
+  testPost: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    height: 145,
+    width: 328
+  },
+  icon2: {
+    top: 115,
+    left: 65,
+    position: "absolute",
+    color: "rgba(128,128,128,1)",
+    fontSize: 20
+  },
+  icon3: {
+    top: 115,
+    left: 157,
+    position: "absolute",
+    color: "rgba(128,128,128,1)",
+    fontSize: 20
+  },
+  icon4: {
+    top: 115,
+    left: 250,
+    position: "absolute",
+    color: "rgba(128,128,128,1)",
+    fontSize: 20
+  },
+  commentTally: {
+    top: 117,
+    left: 87,
+    position: "absolute",
+    fontFamily: "nunito-regular",
+    color: "#121212",
+    height: 19,
+    width: 16,
+    fontSize: 16
+  },
+  likeTally: {
+    top: 117,
+    left: 179,
+    position: "absolute",
+    fontFamily: "nunito-regular",
+    color: "#121212",
+    height: 19,
+    width: 20,
+    fontSize: 16
+  },
+  testPostStack: {
+    width: 328,
+    height: 145,
+    marginLeft: 23
+  },
+  rect2: {
+    width: 375,
+    height: 1,
+    backgroundColor: "rgba(255,255,255,1)",
+    opacity: 0.2,
+    marginTop: 2
+  }
+  /*
   container: {},
   rect: {
     width: 337,
@@ -172,7 +259,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     marginLeft: 145
-  }
+  }*/
 });
 
 //parameters
