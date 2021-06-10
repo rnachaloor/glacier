@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     position: "absolute",
-    fontFamily: "system",
+    fontFamily: "System",
     color: "rgba(255,255,255,1)",
     height: 21,
     width: 88, 
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 82,
     position: "absolute",
-    fontFamily: "system",
+    fontFamily: "System",
     color: "rgba(255,255,255,1)",
     height: 21,
     width: 81,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     height: 21
   },
   loremIpsum: {
-    fontFamily: "system",
+    fontFamily: "System",
     color: "rgba(255,255,255,1)",
     height: 80,
     width: 244

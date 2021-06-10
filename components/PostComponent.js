@@ -75,7 +75,7 @@ export default class Post extends React.Component {
               <Icon style={styles.icon4} name="md-share" color={likesIconColor} size={40} />
             </TouchableOpacity>
             <Text style={styles.commentTally}>0</Text>
-            <Text style={styles.likeTally}>0</Text>
+            <Text style={styles.likeTally}>{this.state.likes}</Text>
           </View>
           <View style={styles.rect2}></View>
         </View>);
@@ -140,20 +140,20 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   commentTally: {
-    top: 114,
+    top: 114.5,
     left: 95,
     position: "absolute",
-    fontFamily: "nunito-regular",
+    fontFamily: "System",
     color: "white",
     height: 19,
     width: 16,
     fontSize: 16
   },
   likeTally: {
-    top: 114,
+    top: 115.5,
     left: 187,
     position: "absolute",
-    fontFamily: "nunito-regular",
+    fontFamily: "System",
     color: "white",
     height: 19,
     width: 20,

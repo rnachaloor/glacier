@@ -60,6 +60,7 @@ const SignUpScreen = ({navigation}) => {
 
     //JSX
     return (
+    
       <View style={styles.container}>
         <Text style={styles.titleText}>Sign Up: </Text>
         <View style={styles.group}>

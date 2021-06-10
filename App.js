@@ -78,16 +78,19 @@ const HomeStackScreen = () => {
   return (
     <Stack.Navigator screenOptions={{
       headerStyle: {
-        backgroundColor: '#5499c7'
+        backgroundColor: '#2e425b' //p2
       },
       headerTintColor: '#000',
       headerTitleStyle: {
         fontWeight: 'bold'
       },
       headerLeft: null,
-      cardStyle: { backgroundColor: '#154360' }
+      cardStyle: { backgroundColor: '#141D28' }
     }}>
-      <Stack.Screen name="Home" component={HomeScreen}  options={{title: 'Glacier'}}/>
+      <Stack.Screen name="Home" component={HomeScreen}  
+      options={{headerTitle: (props) => (
+        <Image style={{width: 91, height: 40}} source={require('./home_logo.jpg')} resizeMode='contain'/>),
+        headerTitleStyle: { flex: 1, textAlign: 'center'},}}/>
       <Stack.Screen name="Sign Up" component={SignUpScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Settings" component={SettingScreen}/>
@@ -128,7 +131,7 @@ const App = ({navigation}) => {
           component={HomeStackScreen}
           options={{
             tabBarLabel: 'Glacier',
-            tabBarColor: '#5499c7',
+            tabBarColor: '#2e425b', //p1
             tabBarIcon: ({ color }) => (
               <Icon name="home" color={color} size={26} />
             ),
@@ -140,7 +143,7 @@ const App = ({navigation}) => {
           component={PostStackScreen}
           options={{
             tabBarLabel: 'New Post',
-            tabBarColor: '#27538C',
+            tabBarColor: '#5499C7',
             tabBarIcon: ({ color }) => (
               <Icon name="add-circle-outline" color={color} size={26} />
             ),
