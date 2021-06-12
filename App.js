@@ -57,7 +57,7 @@ const SettingStackScreen = () => {
   return (
     <Stack.Navigator screenOptions={{
       headerStyle: {
-        backgroundColor: '#4886D9'
+        backgroundColor: 'rgba(46,66,91,1)'
       },
       headerTintColor: '#000',
       headerTitleStyle: {
@@ -74,7 +74,7 @@ const SettingStackScreen = () => {
   );
 }
 
-const HomeStackScreen = () => {
+export const HomeStackScreen = () => {
   return (
     <Stack.Navigator screenOptions={{
       headerStyle: {
@@ -154,7 +154,7 @@ const App = ({navigation}) => {
           component={SettingStackScreen}
           options={{
             tabBarLabel: 'Settings',
-            tabBarColor: '#4886D9',
+            tabBarColor: 'rgba(46,66,91,1)',
             tabBarIcon: ({ color }) => (
               <Icon name="cog-outline" color={color} size={26} />
             ),

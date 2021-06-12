@@ -1,5 +1,5 @@
 // Imports
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { View, Text, Button, StyleSheet, Alert, TouchableOpacity, Image } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
@@ -9,6 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import SignUpScreen from "./SignUpScreen";
 import App from "../App";
 import Icon from "react-native-vector-icons/Ionicons";
+import { AuthContext } from "../AuthProvider";
 
 // Exports
 export let loggedIn = false;
@@ -20,15 +21,68 @@ export let lastName
 export function setLoggedIn(boolean) {
     loggedIn = boolean
 }
+
+export function setUser(newUser) {
+  user = newUser;
+}
+
+export function setFirstName(newUser) {
+  firstName = newUser;
+}
+
+export function setLastName(newUser) {
+  lastName = newUser;
+}
+
+export function updateName() {
+  name = firstName + " " + lastName
+}
 // Exporting the LoginScreen
 export const LoginScreen = ({navigation}) => {
     
     // Uses useState to have state variables in these functional components
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const {login} = useContext(AuthContext);
+
+    async function submit() {
+      login(email, password);
+      const userInfo = firestore().collection('userInfo');
+      const userInfoRes = await userInfo.where('email', '==', email).get();
+
+      userInfoRes.forEach(doc => {
+        if ((doc.data().email == email) == (doc.data().password == password)) {
+            // Affirms that the fields are all identified and true if the user and pass are confirmed
+            loggedIn = true;
+            userId = doc.id;
+            user = doc.data().username;
+            firstName = doc.data().firstName
+            lastName = doc.data().lastName
+            name = firstName + " " + lastName
+            login(email, password);
+        } else {
+            // Alert message for when the selection above is not true
+            Alert.alert(
+                "Username or password not in the database",
+                'Please check your username and password.',
+                [
+                    {
+                        text: 'Ok',
+                        // Writes "Try Again" to log on the debugging console
+                        onPress: () => console.log("Trying Again")
+                    }
+                ],
+                {
+                    // Not cancellable
+                    cancelable: false
+                }
+            );
+          }
+      })
+    }
 
     // Returning an implicit submission
-    async function submit() {
+    async function submitOld() {
         if ((username == "") || (password == "")) {
             // Alert Message
             Alert.alert(
@@ -49,7 +103,7 @@ export const LoginScreen = ({navigation}) => {
         } else {
             // Creating new constants
             const userInfo = firestore().collection('userInfo');
-            const userInfoRes = await userInfo.where('username', '==', username).get();
+            const userInfoRes = await userInfo.where('email', '==', email).get();
             // Selection for when the information hasn't been procured
             if (userInfoRes.empty) {
                 // Another alert message
@@ -71,7 +125,7 @@ export const LoginScreen = ({navigation}) => {
             } else {
                 // Checks with the database for the correct username and password
                 userInfoRes.forEach(doc => {
-                    if ((doc.data().username == username) == (doc.data().password == password)) {
+                    if ((doc.data().email == email) == (doc.data().password == password)) {
                         // Affirms that the fields are all identified and true if the user and pass are confirmed
                         loggedIn = true;
                         userId = doc.id;
@@ -79,7 +133,7 @@ export const LoginScreen = ({navigation}) => {
                         firstName = doc.data().firstName
                         lastName = doc.data().lastName
                         name = firstName + " " + lastName
-                        navigation.navigate("Home")
+                        login(email, password);
                     } else {
                         // Alert message for when the selection above is not true
                         Alert.alert(
@@ -163,7 +217,7 @@ export const LoginScreen = ({navigation}) => {
     <Text style={styles.loremIpsum}></Text>
     <View style={styles.rect1Stack}>
       <View style={styles.rect1}></View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress = {() => navigation.navigate("Sign Up")}>
       <Text style={styles.signUp}>Sign Up</Text>
       </TouchableOpacity>
     </View>
@@ -180,7 +234,7 @@ export const LoginScreen = ({navigation}) => {
     </TouchableOpacity>
     <Text style={styles.signIn3}>Sign In</Text>
     <View style={styles.rect2}></View>
-    <TextInput onChangeText={(value) => setUsername(value)} placeholder="Username" placeholderTextColor = "white" style={styles.textInput}></TextInput>
+    <TextInput onChangeText={(value) => setEmail(value)} placeholder="Email" placeholderTextColor = "white" style={styles.textInput}></TextInput>
     <TextInput onChangeText={(value) => setPassword(value)} placeholder="Password" placeholderTextColor = "white" style={styles.textInput1}></TextInput>
     <View style={styles.rect3}></View>
   </View>
@@ -191,15 +245,14 @@ export const LoginScreen = ({navigation}) => {
   const Stack = createStackNavigator();
 
   // Returning the text boxes and links to the LoginScreen Page when accessed
-  const LoginStackScreen = () => {
+  export const LoginStackScreen = () => {
     return (
-    <NavigationContainer>
+      //used to be continer nav
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Login" component={LoginScreen} options={{title: 'Login'}}/>
         <Stack.Screen name="Sign Up" component={SignUpScreen} />
         <Stack.Screen name="Home" component={App}/>
       </Stack.Navigator>
-      </NavigationContainer>
     );
   }
 
@@ -508,6 +561,7 @@ const styles = StyleSheet.create({
         left: 55,
         position: "absolute",
         fontFamily: "System",
+        color: "rgba(255,255,255,1)",
         height: 24,
         width: 120,
         fontSize: 16, 
