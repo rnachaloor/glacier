@@ -11,6 +11,7 @@ import {
 import PropTypes from 'prop-types';
 import firestore, { firebase } from '@react-native-firebase/firestore';
 import {loggedIn, userId, user, name, firstName, lastName} from "../screens/LoginScreen";
+import Svg, { Ellipse } from "react-native-svg";
 
 export default class PostForm extends React.Component {
 
@@ -72,7 +73,7 @@ export default class PostForm extends React.Component {
     render(props) {
 
         return (
-            <View style={[styles.container, this.props.style]}>
+            /*<View style={[styles.container, this.props.style]}>
               <TextInput placeholder="Post Title" style={styles.postTitle} onChangeText={(value) => this.state.title = value}></TextInput>
               <TextInput
                 placeholder="Post Content"
@@ -87,13 +88,40 @@ export default class PostForm extends React.Component {
                 </TouchableOpacity>
               </View>
             </View>
+            */
+
+           <View style={styles.container}>
+           <View style={styles.rect1}>
+             <View style={styles.resetRow}>
+               <Text style={styles.reset}>Reset</Text>
+               <Text style={styles.post}>Post</Text>
+             </View>
+           </View>
+           <View style={styles.ellipseRow}>
+             <Svg viewBox="0 0 45.43 44.57" style={styles.ellipse}>
+               <Ellipse
+                 stroke="rgba(230, 230, 230,1)"
+                 strokeWidth={0}
+                 fill="rgba(230, 230, 230,1)"
+                 cx={23}
+                 cy={22}
+                 rx={23}
+                 ry={22}
+               ></Ellipse>
+             </Svg>
+             <TextInput
+               placeholder="Enter text here"
+               style={styles.textInput1}
+             ></TextInput>
+           </View>
+         </View>
         );
     }
 }
 
 //styles
 const styles = StyleSheet.create({
-    container: {
+    /*container: {
         alignSelf: 'center',
         alignItems: 'center',
         alignContent: 'center',
@@ -139,6 +167,62 @@ const styles = StyleSheet.create({
       marginTop: 20,
       marginLeft: 151
     }
+    */
+
+   container: {
+    flex: 1,
+    backgroundColor: "rgba(20,29,40,1)"
+  },
+  rect1: {
+    width: 375,
+    height: 93,
+    backgroundColor: "rgba(46,66,91,1)",
+    flexDirection: "row"
+  },
+  reset: {
+    fontFamily: "System",
+    color: "rgba(255,255,255,1)",
+    height: 37,
+    width: 84,
+    textAlign: "center",
+    fontSize: 20
+  },
+  post: {
+    fontFamily: "System",
+    color: "rgba(255,255,255,1)",
+    height: 37,
+    width: 84,
+    textAlign: "center",
+    fontSize: 20,
+    marginLeft: 207
+  },
+  resetRow: {
+    height: 37,
+    flexDirection: "row",
+    flex: 1,
+    marginTop: 56
+  },
+  ellipse: {
+    width: 45,
+    height: 45
+  },
+  textInput1: {
+    fontFamily: "System",
+    color: "rgba(255,255,255,1)",
+    height: 38,
+    width: 263,
+    fontSize: 16,
+    marginLeft: 11,
+    marginTop: 4
+  },
+  ellipseRow: {
+    height: 45,
+    flexDirection: "row",
+    marginTop: 15,
+    marginLeft: 15,
+    marginRight: 41
+  }
+
 });
 
 //parameters
