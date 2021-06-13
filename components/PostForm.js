@@ -90,13 +90,7 @@ export default class PostForm extends React.Component {
             </View>
             */
 
-           <View style={styles.container}>
-           <View style={styles.rect1}>
-             <View style={styles.resetRow}>
-               <Text style={styles.reset}>Reset</Text>
-               <Text style={styles.post}>Post</Text>
-             </View>
-           </View>
+          /* <View style={styles.container}>
            <View style={styles.ellipseRow}>
              <Svg viewBox="0 0 45.43 44.57" style={styles.ellipse}>
                <Ellipse
@@ -110,13 +104,43 @@ export default class PostForm extends React.Component {
                ></Ellipse>
              </Svg>
              <TextInput
-               placeholder="Enter text here"
+               placeholder="Share your thoughts with the world..."
+               placeholderTextColor = "white"
                style={styles.textInput1}
              ></TextInput>
+            <View style={styles.rect2Stack}>
+              <View style={styles.rect2}></View>
+              <Text style={styles.post}>Post</Text>
+            </View>
            </View>
          </View>
-        );
-    }
+         */
+         
+         <View style={styles.container}>
+      <View style={styles.ellipseRow}>
+        <Svg viewBox="0 0 45.43 44.57" style={styles.ellipse}>
+          <Ellipse
+            stroke="rgba(230, 230, 230,1)"
+            strokeWidth={0}
+            fill="rgba(230, 230, 230,1)"
+            cx={23}
+            cy={22}
+            rx={23}
+            ry={22}
+          ></Ellipse>
+        </Svg>
+        <TextInput
+          placeholder="Share your thoughts with the world..."
+          placeholderTextColor = "white"
+          style={styles.textInput1}
+        ></TextInput>
+      </View>
+      <View style={styles.rect2Stack}>
+        <View style={styles.rect2}></View>
+        <Text style={styles.post}>Post</Text>
+      </View>
+    </View>
+      )}
 }
 
 //styles
@@ -169,32 +193,23 @@ const styles = StyleSheet.create({
     }
     */
 
-   container: {
+    /*
+  container: {
     flex: 1,
-    backgroundColor: "rgba(20,29,40,1)"
-  },
-  rect1: {
-    width: 375,
-    height: 93,
-    backgroundColor: "rgba(46,66,91,1)",
-    flexDirection: "row"
+    backgroundColor: "rgba(20,29,40,1)",
+    zIndex: 0
   },
   reset: {
+    position: "absolute",
     fontFamily: "System",
     color: "rgba(255,255,255,1)",
     height: 37,
     width: 84,
     textAlign: "center",
-    fontSize: 20
-  },
-  post: {
-    fontFamily: "System",
-    color: "rgba(255,255,255,1)",
-    height: 37,
-    width: 84,
-    textAlign: "center",
-    fontSize: 20,
-    marginLeft: 207
+    fontSize: 20, 
+    top: -35,
+    left: -5, 
+    zIndex: 10
   },
   resetRow: {
     height: 37,
@@ -208,9 +223,8 @@ const styles = StyleSheet.create({
   },
   textInput1: {
     fontFamily: "System",
-    color: "rgba(255,255,255,1)",
     height: 38,
-    width: 263,
+    width: 300,
     fontSize: 16,
     marginLeft: 11,
     marginTop: 4
@@ -221,6 +235,99 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginLeft: 15,
     marginRight: 41
+  },
+  rect2: {
+    top: 0,
+    left: 82,
+    width: 212,
+    height: 49,
+    position: "absolute",
+    backgroundColor: "rgba(84,152,197,1)",
+    borderRadius: 100,
+    shadowColor: "rgba(0,0,0,1)",
+    shadowOffset: {
+      width: 3,
+      height: 3
+    },
+    elevation: 5,
+    shadowOpacity: 1,
+    shadowRadius: 0
+  },
+  post: {
+    top: 13,
+    left: 0,
+    position: "absolute",
+    fontFamily: "System",
+    color: "rgba(255,255,255,1)",
+    fontSize: 20,
+    textAlign: "center"
+  },
+  rect2Stack: {
+    width: 375,
+    height: 49,
+    marginTop: 277
+  }
+  */
+
+  container: {
+    flex: 1,
+    backgroundColor: "rgba(20,29,40,1)"
+  },
+  ellipse: {
+    width: 45,
+    top: 20,
+    left: 10,
+    height: 45
+  },
+  textInput1: {
+    fontFamily: "System",
+    color: "rgba(255,255,255,1)",
+    height: 38,
+    width: 300,
+    fontSize: 16,
+    marginLeft: 11,
+    marginTop: 4, 
+    top: 20,
+    left: 10
+  },
+  ellipseRow: {
+    height: 45,
+    flexDirection: "row",
+    marginTop: 15,
+    marginLeft: 15,
+    marginRight: 41
+  },
+  rect2: {
+    top: 50,
+    left: 101,
+    width: 212,
+    height: 49,
+    position: "absolute",
+    backgroundColor: "rgba(84,152,197,1)",
+    borderRadius: 100,
+    shadowColor: "rgba(0,0,0,1)",
+    shadowOffset: {
+      width: 3,
+      height: 3
+    },
+    elevation: 5,
+    shadowOpacity: 1,
+    shadowRadius: 0
+  },
+  post: {
+    top: 63,
+    left: 186,
+    position: "absolute",
+    fontFamily: "System",
+    color: "rgba(255,255,255,1)",
+    fontSize: 20,
+    textAlign: "center",
+    fontWeight: "bold"
+  },
+  rect2Stack: {
+    width: 375,
+    height: 49,
+    marginTop: 277
   }
 
 });

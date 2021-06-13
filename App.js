@@ -40,7 +40,7 @@ const PostStackScreen = () => {
   return (
     <Stack.Navigator screenOptions={{
       headerStyle: {
-        backgroundColor: '#27538C'
+        backgroundColor: 'rgba(46,66,91,1)'
       },
       headerTintColor: '#000',
       headerTitleStyle: {
@@ -48,7 +48,7 @@ const PostStackScreen = () => {
       },
       headerLeft: null
     }}>
-      <Stack.Screen name="NewPost" component={PostScreen} options={{title: 'New Post'}} />
+      <Stack.Screen name="NewPost" component={PostScreen} options={{title: 'New Post', headerTitleStyle: {color: 'white'}}} />
     </Stack.Navigator>
   );
 }
@@ -65,11 +65,11 @@ const SettingStackScreen = () => {
       },
       headerLeft: null
     }}>
-      <Stack.Screen name="Settings" component={SettingScreen} options={{title: 'Settings'}} />
-      <Stack.Screen name="ToS" component={TermsOfServiceScreen} options={{title: 'Terms and Conditions'}} />
-      <Stack.Screen name="Report" component={ReportScreen} options={{title: 'Report a Problem'}} />
-      <Stack.Screen name="Question" component={QuestionScreen} options={{title: 'Frequently Asked Questions'}} />
-      <Stack.Screen name="Instructions" component={InstructionScreen} options={{title: 'Instructions'}} />
+      <Stack.Screen name="Settings" component={SettingScreen} options={{title: 'Settings', headerTitleStyle: {color: 'white'}}} />
+      <Stack.Screen name="ToS" component={TermsOfServiceScreen} options={{title: 'Terms and Conditions', headerTitleStyle: {color: 'white'}}} />
+      <Stack.Screen name="Report" component={ReportScreen} options={{title: 'Report a Problem', headerTitleStyle: {color: 'white'}}} />
+      <Stack.Screen name="Question" component={QuestionScreen} options={{title: 'Frequently Asked Questions', headerTitleStyle: {color: 'white'}}} />
+      <Stack.Screen name="Instructions" component={InstructionScreen} options={{title: 'Instructions', headerTitleStyle: {color: 'white'}}} />
     </Stack.Navigator>
   );
 }
@@ -143,7 +143,7 @@ const App = ({navigation}) => {
           component={PostStackScreen}
           options={{
             tabBarLabel: 'New Post',
-            tabBarColor: '#5499C7',
+            tabBarColor: 'rgba(46,66,91,1)',
             tabBarIcon: ({ color }) => (
               <Icon name="add-circle-outline" color={color} size={26} />
             ),

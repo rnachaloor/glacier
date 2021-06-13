@@ -235,7 +235,7 @@ export const LoginScreen = ({navigation}) => {
     <Text style={styles.signIn3}>Sign In</Text>
     <View style={styles.rect2}></View>
     <TextInput onChangeText={(value) => setEmail(value)} placeholder="Email" placeholderTextColor = "white" style={styles.textInput}></TextInput>
-    <TextInput onChangeText={(value) => setPassword(value)} placeholder="Password" placeholderTextColor = "white" style={styles.textInput1}></TextInput>
+    <TextInput onChangeText={(value) => setPassword(value)} placeholder="Password" placeholderTextColor = "white" style={styles.textInput1} secureTextEntry = {true}></TextInput>
     <View style={styles.rect3}></View>
   </View>
     );
