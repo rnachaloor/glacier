@@ -94,9 +94,9 @@ To find the source code, navigate to where you saved the folder titled "glacier"
 
 
 # Version
-Version 1.0
+Version 1.1
 
-2/16/2020
+6/15/2020
 
 ---
 
