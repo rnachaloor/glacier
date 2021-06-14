@@ -12,7 +12,7 @@ export default class FAQ extends React.Component {
         return (
             <View style={[styles.container, this.props.style]}>
               <View style={styles.logoStack}>
-                <Image source={require('../glacier-logos_black.png')} style={styles.logo}/>
+                <Image source={require('../glacier-logos_white.png')} style={styles.logo}/>
                 <View style={styles.bg}>
                   <Text style={styles.questionPlaceholder}>{this.props.question}</Text>
                   <Text style={styles.answerPlaceholder}>{this.props.answer}</Text>
@@ -39,19 +39,19 @@ const styles = StyleSheet.create({
       height: 310,
       position: "absolute",
       borderWidth: 1,
-      borderColor: "#000000",
+      borderColor: "white",
       left: 0
     },
     questionPlaceholder: {
       fontFamily: "System",
-      color: "#121212",
+      color: "white",
       fontSize: 20,
       marginTop: 95,
       marginLeft: 11
     },
     answerPlaceholder: {
       fontFamily: "System",
-      color: "#121212",
+      color: "white",
       height: 210,
       width: 306,
       fontSize: 14,

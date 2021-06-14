@@ -8,11 +8,7 @@ import QuestionList from "../components/QuestionList"
 const QuestionScreen = ({navigation}) => {
 
   return (
-    <View style={{flex: 1, }}>
-    
-      //Returns component
       <QuestionList/>
-    </View>
     );}
 
 //Exports screen

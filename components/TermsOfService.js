@@ -21,8 +21,6 @@ export default class TermsOfService extends React.Component {
     render(props) {
       return (
         <View style={[styles.container]}>
-
-          //Our Terms And Conditions
           <Text style={styles.glacier}>
             Glacier was programmed and is owned by Rohit Nachaloor, Aakash Reddy,
             and Aryan Shah. Glacier was distributed under the GPL version 3 license,
@@ -33,13 +31,13 @@ export default class TermsOfService extends React.Component {
             that occurs on this app, although measures will be taken against
             offending users if harassment is reported. The creators of the app are
             also not responsible for any inappropriate use of this app. If you are
-            concerned with a user&#39;s comments or remarks on the app, please
+            concerned with a user's comments or remarks on the app, please
             mention this in our Report a Problem page under settings.{"\n"}
             {"\n"}Thank you!
           </Text>
           <Text style={styles.text}>Terms and Conditions</Text>
           <View>
-            <Image style={styles.logo} source={require('../glacier-logos_black.png')}/>
+            <Image style={styles.logo} source={require('../glacier-logos_white.png')}/>
           </View>
         </View>
         
@@ -59,7 +57,7 @@ const styles = StyleSheet.create({
     },
     glacier: {
       fontFamily: "System",
-      color: "#121212",
+      color: "white",
       width: 312,
       height: 420,
       fontSize: 14,
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
     },
     text: {
       fontFamily: "System",
-      color: "#121212",
+      color: "white",
       fontSize: 25,
       marginTop: -459,
       marginLeft: 0
@@ -77,6 +75,7 @@ const styles = StyleSheet.create({
     logo: {
       height: 100,
       width: 100,
-      marginTop: 420
+      marginTop: 420,
+      top: 20
     }
   });

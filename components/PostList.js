@@ -24,12 +24,16 @@ export default class PostList extends React.Component {
             const collection = await firestore().collection('posts').orderBy("time", 'desc').get()
             collection.forEach(doc => {
                 i++
+                let date = doc.data().time.toDate();
+                let month = date.getMonth() + 1;
+                let day = date.getDate();
+                let year = date.getFullYear();
                 data.push({
                     content: doc.data().content,
                     name: doc.data().firstName + " " + doc.data().lastName,
                     initial: (doc.data().firstName.substring(0, 1) + doc.data().lastName.substring(0, 1)).toUpperCase(),
                     likes: doc.data().likes,
-                    title: doc.data().title,
+                    title: month + "-" + day + "-" + year,
                     username: doc.data().username,
                     id: doc.id,
                     key: doc.id

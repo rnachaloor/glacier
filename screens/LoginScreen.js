@@ -159,60 +159,6 @@ export const LoginScreen = ({navigation}) => {
 
     // Shows the login form
     return (
-    /*
-      <View style={styles.container}>
-        <Text style={styles.titleText}>Login: </Text>
-        <View style={styles.group}>
-            
-            <TextInput autoCapitalize="none" autoCorrect={false} onChangeText={(value) => setUsername(value)} style={styles.textBoxes} placeholder="Username"/>
-        </View>
-        
-        <View style={styles.group}>
-            <TextInput onChangeText={(value) => setPassword(value)} style={styles.textBoxes} placeholder="Password" style={styles.passwordBox} secureTextEntry={true} textContentType="password"/>
-        </View>
-        
-        <Text onPress={() => navigation.navigate("Sign Up")}>
-            Don't have an account? Sign up here!
-        </Text>
-        
-        <TouchableOpacity  title="Submit" onPress={() => submit()} style={styles.button}>
-            <Text>
-                Submit
-            </Text>
-        </TouchableOpacity> 
-      </View>
-      */
-     /*
-      <View style={styles.container}>
-      <Text style={styles.loremIpsum}></Text>
-      <View style={styles.rect1}>
-        <View style={styles.image1Stack}>
-          <TouchableOpacity onPress = {() => navigation.navigate("Sign Up")}>
-            <Text  style={styles.signUp}>Sign Up</Text>
-          </TouchableOpacity>  
-        </View>
-      </View>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.signIn2}>Sign In</Text>
-      </TouchableOpacity>
-      <Text style={styles.or1}>- OR -</Text>
-      <Text style={styles.signInWith}>Sign in with</Text>
-      <TouchableOpacity>
-        <Icon name="logo-facebook" style={styles.icon2}/>
-      </TouchableOpacity>  
-      <TextInput
-        style={styles.materialRightIconTextbox}
-      ></TextInput>
-      <TextInput
-        style={styles.materialUnderlineTextbox}
-      ></TextInput>
-      <TouchableOpacity>
-        <Icon name="logo-twitter" style={styles.icon3}/>
-      </TouchableOpacity>
-      <Text style={styles.signIn3}>Sign In</Text>
-    </View>
-    );
-    */
     <View style={styles.container}>
     <Text style={styles.loremIpsum}></Text>
     <View style={styles.rect1Stack}>
@@ -224,18 +170,10 @@ export const LoginScreen = ({navigation}) => {
     <TouchableOpacity onPress={() => submit()} style={styles.button}>
       <Text style={styles.signIn2}>Sign In</Text>
     </TouchableOpacity>
-    <Text style={styles.or1}>- OR -</Text>
-      <Text style={styles.signInWith}>Sign in with</Text>
-    <TouchableOpacity>
-        <Icon name="logo-facebook" style={styles.icon2}/>
-    </TouchableOpacity>
-    <TouchableOpacity>
-        <Icon name="logo-twitter" style={styles.icon3}/>
-    </TouchableOpacity>
     <Text style={styles.signIn3}>Sign In</Text>
     <View style={styles.rect2}></View>
-    <TextInput onChangeText={(value) => setEmail(value)} placeholder="Email" placeholderTextColor = "white" style={styles.textInput}></TextInput>
-    <TextInput onChangeText={(value) => setPassword(value)} placeholder="Password" placeholderTextColor = "white" style={styles.textInput1} secureTextEntry = {true}></TextInput>
+    <TextInput autoCapitalize="none" onChangeText={(value) => setEmail(value)} placeholder="Email" placeholderTextColor = "white" style={styles.textInput}></TextInput>
+    <TextInput autoCapitalize="none" onChangeText={(value) => setPassword(value)} placeholder="Password" placeholderTextColor = "white" style={styles.textInput1} secureTextEntry = {true}></TextInput>
     <View style={styles.rect3}></View>
   </View>
     );
@@ -261,180 +199,6 @@ export default LoginStackScreen
 
 // Styling 
 const styles = StyleSheet.create({
-    /*
-    container: {
-        flex: 1, 
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    group: {
-        flexDirection: 'row'
-    },
-    textStyle: {
-        fontWeight: 'bold',
-        color: 'black',
-        marginTop: 10,
-        marginBottom: 10,
-        fontSize: 24
-    },
-    titleText: {
-        alignItems: "center", 
-        fontWeight: 'bold',
-        color: 'black',
-        marginTop: 10,
-        marginBottom: 10,
-        fontSize: 32,
-    },
-    textBoxes: {
-        height: 40, 
-        width: 200,
-        borderColor: 'gray', 
-        borderWidth: 1,
-        marginTop: 10,
-        marginBottom: 10
-    },
-    passwordBox: {
-        height: 40, 
-        width: 200,
-        borderColor: 'gray', 
-        borderWidth: 1,
-        marginTop: 10,
-        marginBottom: 10
-    }, 
-    button: {
-        alignItems: "center",
-        width: 200,
-        marginTop: 20,
-        backgroundColor: '#4886D9',
-        padding: 15,
-        borderRadius: 50,
-    },
-    logo: {
-        height: 100,
-        width: 100
-    }
-    */
-   /*
-    container: {
-        flex: 1,
-        backgroundColor: "rgba(21,67,96,1)",
-      },
-      loremIpsum: {
-        fontFamily: "System",
-        color: "#121212"
-      },
-      rect1: {
-        top: 0,
-        width: 500,
-        height: 93,
-        position: "absolute",
-        backgroundColor: "rgba(84,153,199,1)",
-        left: 0
-      },
-      image1: {
-        top: 0,
-        left: 0,
-        width: 200,
-        height: 62,
-        position: "absolute"
-      },
-      signUp: {
-        top: 18,
-        left: 230,
-        position: "absolute",
-        fontFamily: "System",
-        color: "rgba(5,11,56,1)",
-        height: 44,
-        width: 88,
-        fontSize: 20,
-        textAlign: "center"
-      },
-      image1Stack: {
-        width: 300,
-        height: 62,
-        marginTop: 31,
-        marginLeft: 88
-      },
-      button: {
-        top: 276,
-        left: 81,
-        width: 212,
-        height: 49,
-        position: "absolute",
-        backgroundColor: "rgba(84,153,199,1)",
-        borderRadius: 100,
-        shadowColor: "rgba(0,0,0,1)",
-        shadowOffset: {
-          width: 3,
-          height: 3
-        },
-        elevation: 5,
-        shadowOpacity: 0.5,
-        shadowRadius: 0
-      },
-      signIn2: {
-        fontFamily: "System",
-        color: "rgba(255,255,255,1)",
-        fontSize: 18,
-        marginTop: 14,
-        marginLeft: 79
-      },
-      or1: {
-        top: 368,
-        left: 171,
-        position: "absolute",
-        fontFamily: "System",
-        color: "rgba(255,255,255,1)"
-      },
-      signInWith: {
-        top: 404,
-        left: 157,
-        position: "absolute",
-        fontFamily: "System",
-        color: "rgba(255,255,255,1)",
-        fontSize: 12
-      },
-      icon2: {
-        top: 429,
-        left: 199,
-        position: "absolute",
-        color: "rgba(255,255,255,1)",
-        fontSize: 50
-      },
-      materialRightIconTextbox: {
-        height: 43,
-        width: 302,
-        position: "absolute",
-        left: 37,
-        top: 206
-      },
-      materialUnderlineTextbox: {
-        height: 43,
-        width: 302,
-        position: "absolute",
-        left: 37,
-        top: 163
-      },
-      icon3: {
-        top: 429,
-        left: 139,
-        position: "absolute",
-        color: "rgba(255,255,255,1)",
-        fontSize: 50
-      },
-      signIn3: {
-        top: 118,
-        flex: 1,
-        alignItems: 'center',
-        fontFamily: "System",
-        color: "rgba(255,255,255,1)",
-        height: 45,
-        width: 135,
-        fontSize: 28
-      }
-      */
       container: {
         flex: 1,
         flexDirection: "row",
@@ -500,39 +264,6 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginRight: 77
       },
-      or1: {
-        top: 375,
-        left: 186,
-        position: "absolute",
-        fontFamily: "System",
-        fontWeight: "bold",
-        color: "rgba(255,255,255,1)"
-      },
-      signInWith: {
-        top: 411,
-        left: 174,
-        position: "absolute",
-        fontFamily: "System",
-        color: "rgba(255,255,255,1)",
-        fontWeight: "bold",
-        fontSize: 12
-      },
-      // Facebook
-      icon2: {
-        top: -5,
-        left: 213,
-        position: "absolute",
-        color: "rgba(255,255,255,1)",
-        fontSize: 50
-      },
-      // Twitter
-      icon3: {
-        top: -5,
-        left: 158,
-        position: "absolute",
-        color: "rgba(255,255,255,1)",
-        fontSize: 50
-      },
       // Top SignIN
       signIn3: {
         top: 118,
@@ -563,7 +294,7 @@ const styles = StyleSheet.create({
         fontFamily: "System",
         color: "rgba(255,255,255,1)",
         height: 24,
-        width: 120,
+        width: 300,
         fontSize: 16, 
       },
       textInput1: {
@@ -573,7 +304,7 @@ const styles = StyleSheet.create({
         fontFamily: "System",
         color: "rgba(255,255,255,1)",
         height: 24,
-        width: 83,
+        width: 300,
         fontSize: 16
       },
       // Bar under password

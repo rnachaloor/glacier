@@ -39,42 +39,10 @@ const instructions = () => {
 const SettingScreen = ({navigation}) => {
   const {logout} = useContext(AuthContext);
   return (
-    /*
-    <View style={styles.container}>
-    <View style={styles.notifGroup}>
-      </View>
-      <View style={styles.profileName}>
-        <View style={styles.avatarRow}>
-          <Avatar size="large" rounded title={(firstName.substring(0,1) + lastName.substring(0,1)).toUpperCase()} overlayContainerStyle={styles.avatar} activeOpacity={0.7} titleStyle={styles.avatarText}/>
-          <View style={styles.namePlaceholderColumn}>
-            <Text style={styles.namePlaceholder}>{name}</Text>
-            <Text style={styles.username}>{user}</Text>
-          </View>
-        </View>
-      </View>
-      <View style = {styles.buttonStyle}>
-      <TouchableOpacity style={styles.reportButton} onPress={() => report()}>
-        <Text style={styles.reportAProblem}>Report a Problem</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.signOutButton} onPress={() => signOut()}>
-        <Text style={styles.signOut}>Sign Out</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.termsOfService} onPress = {() => termsOfService()}>
-        <Text style={styles.termsOfService2}>Terms and Conditions</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.group} onPress={() => instructions()}>
-        <Text style={styles.instructions}>Instructions</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.group2} onPress={() => question()}>
-        <Text style={styles.faq}>Frequently Asked Questions</Text>
-      </TouchableOpacity>
-      </View>
-    </View>
-    */
     <View style={styles.container}>
     <View style={styles.rect2}></View>
     <View style={styles.rect3StackStack}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress = {() => navigation.navigate("Question")}>
         <View style={styles.rect3Stack}>
           <View style={styles.rect3}></View>
           <EntypoIcon name="chevron-right" style={styles.icon2}></EntypoIcon>
@@ -87,40 +55,46 @@ const SettingScreen = ({navigation}) => {
     <View style={styles.rect6}></View>
     <View style={styles.rect7StackStack}>
       <TouchableOpacity>
+        <View style={styles.rect7}></View>
         <View style={styles.rect7Stack}>
-          <View style={styles.rect7}></View>
-          <EntypoIcon name="chevron-right" style={styles.icon6}></EntypoIcon>
+          <TouchableOpacity onPress = {() => navigation.navigate("Inspiration")}>
+            <EntypoIcon name="chevron-right" style={styles.icon6}></EntypoIcon>
+            <Text style={styles.ourInspiration}>Our Inspiration</Text>
+          </TouchableOpacity>
         </View>
-        <Text style={styles.ourInspiration}>Our Inspiration</Text>
       </TouchableOpacity>
     </View>
     <View style={styles.instructionsRow}>
+      <TouchableOpacity onPress = {() => navigation.navigate("Instructions")}>
       <Text style={styles.instructions}>Instructions</Text>
       <EntypoIcon name="chevron-right" style={styles.icon}></EntypoIcon>
+      </TouchableOpacity>
     </View>
       <View style={styles.reportAProblemRow}>
+        <TouchableOpacity onPress = {() => navigation.navigate("Report")}>
         <Text style={styles.reportAProblem}>Report A Problem</Text>
         <EntypoIcon name="chevron-right" style={styles.icon3}></EntypoIcon>
+        </TouchableOpacity>
       </View>
-    <TouchableOpacity>
       <View style={styles.termsAndConditionsRow}>
+        <TouchableOpacity onPress = {() => navigation.navigate("ToS")}>
         <Text style={styles.termsAndConditions}>Terms And Conditions</Text>
         <EntypoIcon name="chevron-right" style={styles.icon4}></EntypoIcon>
+        </TouchableOpacity>
       </View>
-    </TouchableOpacity>
-    <TouchableOpacity>
       <View style={styles.versionAndLicenseRow}>
+      <TouchableOpacity onPress = {() => navigation.navigate("Version")}>
         <Text style={styles.versionAndLicense}>Version and License</Text>
         <EntypoIcon name="chevron-right" style={styles.icon5}></EntypoIcon>
+        </TouchableOpacity>
       </View>
-    </TouchableOpacity>
-    <TouchableOpacity 
+      <TouchableOpacity 
       onPress={() => {
         setLoggedIn(false);
         logout();
       }}>
-      <Text style={styles.signOut}>Sign Out</Text>
-    </TouchableOpacity>
+        <Text style={styles.signOut}>Sign Out</Text>
+      </TouchableOpacity>
   </View>
   );
 }
@@ -130,165 +104,6 @@ export default SettingScreen;
 
 //Styling
 const styles = StyleSheet.create({
-  /*
-  container: {
-    flex: 1
-  },
-  notifGroup: {
-    width: 292,
-    height: 23,
-    flexDirection: "row",
-    marginTop: 171,
-    marginLeft: 42
-  },
-  notifications: {
-    fontFamily: "System",
-    color: "#121212",
-    fontSize: 18,
-    marginTop: 1
-  },
-  switch: {
-    marginLeft: 134
-  },
-  profileName: {
-    width: 289,
-    height: 68,
-    marginTop: -129,
-    marginLeft: 43
-  },
-  avatar: {
-    width: 67,
-    height: 68,
-    marginLeft: 5,
-    backgroundColor:"#BDBDBD",
-    padding: 38
-  },
-  namePlaceholder: {
-    fontFamily: "System",
-    color: "#121212",
-    lineHeight: 14,
-    fontSize: 24,
-    padding: 8,
-    paddingTop: 9
-  },
-  username: {
-    fontFamily: "System",
-    color: "#121212",
-    fontSize: 18,
-    marginTop: 5,
-    marginLeft: 8
-  },
-  namePlaceholderColumn: {
-    width: 197,
-    marginLeft: 26,
-    marginTop: 15,
-    marginBottom: 8
-  },
-  avatarRow: {
-    height: 68,
-    flexDirection: "row",
-    marginRight: -1
-  },
-  reportButton: {
-    position: "absolute",
-    width: 289,
-    height: 40,
-    backgroundColor: "rgba(230, 230, 230,0)",
-    borderRadius: 50,
-    borderWidth: 1,
-    borderColor: "#000000",
-    justifyContent: "center",
-    marginTop: 235,
-    marginLeft: 50
-  },
-  reportAProblem: {
-    fontFamily: "System",
-    color: "#121212",
-    alignSelf: "center"
-  },
-  signOutButton: {
-    position: "absolute",
-    width: 289,
-    height: 40,
-    backgroundColor: "rgba(230,230, 230,0)",
-    borderWidth: 1,
-    borderColor: "#000000",
-    borderRadius: 50,
-    justifyContent: "center",
-    marginTop: 292,
-    marginLeft: 50
-  },
-  signOut: {
-    fontFamily: "System",
-    color: "#121212",
-    alignSelf: "center"
-  },
-  termsOfService: {
-    position: "absolute",
-    width: 289,
-    height: 40,
-    backgroundColor: "rgba(230,230, 230,0)",
-    borderWidth: 1,
-    borderColor: "#000000",
-    borderRadius: 50,
-    justifyContent: "center",
-    marginTop: 178,
-    marginLeft: 50
-  },
-  termsOfService2: {
-    fontFamily: "System",
-    color: "#121212",
-    alignSelf: "center"
-  },
-  group: {
-    position: "absolute",
-    width: 289,
-    height: 40,
-    backgroundColor: "rgba(230,230, 230,0)",
-    borderWidth: 1,
-    borderColor: "#000000",
-    borderRadius: 50,
-    justifyContent: "center",
-    marginTop: 60,
-    marginLeft: 50.3
-  },
-  instructions: {
-    fontFamily: "System",
-    color: "#121212",
-    alignSelf: "center"
-  },
-  group2: {
-    position: "absolute",
-    width: 289,
-    height: 40,
-    backgroundColor: "rgba(230,230, 230,0)",
-    borderWidth: 1,
-    borderColor: "#000000",
-    borderRadius: 50,
-    justifyContent: "center",
-    marginTop: 120,
-    marginLeft: 50.2
-  },
-  faq: {
-    fontFamily: "System",
-    color: "#121212",
-    alignSelf: "center"
-  },
-  group3: {
-    width: 289,
-    height: 40,
-    backgroundColor: "rgba(230,230, 230,0)",
-    borderWidth: 1,
-    borderColor: "#000000",
-    borderRadius: 50,
-    justifyContent: "center",
-    marginTop: 20,
-    marginLeft: 50
-  },
-  avatarText: {
-    color: "white"
-  },
-  */
   container: {
     flex: 1,
     backgroundColor: "rgba(20,29,40,1)"
@@ -315,7 +130,7 @@ const styles = StyleSheet.create({
     opacity: 0.1
   },
   icon2: {
-    top: 0,
+    top: 2,
     left: 357,
     position: "absolute",
     color: "rgba(255,255,255,1)",
@@ -421,7 +236,8 @@ const styles = StyleSheet.create({
   icon: {
     color: "rgba(255,255,255,1)",
     fontSize: 30,
-    left: 30,
+    left: 137,
+    bottom: 26,
     marginLeft: 210
   },
   instructionsRow: {
@@ -443,11 +259,12 @@ const styles = StyleSheet.create({
   },
   icon3: {
     color: "rgba(255,255,255,1)",
-    left: 30,
+    left: 280,
     fontSize: 30,
     width: 40,
     height: 34,
-    marginLeft: 66
+    marginLeft: 66,
+    bottom: 35
   },
   reportAProblemRow: {
     height: 36,
@@ -470,7 +287,8 @@ const styles = StyleSheet.create({
   icon4: {
     color: "rgba(255,255,255,1)",
     fontSize: 30,
-    left: 30,
+    left: 280,
+    bottom: 103,
     marginLeft: 66
   },
   termsAndConditionsRow: {
@@ -495,7 +313,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
     width: 40,
     height: 34,
-    left: 30, 
+    left: 280, 
+    bottom: 35,
     marginLeft: 66
   },
   versionAndLicenseRow: {
@@ -506,11 +325,12 @@ const styles = StyleSheet.create({
     marginRight: 8
   },
   signOut: {
+    top: 145,
     fontFamily: "System",
     color: "rgba(232,9,38,1)",
     fontSize: 20,
     textAlign: "center",
-    marginTop: 155,
+    marginTop: 0,
     fontWeight: "bold"
   }
 });

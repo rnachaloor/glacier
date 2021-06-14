@@ -12,7 +12,7 @@ export default class InstructionCard extends React.Component {
         return (
             <View style={[styles.container, this.props.style]}>
               <View style={styles.logoStack}>
-                <Image source={require('../glacier-logos_black.png')} style={styles.logo}/>
+                <Image source={require('../glacier-logos_white.png')} style={styles.logo}/>
                 <View style={styles.bg}>
                   <Text style={styles.questionPlaceholder}>{this.props.question}</Text>
                   <Text style={styles.answerPlaceholder}>{this.props.answer}</Text>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
       height: 350,
       position: "absolute",
       borderWidth: 1,
-      borderColor: "#000000",
+      borderColor: "white",
       left: 0
     },
     questionPlaceholder: {
@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
       color: "#121212",
       fontSize: 20,
       marginTop: 95,
-      marginLeft: 11
+      marginLeft: 11,
+      color: "white"
     },
     answerPlaceholder: {
       fontFamily: "System",
@@ -55,7 +56,8 @@ const styles = StyleSheet.create({
       height: 240,
       width: 310,
       fontSize: 14,
-      marginLeft: 11
+      marginLeft: 11,
+      color: "white"
     },
     logoStack: {
       width: 325,

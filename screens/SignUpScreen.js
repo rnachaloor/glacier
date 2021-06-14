@@ -104,12 +104,13 @@ const SignUpScreen = ({navigation}) => {
           placeholderTextColor = "white"
           style={styles.textInput2}
           onChangeText={(value) => setEmail(value)}
+          autoCapitalize="none"
         ></TextInput>
         <View style={styles.rect10}></View>
       </View>
       <View style={styles.rect11}></View>
-      <TextInput placeholder="Username" placeholderTextColor = "white" style={styles.textInput3} onChangeText={(value) => setUsername(value)}></TextInput>
-      <TextInput placeholder="Password" placeholderTextColor = "white" style={styles.textInput4} onChangeText={(value) => setPassword(value)} secureTextEntry={true}></TextInput>
+      <TextInput autoCapitalize="none" placeholder="Username" placeholderTextColor = "white" style={styles.textInput3} onChangeText={(value) => setUsername(value)}></TextInput>
+      <TextInput autoCapitalize="none" placeholder="Password" placeholderTextColor = "white" style={styles.textInput4} onChangeText={(value) => setPassword(value)} secureTextEntry={true}></TextInput>
       <View style={styles.rect12}></View>
       <View style={styles.rect13Stack}>
         <View style={styles.rect13}></View>
@@ -118,32 +119,11 @@ const SignUpScreen = ({navigation}) => {
           placeholderTextColor = "white"
           style={styles.textInput5}
           onChangeText={(value) => setConfirmPassword(value)}
-          secureTextEntry={true}>
+          secureTextEntry={true}
+          autoCapitalize="none">
         </TextInput>
       </View>
     </View>
-
-
-      /*<View style={styles.container}>
-        <Text style={styles.titleText}>Sign Up: </Text>
-        <View style={styles.group}>
-            <TextInput autoCapitalize="none" autoCorrect={false} onChangeText={(value) => setFirstName(value)} style={styles.textBoxes} placeholder="Your First Name"/>
-        </View>
-        <View style={styles.group}>
-            <TextInput autoCapitalize="none" autoCorrect={false} onChangeText={(value) => setLastName(value)} style={styles.textBoxes} placeholder="Your Last Name"/>
-        </View>
-        <View style={styles.group}>
-            <TextInput autoCapitalize="none" autoCorrect={false} onChangeText={(value) => setUsername(value)} style={styles.textBoxes} placeholder="Username"/>
-        </View>
-        <View style={styles.group}>
-            <TextInput onChangeText={(value) => setPassword(value)} placeholder="Password" style={styles.passwordBox} secureTextEntry={true} textContentType="password"/>
-        </View>
-        <View style={styles.group}>
-            <TextInput onChangeText={(value) => setConfirmPassword(value)} placeholder="Confirm Password" style={styles.passwordBox} secureTextEntry={true} textContentType="password"/>
-        </View>
-        <Text>{errors}</Text>
-        <Button title="Submit" onPress={() => submit(password, confirmPassword)}/>
-      </View>*/
     );
   }
 
@@ -152,50 +132,6 @@ export default SignUpScreen;
 
 //Styling
 const styles = StyleSheet.create({
-    /*container: {
-        flex: 1, 
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginLeft: 10,
-        marginRight: 10
-    },
-    group: {
-        flexDirection: 'row'
-    },
-    textStyle: {
-        fontWeight: 'bold',
-        color: 'black',
-        marginTop: 10,
-        marginBottom: 10,
-        fontSize: 24
-    },
-    titleText: {
-        alignItems: "center", //need to fix centering
-        fontWeight: 'bold',
-        color: 'black',
-        marginTop: 10,
-        marginBottom: 10,
-        fontSize: 32,
-    },
-    textBoxes: {
-        height: 40, 
-        width: 200,
-        borderColor: 'gray', 
-        borderWidth: 1,
-        marginTop: 10,
-        marginBottom: 10
-    },
-    passwordBox: {
-        height: 40, 
-        width: 200,
-        borderColor: 'gray', 
-        borderWidth: 1,
-        marginTop: 10,
-        marginBottom: 10
-    }*/
-
-
-
     container: {
       flex: 1,
       backgroundColor: "rgba(20,29,40,1)"
@@ -243,7 +179,7 @@ const styles = StyleSheet.create({
       fontFamily: "System",
       color: "rgba(255,255,255,1)",
       height: 31,
-      width: 117,
+      width: 300,
       fontSize: 16
     },
     rect2Stack: {
@@ -290,7 +226,7 @@ const styles = StyleSheet.create({
       fontFamily: "System",
       color: "rgba(255,255,255,1)",
       height: 31,
-      width: 117,
+      width: 300,
       fontSize: 16,
       marginTop: -257,
       marginLeft: 42, 
@@ -311,7 +247,7 @@ const styles = StyleSheet.create({
       fontFamily: "System",
       color: "rgba(255,255,255,1)",
       height: 31,
-      width: 117,
+      width: 300,
       fontSize: 16
     },
     rect10: {
@@ -342,7 +278,7 @@ const styles = StyleSheet.create({
       fontFamily: "System",
       color: "rgba(255,255,255,1)",
       height: 31,
-      width: 117,
+      width: 300,
       fontSize: 16,
       marginTop: -32,
       marginLeft: 42, 
@@ -352,7 +288,7 @@ const styles = StyleSheet.create({
       fontFamily: "System",
       color: "rgba(255,255,255,1)",
       height: 31,
-      width: 117,
+      width: 300,
       fontSize: 16,
       marginTop: 2,
       marginLeft: 42, 
@@ -382,7 +318,7 @@ const styles = StyleSheet.create({
       fontFamily: "System",
       color: "rgba(255,255,255,1)",
       height: 31,
-      width: 146,
+      width: 300,
       fontSize: 16   
     },
     rect13Stack: {

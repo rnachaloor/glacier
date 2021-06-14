@@ -21,6 +21,8 @@ import SettingScreen from "./screens/SettingScreen";
 import TermsOfServiceScreen from "./screens/TermsOfServiceScreen"
 import ReportScreen from "./screens/ReportScreen";
 import InstructionScreen from "./screens/InstructionScreen"
+import VersionScreen from "./screens/VersionScreen";
+import InspirationScreen from "./screens/InspirationScreen";
 import {
   SafeAreaView,
   StyleSheet,
@@ -36,6 +38,7 @@ const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
+//contains routes for post screen
 const PostStackScreen = () => {
   return (
     <Stack.Navigator screenOptions={{
@@ -53,6 +56,7 @@ const PostStackScreen = () => {
   );
 }
 
+//contains routes for settings screen
 const SettingStackScreen = () => {
   return (
     <Stack.Navigator screenOptions={{
@@ -65,11 +69,20 @@ const SettingStackScreen = () => {
       },
       headerLeft: null
     }}>
+      {/**all the inner screens */}
       <Stack.Screen name="Settings" component={SettingScreen} options={{title: 'Settings', headerTitleStyle: {color: 'white'}}} />
-      <Stack.Screen name="ToS" component={TermsOfServiceScreen} options={{title: 'Terms and Conditions', headerTitleStyle: {color: 'white'}}} />
-      <Stack.Screen name="Report" component={ReportScreen} options={{title: 'Report a Problem', headerTitleStyle: {color: 'white'}}} />
-      <Stack.Screen name="Question" component={QuestionScreen} options={{title: 'Frequently Asked Questions', headerTitleStyle: {color: 'white'}}} />
-      <Stack.Screen name="Instructions" component={InstructionScreen} options={{title: 'Instructions', headerTitleStyle: {color: 'white'}}} />
+      <Stack.Screen name="ToS" component={TermsOfServiceScreen} options={{headerTitle: (props) => (
+        <Image style={{width: 91, height: 40}} source={require('./text_logo.jpg')} resizeMode='contain'/>),title: 'Terms and Conditions', headerTitleStyle: {color: 'white'}, cardStyle: {backgroundColor: "rgba(20,29,40,1)"}}} />
+      <Stack.Screen name="Report" component={ReportScreen} options={{headerTitle: (props) => (
+        <Image style={{width: 91, height: 40}} source={require('./text_logo.jpg')} resizeMode='contain'/>),title: 'Report a Problem', headerTitleStyle: {color: 'white'}}} />
+      <Stack.Screen name="Question" component={QuestionScreen} options={{headerTitle: (props) => (
+        <Image style={{width: 91, height: 40}} source={require('./text_logo.jpg')} resizeMode='contain'/>),title: 'Frequently Asked Questions', headerTitleStyle: {color: 'white'}, cardStyle: {backgroundColor: "rgba(20,29,40,1)"}}} />
+      <Stack.Screen name="Instructions" component={InstructionScreen} options={{headerTitle: (props) => (
+        <Image style={{width: 91, height: 40}} source={require('./text_logo.jpg')} resizeMode='contain'/>),title: 'Instructions', headerTitleStyle: {color: 'white'}, cardStyle: {backgroundColor: "rgba(20,29,40,1)"}}} />
+      <Stack.Screen name="Version" component={VersionScreen} options={{headerTitle: (props) => (
+        <Image style={{width: 91, height: 40}} source={require('./text_logo.jpg')} resizeMode='contain'/>),title: 'Version and License', headerTitleStyle: {color: 'white'}, cardStyle: {backgroundColor: "rgba(20,29,40,1)"}}} />
+      <Stack.Screen name="Inspiration" component={InspirationScreen} options={{headerTitle: (props) => (
+        <Image style={{width: 91, height: 40}} source={require('./text_logo.jpg')} resizeMode='contain'/>),title: 'Our Inspiration', headerTitleStyle: {color: 'white'}, cardStyle: {backgroundColor: "rgba(20,29,40,1)"}}} />
     </Stack.Navigator>
   );
 }
@@ -89,7 +102,7 @@ export const HomeStackScreen = () => {
     }}>
       <Stack.Screen name="Home" component={HomeScreen}  
       options={{headerTitle: (props) => (
-        <Image style={{width: 91, height: 40}} source={require('./home_logo.jpg')} resizeMode='contain'/>),
+        <Image style={{width: 91, height: 40}} source={require('./text_logo.jpg')} resizeMode='contain'/>),
         headerTitleStyle: { flex: 1, textAlign: 'center'},}}/>
       <Stack.Screen name="Sign Up" component={SignUpScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
@@ -98,6 +111,7 @@ export const HomeStackScreen = () => {
   );
 }
 
+//contains routes for sign up screen
 const SignUpStackScreen = () => {
   return (
       <Stack.Navigator screenOptions={{
@@ -118,6 +132,7 @@ const SignUpStackScreen = () => {
   );
 }
 
+//contains routes for bottom bar screen
 const App = ({navigation}) => {
   return (
     
