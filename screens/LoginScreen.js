@@ -10,6 +10,7 @@ import SignUpScreen from "./SignUpScreen";
 import App from "../App";
 import Icon from "react-native-vector-icons/Ionicons";
 import { AuthContext } from "../AuthProvider";
+import { Platform } from "react-native";
 
 // Exports
 export let loggedIn = false;
@@ -164,7 +165,7 @@ export const LoginScreen = ({navigation}) => {
     <View style={styles.rect1Stack}>
       <View style={styles.rect1}></View>
       <TouchableOpacity onPress = {() => navigation.navigate("Sign Up")}>
-      <Text style={styles.signUp}>Sign Up</Text>
+        <Text style={styles.signUp}>Sign Up</Text>
       </TouchableOpacity>
     </View>
     <TouchableOpacity onPress={() => submit()} style={styles.button}>
@@ -227,7 +228,17 @@ const styles = StyleSheet.create({
         height: 44,
         width: 88,
         fontSize: 20,
-        textAlign: "center"
+        textAlign: "center",
+        ...Platform.select({
+            ios: {
+              top: 50,
+              left: 317
+            },
+            android: {
+              top: 45,
+              left: 300
+            }
+        })
       },
       rect1Stack: {
         top: 0,
@@ -279,13 +290,20 @@ const styles = StyleSheet.create({
       },
       // Bar under Username
       rect2: {
-        top: 216,
         left: 55,
         width: 302,
         height: 1,
         position: "absolute",
         backgroundColor: "#E6E6E6",
-        opacity: 0.5
+        opacity: 0.5,
+        ...Platform.select({
+          ios: {
+            top: 216,
+          }, 
+          android: {
+            top: 222,
+          }
+        })
       },
       textInput: {
         top: 187,
@@ -293,9 +311,16 @@ const styles = StyleSheet.create({
         position: "absolute",
         fontFamily: "System",
         color: "rgba(255,255,255,1)",
-        height: 24,
         width: 300,
-        fontSize: 16, 
+        fontSize: 16,
+        ...Platform.select({
+          ios: {
+            height: 24
+          }, 
+          android: {
+            height: 50
+          }
+        }) 
       },
       textInput1: {
         top: 225,
@@ -305,7 +330,15 @@ const styles = StyleSheet.create({
         color: "rgba(255,255,255,1)",
         height: 24,
         width: 300,
-        fontSize: 16
+        fontSize: 16,
+        ...Platform.select({
+          ios: {
+            height: 24
+          }, 
+          android: {
+            height: 50
+          }
+        })
       },
       // Bar under password
       rect3: {
@@ -315,6 +348,22 @@ const styles = StyleSheet.create({
         height: 1,
         position: "absolute",
         backgroundColor: "#E6E6E6",
-        opacity: 0.5
+        opacity: 0.5,
+        ...Platform.select({
+          ios: {
+            top: 254
+          }, 
+          android: {
+            top: 260
+          }
+        })
+      },
+
+      TouchableOpacity: {
+        ...Platform.select({
+          android: {
+            zIndex: 1
+          }
+        })
       }
 });
