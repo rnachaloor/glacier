@@ -7,7 +7,7 @@ import firestore from '@react-native-firebase/firestore';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import SignUpScreen from "./SignUpScreen";
-import App from "../App";
+import App from "../App"
 import Icon from "react-native-vector-icons/Ionicons";
 import { AuthContext } from "../AuthProvider";
 import { Platform } from "react-native";

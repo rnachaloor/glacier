@@ -33,6 +33,7 @@ import {
 } from 'react-native';
 import PostScreen from './screens/PostScreen';
 import QuestionScreen from './screens/QuestionScreen';
+import ChatMenuScreen from './screens/ChatMenuScreen';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -51,7 +52,7 @@ const PostStackScreen = () => {
       },
       headerLeft: null
     }}>
-      <Stack.Screen name="NewPost" component={PostScreen} options={{title: 'New Post', headerTitleStyle: {color: 'white'}}} />
+      <Stack.Screen name="NewPost" component={PostScreen} options={{title: 'New Post', headerTitleStyle: {color: 'white', alignSelf: 'center'}}} />
     </Stack.Navigator>
   );
 }
@@ -70,7 +71,7 @@ const SettingStackScreen = () => {
       headerLeft: null
     }}>
       {/**all the inner screens */}
-      <Stack.Screen name="Settings" component={SettingScreen} options={{title: 'Settings', headerTitleStyle: {color: 'white'}}} />
+      <Stack.Screen name="Settings" component={SettingScreen} options={{title: 'Settings', headerTitleStyle: {color: 'white', alignSelf: 'center'}}} />
       <Stack.Screen name="ToS" component={TermsOfServiceScreen} options={{headerTitle: (props) => (
         <Image style={{width: 91, height: 40}} source={require('./text_logo.jpg')} resizeMode='contain'/>),title: 'Terms and Conditions', headerTitleStyle: {color: 'white'}, cardStyle: {backgroundColor: "rgba(20,29,40,1)"}}} />
       <Stack.Screen name="Report" component={ReportScreen} options={{headerTitle: (props) => (
@@ -103,7 +104,7 @@ export const HomeStackScreen = () => {
       <Stack.Screen name="Home" component={HomeScreen}  
       options={{headerTitle: (props) => (
         <Image style={{width: 91, height: 40}} source={require('./text_logo.jpg')} resizeMode='contain'/>),
-        headerTitleStyle: { flex: 1, textAlign: 'center'},}}/>
+        headerTitleStyle: { flex: 1, alignSelf: 'center', justifyContent: 'center'},}}/>
       <Stack.Screen name="Sign Up" component={SignUpScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Settings" component={SettingScreen}/>
@@ -111,12 +112,12 @@ export const HomeStackScreen = () => {
   );
 }
 
-//contains routes for sign up screen
-const SignUpStackScreen = () => {
+//contains routes for chat menu screen
+const ChatMenuStackScreen = () => {
   return (
       <Stack.Navigator screenOptions={{
         headerStyle: {
-          backgroundColor: 'red'
+          backgroundColor: 'rgba(46,66,91,1)'
         },
         headerTintColor: '#000',
         headerTitleStyle: {
@@ -124,7 +125,7 @@ const SignUpStackScreen = () => {
         },
         headerLeft: null
       }}>
-        <Stack.Screen name="Sign Up" component={SignUpScreen}  options={{title: 'Sign Up'}}/>
+        <Stack.Screen name="Chat Menu" component={ChatMenuScreen}  options={{title: 'Chat', headerTitleStyle: {color: 'white'}, cardStyle: {backgroundColor: "rgba(20,29,40,1)"}}}/>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Settings" component={SettingScreen}/>
@@ -161,6 +162,17 @@ const App = ({navigation}) => {
             tabBarColor: 'rgba(46,66,91,1)',
             tabBarIcon: ({ color }) => (
               <Icon name="add-circle-outline" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Chat"
+          component={ChatMenuStackScreen}
+          options={{
+            tabBarLabel: 'Chat',
+            tabBarColor: 'rgba(46,66,91,1)',
+            tabBarIcon: ({ color }) => (
+              <Icon name="chatbubble-ellipses-outline" color={color} size={26} />
             ),
           }}
         />

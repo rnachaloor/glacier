@@ -1,12 +1,13 @@
 //Imports
 import React, { useState, Component, useEffect, useContext } from "react";
-import { StyleSheet, View, Text, Switch, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Switch, TouchableOpacity, ScrollView } from "react-native";
 import Svg, { Ellipse } from "react-native-svg";
 import { Avatar } from "react-native-elements";
 import {loggedIn, userId, user, name, firstName, lastName, setLoggedIn} from "./LoginScreen";
 import firestore from '@react-native-firebase/firestore';
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import { AuthContext } from "../AuthProvider";
+import { Platform } from "react-native";
 
 //Signs the user out by setting loggedIn boolean to false
 //Reroutes back to login page
@@ -35,67 +36,73 @@ const instructions = () => {
   navigation.navigate("Instructions")
 }
 
+
+
 //JSX
 const SettingScreen = ({navigation}) => {
   const {logout} = useContext(AuthContext);
   return (
-    <View style={styles.container}>
-    <View style={styles.rect2}></View>
-    <View style={styles.rect3StackStack}>
-      <TouchableOpacity onPress = {() => navigation.navigate("Question")}>
-        <View style={styles.rect3Stack}>
-          <View style={styles.rect3}></View>
-          <EntypoIcon name="chevron-right" style={styles.icon2}></EntypoIcon>
-        </View>
-        <Text style={styles.faq}>Frequently Asked Questions</Text>
-      </TouchableOpacity>
-    </View>
-    <View style={styles.rect4}></View>
-    <View style={styles.rect5}></View>
-    <View style={styles.rect6}></View>
-    <View style={styles.rect7StackStack}>
-      <TouchableOpacity>
-        <View style={styles.rect7}></View>
-        <View style={styles.rect7Stack}>
-          <TouchableOpacity onPress = {() => navigation.navigate("Inspiration")}>
-            <EntypoIcon name="chevron-right" style={styles.icon6}></EntypoIcon>
-            <Text style={styles.ourInspiration}>Our Inspiration</Text>
+    <>
+    <View style = {styles.container}>
+      <View style={styles.rect2}></View>
+      <View style={styles.rect3StackStack}>
+        <TouchableOpacity hitSlop = {styles.touchRadius} onPress = {() => navigation.navigate("Question")}>
+          <View style={styles.rect3Stack}>
+            <View style={styles.rect3}></View>
+            <EntypoIcon name="chevron-right" style={styles.icon2}></EntypoIcon>
+          </View>
+          <Text style={styles.faq}>Frequently Asked Questions</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.rect4}></View>
+      <View style={styles.rect5}></View>
+      <View style={styles.rect6}></View>
+      <View style={styles.rect7StackStack}>
+        <TouchableOpacity>
+          <View style={styles.rect7}></View>
+          <View style={styles.rect7Stack}>
+            <TouchableOpacity hitSlop = {styles.touchRadiusforInspiration} onPress = {() => navigation.navigate("Inspiration")}>
+              <EntypoIcon name="chevron-right" style={styles.icon6}/>
+              <Text style={styles.ourInspiration}>Our Inspiration</Text>
+            </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.instructionsRow}>
+        <TouchableOpacity hitSlop = {styles.touchRadius} onPress = {() => navigation.navigate("Instructions")}>
+        <Text style={styles.instructions}>Instructions</Text>
+        <EntypoIcon name="chevron-right" style={styles.icon}></EntypoIcon>
+        </TouchableOpacity>
+      </View>
+        <View style={styles.reportAProblemRow}>
+          <TouchableOpacity hitSlop = {styles.touchRadius} onPress = {() => navigation.navigate("Report")}>
+          <Text style={styles.reportAProblem}>Report A Problem</Text>
+          <EntypoIcon name="chevron-right" style={styles.icon3}></EntypoIcon>
           </TouchableOpacity>
         </View>
-      </TouchableOpacity>
-    </View>
-    <View style={styles.instructionsRow}>
-      <TouchableOpacity onPress = {() => navigation.navigate("Instructions")}>
-      <Text style={styles.instructions}>Instructions</Text>
-      <EntypoIcon name="chevron-right" style={styles.icon}></EntypoIcon>
-      </TouchableOpacity>
-    </View>
-      <View style={styles.reportAProblemRow}>
-        <TouchableOpacity onPress = {() => navigation.navigate("Report")}>
-        <Text style={styles.reportAProblem}>Report A Problem</Text>
-        <EntypoIcon name="chevron-right" style={styles.icon3}></EntypoIcon>
+        <View style={styles.termsAndConditionsRow}>
+          <TouchableOpacity hitSlop = {styles.touchRadius} onPress = {() => navigation.navigate("ToS")}>
+          <Text style={styles.termsAndConditions}>Terms And Conditions</Text>
+          <EntypoIcon name="chevron-right" style={styles.icon4}></EntypoIcon>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.versionAndLicenseRow}>
+        <TouchableOpacity hitSlop = {styles.touchRadius} onPress = {() => navigation.navigate("Version")}>
+          <Text style={styles.versionAndLicense}>Version and License</Text>
+          <EntypoIcon name="chevron-right" style={styles.icon5}></EntypoIcon>
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity 
+        onPress={() => {
+          setLoggedIn(false);
+          logout();
+        }}
+        hitSlop = {styles.touchRadiusforSignOut}>
+        
+          <Text style={styles.signOut}>Sign Out</Text>
         </TouchableOpacity>
-      </View>
-      <View style={styles.termsAndConditionsRow}>
-        <TouchableOpacity onPress = {() => navigation.navigate("ToS")}>
-        <Text style={styles.termsAndConditions}>Terms And Conditions</Text>
-        <EntypoIcon name="chevron-right" style={styles.icon4}></EntypoIcon>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.versionAndLicenseRow}>
-      <TouchableOpacity onPress = {() => navigation.navigate("Version")}>
-        <Text style={styles.versionAndLicense}>Version and License</Text>
-        <EntypoIcon name="chevron-right" style={styles.icon5}></EntypoIcon>
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity 
-      onPress={() => {
-        setLoggedIn(false);
-        logout();
-      }}>
-        <Text style={styles.signOut}>Sign Out</Text>
-      </TouchableOpacity>
   </View>
+  </>
   );
 }
 
@@ -118,7 +125,15 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: "#E6E6E6",
     opacity: 0.1,
-    marginTop: 107
+    marginTop: 107,
+    ...Platform.select({
+      ios: {
+        bottom: 0
+      },
+      android: {
+        bottom: 30
+      }
+    })
   },
   rect3: {
     top: 43,
@@ -127,7 +142,15 @@ const styles = StyleSheet.create({
     height: 1,
     position: "absolute",
     backgroundColor: "#E6E6E6",
-    opacity: 0.1
+    opacity: 0.1,
+    ...Platform.select({
+      ios: {
+        top: 43
+      },
+      android: {
+        top: 13
+      }
+    })
   },
   icon2: {
     top: 2,
@@ -136,7 +159,15 @@ const styles = StyleSheet.create({
     color: "rgba(255,255,255,1)",
     fontSize: 30,
     width: 40,
-    height: 46
+    height: 46,
+    ...Platform.select({
+      ios: {
+        top: 2
+      },
+      android: {
+        top: -28
+      }
+    })
   },
   rect3Stack: {
     top: 0,
@@ -155,7 +186,30 @@ const styles = StyleSheet.create({
     height: 16,
     fontSize: 20, 
     paddingBottom: 100,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    ...Platform.select({
+      ios: {
+        top: 5,
+        left: 30,
+        position: "absolute",
+        fontFamily: "System",
+        color: "rgba(255,255,255,1)",
+        width: 300,
+        height: 16,
+        fontSize: 20, 
+        paddingBottom: 100,
+        fontWeight: "bold",
+      },
+      android: {
+        color: "white",
+        fontWeight: "bold",
+        top: -25,
+        left: 30,
+        fontSize: 20,
+        paddingBottom: 10,
+        height: 60
+      }
+    })
   },
   rect3StackStack: {
     width: 375,
@@ -167,21 +221,45 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: "#E6E6E6",
     opacity: 0.1,
-    marginTop: 87
+    marginTop: 87,
+    ...Platform.select({
+      ios: {
+        bottom: 0
+      },
+      android: {
+        bottom: 30
+      }
+    })
   },
   rect5: {
     width: 500,
     height: 1,
     backgroundColor: "#E6E6E6",
     opacity: 0.1,
-    marginTop: 89
+    marginTop: 89,
+    ...Platform.select({
+      ios: {
+        bottom: 0
+      },
+      android: {
+        bottom: 30
+      }
+    })
   },
   rect6: {
     width: 500,
     height: 1,
     backgroundColor: "#E6E6E6",
     opacity: 0.1,
-    marginTop: 89
+    marginTop: 89,
+    ...Platform.select({
+      ios: {
+        bottom: 0
+      },
+      android: {
+        bottom: 30
+      }
+    })
   },
   rect7: {
     top: 43,
@@ -190,7 +268,15 @@ const styles = StyleSheet.create({
     height: 1,
     position: "absolute",
     backgroundColor: "#E6E6E6",
-    opacity: 0.1
+    opacity: 0.1,
+    ...Platform.select({
+      ios: {
+        top: 43
+      },
+      android: {
+        top: 13
+      }
+    })
   },
   icon6: {
     top: 0,
@@ -199,7 +285,15 @@ const styles = StyleSheet.create({
     color: "rgba(255,255,255,1)",
     fontSize: 30,
     width: 40,
-    height: 46
+    height: 46,
+    ...Platform.select({
+      ios: {
+        top: 0
+      },
+      android: {
+        top: -30
+      }
+    })
   },
   rect7Stack: {
     top: 0,
@@ -218,7 +312,19 @@ const styles = StyleSheet.create({
     height: 16,
     fontSize: 20, 
     paddingBottom: 100,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    ...Platform.select({
+      ios: {
+        paddingBottom: 100,
+        height: 16,
+        top: 4
+      },
+      android: {
+        paddingBottom: -100,
+        height: 60,
+        top: -26
+      }
+    })
   },
   rect7StackStack: {
     width: 375,
@@ -231,14 +337,30 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 5, 
     left: 20,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    ...Platform.select({
+      ios: {
+        bottom: 0
+      },
+      android: {
+        bottom: 30
+      }
+    })
   },
   icon: {
     color: "rgba(255,255,255,1)",
     fontSize: 30,
     left: 137,
     bottom: 26,
-    marginLeft: 210
+    marginLeft: 210,
+    ...Platform.select({
+      ios: {
+        bottom: 26
+      },
+      android: {
+        bottom: 56
+      }
+    })
   },
   instructionsRow: {
     height: 34,
@@ -255,7 +377,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 4, 
     left: 20,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    ...Platform.select({
+      ios: {
+        bottom: 0
+      },
+      android: {
+        bottom: 30
+      }
+    })
   },
   icon3: {
     color: "rgba(255,255,255,1)",
@@ -264,7 +394,15 @@ const styles = StyleSheet.create({
     width: 40,
     height: 34,
     marginLeft: 66,
-    bottom: 35
+    bottom: 35,
+    ...Platform.select({
+      ios: {
+        bottom: 35
+      },
+      android: {
+        bottom: 65
+      }
+    })
   },
   reportAProblemRow: {
     height: 36,
@@ -275,21 +413,49 @@ const styles = StyleSheet.create({
   },
   termsAndConditions: {
     fontFamily: "System",
-    color: "rgba(255,255,255,1)",
+    color: "white",
     width: 250,
     height: 16,
     fontSize: 20,
     marginTop: 4, 
-    left: 20, 
+    left: 20,
     paddingBottom: 100,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    ...Platform.select({
+      ios: {
+        fontFamily: "System",
+        color: "white",
+        width: 250,
+        height: 16,
+        fontSize: 20,
+        marginTop: 4, 
+        left: 20,
+        paddingBottom: 100,
+        fontWeight: "bold",
+        bottom: 0
+      },
+      android: {
+        height: 60,
+        paddingBottom: -100,
+        bottom: 30
+      }
+      
+    })
   },
   icon4: {
     color: "rgba(255,255,255,1)",
     fontSize: 30,
     left: 280,
     bottom: 103,
-    marginLeft: 66
+    marginLeft: 66,
+    ...Platform.select({
+        ios: {
+          bottom: 103
+        },
+        android: {
+          bottom: 93
+        }
+    })
   },
   termsAndConditionsRow: {
     height: 34,
@@ -306,7 +472,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 4, 
     left: 23,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    ...Platform.select({
+      ios: {
+        bottom: 0
+      },
+      android: {
+        bottom: 30
+      }
+    })
   },
   icon5: {
     color: "rgba(255,255,255,1)",
@@ -315,7 +489,17 @@ const styles = StyleSheet.create({
     height: 34,
     left: 280, 
     bottom: 35,
-    marginLeft: 66
+    marginLeft: 66,
+    ...Platform.select({
+      ios: {
+        bottom: 35,
+        left: 280
+      },
+      android: {
+        bottom: 65,
+        left: 280
+      }
+    })
   },
   versionAndLicenseRow: {
     height: 36,
@@ -331,6 +515,55 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     marginTop: 0,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    ...Platform.select({
+      ios: {
+        top: 145,
+        textAlign: "center"
+      },
+      android: {
+        top: 90,
+        textAlign: "center",
+        zIndex: 1000
+      }
+    })
+  },
+  touchRadius: {
+    ...Platform.select({
+      // dont edit ios
+      ios: {},
+      android: {
+        top: 15,
+        bottom: 15,
+        left: 15,
+        right: 15
+      }
+    })
+  },
+  touchRadiusforInspiration: {
+    ...Platform.select({
+      ios: {
+
+      },
+      android: {
+        top: 30,
+        bottom: 30,
+        right: 30,
+        left: 30 
+      }
+    })
+  },
+  touchRadiusforSignOut: {
+    ...Platform.select({
+      ios: {
+
+      },
+      android: {
+        top: 0, 
+        bottom: 0,
+        right: 0,
+        left: 0
+      }
+    })
   }
-});
+})
