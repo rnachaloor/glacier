@@ -15,7 +15,7 @@ import { Platform } from "react-native";
 // Exports
 export let loggedIn = false;
 export let userId = ""
-export let user
+export let user = ""
 export let name
 export let firstName
 export let lastName
@@ -47,7 +47,6 @@ export const LoginScreen = ({navigation}) => {
     const {login} = useContext(AuthContext);
 
     async function submit() {
-      login(email, password);
       const userInfo = firestore().collection('userInfo');
       const userInfoRes = await userInfo.where('email', '==', email).get();
 
@@ -60,7 +59,6 @@ export const LoginScreen = ({navigation}) => {
             firstName = doc.data().firstName
             lastName = doc.data().lastName
             name = firstName + " " + lastName
-            login(email, password);
         } else {
             // Alert message for when the selection above is not true
             Alert.alert(
@@ -80,6 +78,8 @@ export const LoginScreen = ({navigation}) => {
             );
           }
       })
+
+      login(email, password)
     }
 
     // Returning an implicit submission

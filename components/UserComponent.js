@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
       height: 50
     },
     nameOfUser: {
-      fontFamily: "roboto-regular",
+      fontFamily: "System",
       color: "rgba(255,255,255,1)",
       fontSize: 21,
       marginLeft: 10,

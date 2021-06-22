@@ -68,7 +68,7 @@ export default class Post extends React.Component {
             <TouchableOpacity onPress={() => this.increaseLikes()}>
               <Icon style={styles.icon3} name={this.state.likesIconName} color={likesIconColor} size={40} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.onShare()}>
+            <TouchableOpacity style={styles.new} onPress={() => this.onShare()}>
               <Icon style={styles.icon4} name="md-share" color={likesIconColor} size={40} />
             </TouchableOpacity>
             <Text style={styles.likeTally}>{this.state.likes}</Text>
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     left: 142.5,
     position: "absolute",
     color: "white",
-    fontSize: 20
+    fontSize: 20,
   },
   commentTally: {
     top: 114.5,
@@ -142,6 +142,8 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,1)",
     opacity: 0.2,
     marginTop: 2
+  },
+  new: {
   }
 });
 

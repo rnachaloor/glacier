@@ -5,11 +5,13 @@ import { View, Text, Button, StyleSheet } from "react-native";
 // Importing components
 import Post from "../components/PostComponent";
 import PostList from "../components/PostList";
+import {user} from './LoginScreen'
 
 // Creating the HomeScreen navigation for the app
 const HomeScreen = ({navigation}) => {
     return (
       <View style={styles.container}>
+        <Text>{user}</Text>
         <PostList/>
       </View>
     );

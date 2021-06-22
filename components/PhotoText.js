@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
     fontFamily: "System",
     color: "rgba(255,255,255,1)",
     height: 80,
-    width: 244
+    width: 244,
+    fontSize: 13 
   },
   usernameStackColumn: {
     width: 244,

@@ -17,7 +17,7 @@ const ChatMenuScreen = ({navigation}) => {
     function onEnterUser() {
         firestore().collection('chats').add({
             users: [user, recipient],
-            chatName: user + "_" + recipient,
+            chatName: global.user + "_" + recipient,
             messages: []
         })
         setPopupOn(false);
