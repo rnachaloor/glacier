@@ -6,12 +6,14 @@ import {
   TextInput,
   TouchableOpacity,
   Text,
-  Alert
+  Alert,
+  ScrollView
 } from "react-native";
 import firestore, { firebase } from '@react-native-firebase/firestore';
 import {loggedIn, userId, user, name, firstName, lastName} from "../screens/LoginScreen";
 import Icon from "react-native-vector-icons/Ionicons";
 import { CheckBox } from "react-native-elements";
+import { Platform } from "react-native";
 
 export default class ReportForm extends React.Component {
 
@@ -84,91 +86,92 @@ export default class ReportForm extends React.Component {
     render(props) {
       return (
         
-        <View style={[styles.container]}>
+        <ScrollView style={[styles.container]}>
           <Text style = {[styles.text]}>Report a Problem</Text>
-          <CheckBox
-            center 
-            title='A feature is broken' 
-            checked={this.state.brokenCheck} 
-            iconType='material'
-            checkedIcon='done' 
-            uncheckedIcon='clear' 
-            onPress={() => this.brokenClick()}
-            checkedColor='lime'
-            uncheckedColor='red'
-            containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox1]}
-            textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
-            
-            <CheckBox 
-            center 
-            title='There is a spelling/grammar mistake' 
-            checked={this.state.spellingCheck} 
-            iconType='material'
-            checkedIcon='done' 
-            uncheckedIcon='clear' 
-            onPress={() => this.spellingClick()}
-            checkedColor='lime'
-            uncheckedColor='red'
-            containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox2]}
-            textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
+          <View style={styles.checkboxView}>
+            <CheckBox
+              center 
+              title='A feature is broken' 
+              checked={this.state.brokenCheck} 
+              iconType='material'
+              checkedIcon='done' 
+              uncheckedIcon='clear' 
+              onPress={() => this.brokenClick()}
+              checkedColor='lime'
+              uncheckedColor='red'
+              containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox1]}
+              textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
+              
+              <CheckBox 
+              center 
+              title='There is a spelling/grammar mistake' 
+              checked={this.state.spellingCheck} 
+              iconType='material'
+              checkedIcon='done' 
+              uncheckedIcon='clear' 
+              onPress={() => this.spellingClick()}
+              checkedColor='lime'
+              uncheckedColor='red'
+              containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox2]}
+              textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
 
-            <CheckBox 
-            center 
-            title='Glacier has crashed spontaneously' 
-            checked={this.state.crashCheck} 
-            iconType='material'
-            checkedIcon='done' 
-            uncheckedIcon='clear' 
-            onPress={() => this.crashClick()}
-            checkedColor='lime'
-            uncheckedColor='red'
-            containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox3]}
-            textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
+              <CheckBox 
+              center 
+              title='Glacier has crashed spontaneously' 
+              checked={this.state.crashCheck} 
+              iconType='material'
+              checkedIcon='done' 
+              uncheckedIcon='clear' 
+              onPress={() => this.crashClick()}
+              checkedColor='lime'
+              uncheckedColor='red'
+              containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox3]}
+              textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
 
-            <CheckBox 
-            center 
-            title='The information in Glacier is wrong/outdated' 
-            checked={this.state.wrongCheck} 
-            iconType='material'
-            checkedIcon='done' 
-            uncheckedIcon='clear' 
-            onPress={() => this.wrongClick()}
-            checkedColor='lime'
-            uncheckedColor='red'
-            containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox4]}
-            textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
+              <CheckBox 
+              center 
+              title='The information in Glacier is wrong/outdated' 
+              checked={this.state.wrongCheck} 
+              iconType='material'
+              checkedIcon='done' 
+              uncheckedIcon='clear' 
+              onPress={() => this.wrongClick()}
+              checkedColor='lime'
+              uncheckedColor='red'
+              containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox4]}
+              textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
 
-            <CheckBox 
-            center 
-            title="I can't find what I'm looking for" 
-            checked={this.state.findCheck} 
-            iconType='material'
-            checkedIcon='done' 
-            uncheckedIcon='clear' 
-            onPress={() => this.findClick()}
-            checkedColor='lime'
-            uncheckedColor='red'
-            containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox5]}
-            textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
+              <CheckBox 
+              center 
+              title="I can't find what I'm looking for" 
+              checked={this.state.findCheck} 
+              iconType='material'
+              checkedIcon='done' 
+              uncheckedIcon='clear' 
+              onPress={() => this.findClick()}
+              checkedColor='lime'
+              uncheckedColor='red'
+              containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox5]}
+              textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
 
-            <CheckBox 
-            center 
-            title='A user has violated the Terms and Conditions' 
-            checked={this.state.userCheck} 
-            iconType='material'
-            checkedIcon='done' 
-            uncheckedIcon='clear' 
-            onPress={() => this.userClick()}
-            checkedColor='lime'
-            uncheckedColor='red'
-            containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox6]}
-            textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
-
+              <CheckBox 
+              center 
+              title='A user has violated the Terms and Conditions' 
+              checked={this.state.userCheck} 
+              iconType='material'
+              checkedIcon='done' 
+              uncheckedIcon='clear' 
+              onPress={() => this.userClick()}
+              checkedColor='lime'
+              uncheckedColor='red'
+              containerStyle={[{backgroundColor: "#141D28", borderColor: "#141D28"}, styles.checkbox6]}
+              textStyle={{color: "white", fontSize: 20, fontWeight: "normal"}}/>
+          </View>
           <View style={styles.group2}>
             <TextInput
               placeholder="Please elaborate on your issues or mention issues that aren't listed."
               multiline={true}
-              numberOfLines={7}
+              numberOfLines={4}
               style={styles.sampleIssue}
               onChangeText={(value) => this.setState({elaboration: value})}
               placeholderTextColor="white"
@@ -180,7 +183,7 @@ export default class ReportForm extends React.Component {
               <Text style={styles.submitText}>Submit</Text>
             </View>
           </TouchableOpacity>
-        </View>
+        </ScrollView>
         
       );
     }
@@ -202,6 +205,14 @@ const styles = StyleSheet.create({
     marginTop: 24, 
     left: 20,
     fontWeight: "bold",
+    ...Platform.select({
+      ios: {
+        left: 20
+      },
+      android: {
+        left: 10
+      }
+    })
   },
   submitRect: {
     backgroundColor: "rgba(84,152,197,1)",
@@ -210,37 +221,103 @@ const styles = StyleSheet.create({
     height: 49,
     alignSelf: "center",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    ...Platform.select({
+      ios: {
+        
+      },
+      android: {
+        bottom: 20
+      }
+    })
   },
   submitText: {
     alignSelf: "center",
     alignContent: "center",
     color: "white",
     fontWeight: "bold",
-    fontSize: 20
+    fontSize: 20,
   },
   sampleIssue: {
     color: "white",
     left: 20,
-    height: 130,
-    width: 370
+    height: 90,
+    width: 370,
+    ...Platform.select({
+      ios: {
+
+      },
+      android: {
+        bottom: 15
+      }
+    })
   },
   checkbox1: {
-    left: -80
+    left: -80,
+    ...Platform.select({
+      ios: {
+        left: -80
+      },
+      android: {
+        left: -77
+      }
+    })
   },
   checkbox2: {
-    left: -6
+    ...Platform.select({
+      ios: {
+        left: -6
+      },
+      android: {
+        left: -1
+      }
+    })
   },
   checkbox3: {
-    left: -10
+    ...Platform.select({
+      ios: {
+        left: -10
+      },
+      android: {
+        left: -7
+      }
+    })
   },
   checkbox4: {
-    left: -9
+    ...Platform.select({
+      ios: {
+        left: -9
+      },
+      android: {
+        left: -1
+      }
+    })
   },
   checkbox5: {
-    left: -30
+    ...Platform.select({
+      ios: {
+        left: -30
+      },
+      android: {
+        left: -26
+      }
+    })
   },
   checkbox6: {
-    left: -13
+    ...Platform.select({
+      ios: {
+        left: -13
+      }, 
+      android: {
+        left: 0
+      }
+    })
+  },
+  checkboxView: {
+    ...Platform.select({
+      android: {
+        marginLeft: 10
+      }
+    })
   }
 });

@@ -13,6 +13,8 @@ import firestore, { firebase } from '@react-native-firebase/firestore';
 import {loggedIn, userId, user, name, firstName, lastName} from "../screens/LoginScreen";
 import Svg, { Ellipse } from "react-native-svg";
 import { CheckBox } from "react-native-elements";
+import { Platform } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default class PostForm extends React.Component {
 
@@ -24,9 +26,18 @@ export default class PostForm extends React.Component {
         title: "",
         content: ""
     }
-  
+    
+    async getData(param) {
+      let token = await AsyncStorage.getItem(param);
+      return token;
+    }
+
     //takes the data in the form and puts it in the database
-    submit() {
+    async submit() {
+        const first = await this.getData("first");
+        const last = await this.getData("last")
+        const user = await this.getData("username")
+
         let conditionOne = this.state.content == "" || this.state.content == " "
         if (conditionOne) {
           Alert.alert(
@@ -45,8 +56,8 @@ export default class PostForm extends React.Component {
         } else {
           firestore().collection('posts').add({
             content: this.state.content, 
-            firstName: firstName,
-            lastName: lastName,
+            firstName: first,
+            lastName: last,
             username: user,
             likes: 0,
             time: firebase.firestore.FieldValue.serverTimestamp()
@@ -85,9 +96,8 @@ export default class PostForm extends React.Component {
       </View>
       
       <View style={styles.rect2Stack}>
-        <TouchableOpacity onPress={() => this.submit()}>
-          <View style={styles.rect2}></View>
-          <Text style={styles.post}>Post</Text>
+        <TouchableOpacity style={styles.rect2} onPress={() => this.submit()}>
+            <Text style={styles.post}>Post</Text>
         </TouchableOpacity>
       </View>
       
@@ -116,9 +126,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 11,
     marginTop: 4, 
-    top: 35 ,
+    top: 35,
     left: 80,
-    paddingRight: 10
+    paddingRight: 10,
+    ...Platform.select({
+      ios: {
+        top: 35,
+        left: 80,
+      },
+      android: {
+        top: -110,
+
+      }
+    })
   },
   ellipseRow: {
     height: 45,
@@ -129,7 +149,6 @@ const styles = StyleSheet.create({
   },
   rect2: {
     top: 50,
-    left: 101,
     width: 212,
     height: 49,
     position: "absolute",
@@ -142,11 +161,11 @@ const styles = StyleSheet.create({
     },
     elevation: 5,
     shadowOpacity: 1,
-    shadowRadius: 0
+    shadowRadius: 0,
+    alignItems: "center",
+    justifyContent: "center",
   },
   post: {
-    top: 63,
-    left: 186,
     position: "absolute",
     fontFamily: "System",
     color: "rgba(255,255,255,1)",
@@ -155,9 +174,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   rect2Stack: {
-    width: 375,
+    width:  375,
     height: 49,
-    marginTop: 277
+    marginTop: 277,
+    ...Platform.select({
+      ios: {
+        width: 375
+      },
+      android: {
+       width: 400, 
+       justifyContent: "center",
+       alignItems: "center"
+      }
+    })
   },
   avatarText: {
     color: "white"

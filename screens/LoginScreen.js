@@ -8,36 +8,22 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import SignUpScreen from "./SignUpScreen";
 import App from "../App"
-import Icon from "react-native-vector-icons/Ionicons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AuthContext } from "../AuthProvider";
 import { Platform } from "react-native";
 
-// Exports
-export let loggedIn = false;
-export let userId = ""
-export let user = ""
-export let name
-export let firstName
-export let lastName
-export function setLoggedIn(boolean) {
-    loggedIn = boolean
+const storeData = async (param, value) => {
+  try {
+    await AsyncStorage.setItem(param, value)
+  } catch (e) {
+    
+  }
+}
+const getData = async () => {
+  let token = await AsyncStorage.getItem("username");
+  return token;
 }
 
-export function setUser(newUser) {
-  user = newUser;
-}
-
-export function setFirstName(newUser) {
-  firstName = newUser;
-}
-
-export function setLastName(newUser) {
-  lastName = newUser;
-}
-
-export function updateName() {
-  name = firstName + " " + lastName
-}
 // Exporting the LoginScreen
 export const LoginScreen = ({navigation}) => {
     
@@ -48,17 +34,14 @@ export const LoginScreen = ({navigation}) => {
 
     async function submit() {
       const userInfo = firestore().collection('userInfo');
-      const userInfoRes = await userInfo.where('email', '==', email).get();
-
+      const userInfoRes = await userInfo.where('email', '==', email.toLowerCase()).get();
+      console.log(email)
       userInfoRes.forEach(doc => {
-        if ((doc.data().email == email) == (doc.data().password == password)) {
+        if ((doc.data().email.toLowerCase() == email.toLowerCase()) == (doc.data().password == password)) {
             // Affirms that the fields are all identified and true if the user and pass are confirmed
-            loggedIn = true;
-            userId = doc.id;
-            user = doc.data().username;
-            firstName = doc.data().firstName
-            lastName = doc.data().lastName
-            name = firstName + " " + lastName
+            storeData("username", doc.data().username)
+            storeData("first", doc.data().firstName)
+            storeData("last", doc.data().lastName)
         } else {
             // Alert message for when the selection above is not true
             Alert.alert(
@@ -78,7 +61,8 @@ export const LoginScreen = ({navigation}) => {
             );
           }
       })
-
+      
+      console.log(await getData())
       login(email, password)
     }
 
@@ -163,10 +147,11 @@ export const LoginScreen = ({navigation}) => {
     <View style={styles.container}>
     <Text style={styles.loremIpsum}></Text>
     <View style={styles.rect1Stack}>
-      <View style={styles.rect1}></View>
-      <TouchableOpacity onPress = {() => navigation.navigate("Sign Up")}>
-        <Text style={styles.signUp}>Sign Up</Text>
-      </TouchableOpacity>
+      <View style = {[styles.touchableopacityforsignup, styles.rect1]} onPress = {() => navigation.navigate("Sign Up")}>
+        <TouchableOpacity style={styles.newSignUp} onPress = {() => navigation.navigate("Sign Up")}>
+          <Text style={styles.signUp}>Sign Up</Text>
+        </TouchableOpacity>
+      </View>
     </View>
     <TouchableOpacity onPress={() => submit()} style={styles.button}>
       <Text style={styles.signIn2}>Sign In</Text>
@@ -264,16 +249,15 @@ const styles = StyleSheet.create({
         elevation: 5,
         shadowOpacity: 0.5,
         shadowRadius: 0,
-        right: 81
+        right: 81,
+        justifyContent: "center",
+        alignItems: "center"
       },
       signIn2: {
         fontFamily: "System",
         color: "rgba(255,255,255,1)",
-        fontSize: 17,
-        marginTop: 13,
-        marginLeft: 79,
-        fontWeight: "bold",
-        marginRight: 77
+        fontSize: 20,
+        fontWeight: "bold"
       },
       // Top SignIN
       signIn3: {
@@ -301,7 +285,7 @@ const styles = StyleSheet.create({
             top: 216,
           }, 
           android: {
-            top: 222,
+            top: 225,
           }
         })
       },
@@ -312,7 +296,7 @@ const styles = StyleSheet.create({
         fontFamily: "System",
         color: "rgba(255,255,255,1)",
         width: 300,
-        fontSize: 16,
+        fontSize: 20,
         ...Platform.select({
           ios: {
             height: 24
@@ -330,7 +314,7 @@ const styles = StyleSheet.create({
         color: "rgba(255,255,255,1)",
         height: 24,
         width: 300,
-        fontSize: 16,
+        fontSize: 20,
         ...Platform.select({
           ios: {
             height: 24
@@ -354,7 +338,7 @@ const styles = StyleSheet.create({
             top: 254
           }, 
           android: {
-            top: 260
+            top: 263
           }
         })
       },
@@ -365,5 +349,20 @@ const styles = StyleSheet.create({
             zIndex: 1
           }
         })
+      },
+      touchableopacityforsignup: {
+        ...Platform.select({
+          ios: {
+
+          }, 
+          android: {
+            position: "absolute",
+            top: 45,
+            left: 300
+          }
+        })
+      },
+      newSignUp: {
+        flex: 1
       }
 });

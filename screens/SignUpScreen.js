@@ -6,7 +6,9 @@ import { TextInput } from "react-native-gesture-handler";
 import firestore from '@react-native-firebase/firestore';
 import { TouchableOpacity } from "react-native";
 import { AuthContext } from "../AuthProvider";
-import { loggedIn, userId, user, firstName, lastName, name, setLoggedIn, setUser, updateName } from "./LoginScreen.js";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Input } from "react-native-elements";
+import { Platform } from "react-native";
 
 //User input from signup fields is taken in 
 const SignUpScreen = ({navigation}) => {
@@ -19,6 +21,14 @@ const SignUpScreen = ({navigation}) => {
     
     const {register} = useContext(AuthContext);
     let errors = "";
+
+    async function storeData(param, value) {
+      try {
+        await AsyncStorage.setItem(param, value)
+      } catch (e) {
+        
+      }
+    }
 
     //Alerts user if password doesn't match confirm password
     //Requires every field to be filled out
@@ -60,19 +70,16 @@ const SignUpScreen = ({navigation}) => {
                 username: username,
                 email: email
             })
-            setLoggedIn(true);
-            setUser(username);
-            setFirstName(first);
-            setLastName(last);
-            updateName();
+            
+            storeData("first", first)
+            storeData("username", username)
+            storeData("last", last)
             register(email, password);
-            navigation.navigate("Login")
         }
     }
 
     //JSX
-    return (
-        
+    return (  
         <View style={styles.container}>
       <View style={styles.rect}>
         <TouchableOpacity onPress = {() => navigation.navigate("Login")}>
@@ -81,47 +88,53 @@ const SignUpScreen = ({navigation}) => {
       </View>
       <Text style={styles.signUp2}>Sign Up</Text>
       <View style={styles.rect2Stack}>
-        <View style={styles.rect2}></View>
-        <TextInput
+        <Input 
           placeholder="First Name"
           placeholderTextColor = "white"
-          style={styles.textInput}
           onChangeText={(value) => setFirstName(value)}
-        ></TextInput>
+          style={styles.textBoxGeneral}/>
       </View>
-      
-      <View style={styles.rect8Stack}>
-        <TouchableOpacity onPress={() => submit(password, confirmPassword)}>
-          <View style={styles.rect8}></View>
-          <Text style={styles.signUp1}>Sign Up</Text>
-        </TouchableOpacity>
+      <View style={styles.rect2Stack}>
+        <Input style={styles.textBoxGeneral} placeholder="Last Name" placeholderTextColor = "white" onChangeText={(value) => setLastName(value)}/>
       </View>
-      <TextInput placeholder="Last Name" placeholderTextColor = "white" style={styles.textInput1} onChangeText={(value) => setLastName(value)}></TextInput>
-      <View style={styles.rect9}></View>
-      <View style={styles.textInput2Stack}>
-        <TextInput
+      <View style={styles.rect2Stack}>
+        <Input 
           placeholder="Email Address"
           placeholderTextColor = "white"
-          style={styles.textInput2}
           onChangeText={(value) => setEmail(value)}
           autoCapitalize="none"
-        ></TextInput>
-        <View style={styles.rect10}></View>
+          style={styles.textBoxGeneral}/>  
       </View>
-      <View style={styles.rect11}></View>
-      <TextInput autoCapitalize="none" placeholder="Username" placeholderTextColor = "white" style={styles.textInput3} onChangeText={(value) => setUsername(value)}></TextInput>
-      <TextInput autoCapitalize="none" placeholder="Password" placeholderTextColor = "white" style={styles.textInput4} onChangeText={(value) => setPassword(value)} secureTextEntry={true}></TextInput>
-      <View style={styles.rect12}></View>
-      <View style={styles.rect13Stack}>
-        <View style={styles.rect13}></View>
-        <TextInput
+      <View style={styles.rect2Stack}>
+        <Input 
+          autoCapitalize="none" 
+          placeholder="Username" 
+          placeholderTextColor = "white" 
+          onChangeText={(value) => setUsername(value)}
+          style={styles.textBoxGeneral}/>
+      </View>
+      <View style={styles.rect2Stack}>
+        <Input 
+          autoCapitalize="none" 
+          placeholder="Password" 
+          placeholderTextColor = "white" 
+          onChangeText={(value) => setPassword(value)} 
+          secureTextEntry={true}
+          style={styles.textBoxGeneral}/>
+      </View>
+      <View style={styles.rect2Stack}>
+        <Input
           placeholder="Confirm Password"
           placeholderTextColor = "white"
-          style={styles.textInput5}
           onChangeText={(value) => setConfirmPassword(value)}
+          autoCapitalize="none"
           secureTextEntry={true}
-          autoCapitalize="none">
-        </TextInput>
+          style={styles.textBoxGeneral}/>
+      </View>
+      <View style={styles.rect8Stack}>
+        <TouchableOpacity style={styles.rect8} onPress={() => submit(password, confirmPassword)}>
+            <Text style={styles.signUp1}>Sign Up</Text>
+        </TouchableOpacity>
       </View>
     </View>
     );
@@ -150,7 +163,17 @@ const styles = StyleSheet.create({
       fontSize: 20,
       marginTop: 56,
       marginLeft: 291, 
-      left: 30
+      left: 30,
+      ...Platform.select({
+        ios: {
+          top: 0,
+          left: 30
+        },
+        android: {
+          top: -10,
+          left: 10
+        }
+      })
     },
     signUp2: {
       fontFamily: "System",
@@ -159,9 +182,16 @@ const styles = StyleSheet.create({
       width: 375,
       textAlign: "center",
       fontSize: 35,
-      marginTop: 28, 
-      left: 20,
-      fontWeight: "bold"
+      marginTop: 28,
+      fontWeight: "bold",
+      ...Platform.select({
+        ios: {
+          left: 20
+        },
+        android: {
+          left: 15
+        }
+      })
     },
     rect2: {
       top: 30,
@@ -180,13 +210,21 @@ const styles = StyleSheet.create({
       color: "rgba(255,255,255,1)",
       height: 31,
       width: 300,
-      fontSize: 16
+      fontSize: 16,
+      ...Platform.select({
+        ios: {
+          height: 31
+        },
+        android: {
+          height: 40
+        }
+      })  
     },
     rect2Stack: {
       width: 291,
       height: 31,
       marginTop: 19,
-      marginLeft: 42
+      marginLeft: 50
     },
     rect8: {
       top: 0,
@@ -203,18 +241,38 @@ const styles = StyleSheet.create({
       },
       elevation: 5,
       shadowOpacity: 1,
-      shadowRadius: 0
+      shadowRadius: 0,
+      ...Platform.select({
+        ios: {
+          top: 0,
+          left: 101
+        },
+        android: {
+          top: -150,
+          left: 92,
+          justifyContent: "center",
+          alignItems: "center"
+        }
+      })
     },
     signUp1: {
-      top: 13,
-      left: 19,
       position: "absolute",
       fontFamily: "System",
       color: "rgba(255,255,255,1)",
-      height: 24,
+      height: 26,
       width: 375,
       textAlign: "center",
-      fontSize: 20
+      alignSelf: "center",
+      fontSize: 20,
+      fontWeight: "bold",
+      ...Platform.select({
+        ios: {
+          top: 13
+        }, 
+        android: {
+          
+        }
+      })
     },
     rect8Stack: {
       width: 375,
@@ -230,7 +288,16 @@ const styles = StyleSheet.create({
       fontSize: 16,
       marginTop: -257,
       marginLeft: 42, 
-      left: 20
+      left: 20,
+      ...Platform.select({
+        ios: {
+          height: 31
+        },
+        android: {
+          height: 40,
+          top: 10
+        }
+      })
     },
     rect9: {
       width: 291,
@@ -248,7 +315,15 @@ const styles = StyleSheet.create({
       color: "rgba(255,255,255,1)",
       height: 31,
       width: 300,
-      fontSize: 16
+      fontSize: 16,
+      ...Platform.select({
+        ios: {
+          height: 31
+        },
+        android: {
+          height: 40
+        }
+      })
     },
     rect10: {
       top: 30,
@@ -262,7 +337,7 @@ const styles = StyleSheet.create({
     textInput2Stack: {
       width: 291,
       height: 31,
-      marginTop: 3,
+      marginTop: 10,
       marginLeft: 42
     },
     rect11: {
@@ -326,5 +401,8 @@ const styles = StyleSheet.create({
       height: 31,
       marginTop: 2,
       marginLeft: 42
+    },
+    textBoxGeneral: {
+      color: "white"
     }
 })

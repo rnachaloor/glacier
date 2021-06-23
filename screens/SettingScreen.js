@@ -58,14 +58,12 @@ const SettingScreen = ({navigation}) => {
       <View style={styles.rect5}></View>
       <View style={styles.rect6}></View>
       <View style={styles.rect7StackStack}>
-        <TouchableOpacity>
+        <TouchableOpacity hitSlop = {styles.touchRadius} onPress = {() => navigation.navigate("Inspiration")}>
           <View style={styles.rect7}></View>
-          <View style={styles.rect7Stack}>
-            <TouchableOpacity hitSlop = {styles.touchRadiusforInspiration} onPress = {() => navigation.navigate("Inspiration")}>
-              <EntypoIcon name="chevron-right" style={styles.icon6}/>
-              <Text style={styles.ourInspiration}>Our Inspiration</Text>
-            </TouchableOpacity>
-          </View>
+          <View style = {styles.rect7Stack}> 
+            <EntypoIcon name="chevron-right" style={styles.icon6}/>
+            <Text style={styles.ourInspiration}>Our Inspiration</Text>
+          </View>  
         </TouchableOpacity>
       </View>
       <View style={styles.instructionsRow}>
@@ -93,12 +91,10 @@ const SettingScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <TouchableOpacity 
-        onPress={() => {
-          setLoggedIn(false);
-          logout();
-        }}
-        hitSlop = {styles.touchRadiusforSignOut}>
-        
+          style={styles.positionForSignOutButton}
+          onPress={() => {
+            logout();
+          }}>
           <Text style={styles.signOut}>Sign Out</Text>
         </TouchableOpacity>
   </View>
@@ -509,7 +505,6 @@ const styles = StyleSheet.create({
     marginRight: 8
   },
   signOut: {
-    top: 145,
     fontFamily: "System",
     color: "rgba(232,9,38,1)",
     fontSize: 20,
@@ -522,9 +517,8 @@ const styles = StyleSheet.create({
         textAlign: "center"
       },
       android: {
-        top: 90,
         textAlign: "center",
-        zIndex: 1000
+        zIndex: 1000,
       }
     })
   },
@@ -535,8 +529,8 @@ const styles = StyleSheet.create({
       android: {
         top: 15,
         bottom: 15,
-        left: 15,
-        right: 15
+        left: 150,
+        right: 150
       }
     })
   },
@@ -546,10 +540,10 @@ const styles = StyleSheet.create({
 
       },
       android: {
-        top: 30,
-        bottom: 30,
-        right: 30,
-        left: 30 
+        top: 150,
+        bottom: 150,
+        right: 150,
+        left: 300 
       }
     })
   },
@@ -559,10 +553,20 @@ const styles = StyleSheet.create({
 
       },
       android: {
-        top: 0, 
-        bottom: 0,
-        right: 0,
-        left: 0
+        top: 10, 
+        bottom: 10,
+        right: 40,
+        left: 40
+      }
+    })
+  },
+  positionForSignOutButton: {
+    ...Platform.select({
+      ios: {
+
+      },
+      android: {
+        top: 90
       }
     })
   }

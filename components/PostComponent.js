@@ -1,11 +1,14 @@
 import React, { Component, useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Share } from "react-native";
+import { StyleSheet, View, Text, Share, TouchableOpacity, TouchableNativeFeedback } from "react-native";
 import PropTypes from 'prop-types';
 import PhotoText from './PhotoText'
 import Icon from "react-native-vector-icons/Ionicons";
 import { Avatar } from "react-native-elements";
 import firestore from '@react-native-firebase/firestore';
 import Svg, { Ellipse } from "react-native-svg";
+import { Platform } from "react-native";
+
+
 
 export default class Post extends React.Component {
   
@@ -52,6 +55,7 @@ export default class Post extends React.Component {
     }
   }
   
+  
   //renders the blueprint for the post
   render(props) {
       let likesIconColor = "black"
@@ -65,21 +69,18 @@ export default class Post extends React.Component {
               username={this.props.username}
               initial={this.props.initial}
             />
-            <TouchableOpacity onPress={() => this.increaseLikes()}>
+            <Text style={styles.likeTally}>{this.state.likes}</Text>
+            <TouchableOpacity style = {styles.finallikebutton} hitSlop = {styles.finallikehitslop} onPress={() => this.increaseLikes()}>
               <Icon style={styles.icon3} name={this.state.likesIconName} color={likesIconColor} size={40} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.new} onPress={() => this.onShare()}>
+            <TouchableOpacity style={styles.finalsharebutton} hitSlop = {styles.finalsharehitslop} onPress={() => this.onShare()}>
               <Icon style={styles.icon4} name="md-share" color={likesIconColor} size={40} />
             </TouchableOpacity>
-            <Text style={styles.likeTally}>{this.state.likes}</Text>
           </View>
           <View style={styles.rect2}></View>
         </View>);
-      
-      
-  }
-}
-
+    }
+      }
 //styles
 const styles = StyleSheet.create({
   container: {},
@@ -102,7 +103,17 @@ const styles = StyleSheet.create({
     left: 64,
     position: "absolute",
     color: "white",
-    fontSize: 20
+    fontSize: 20,
+    ...Platform.select({
+      ios: {
+        top: 115,
+        left: 64
+      },
+      android: {
+        top: 5, 
+        left: 64
+      }
+    })
   },
   icon4: {
     top: 114,
@@ -110,6 +121,16 @@ const styles = StyleSheet.create({
     position: "absolute",
     color: "white",
     fontSize: 20,
+    ...Platform.select({
+      ios: {
+        top: 114, 
+        left: 142.5
+      },
+      android: {
+        top: 0,
+        left: 142.5
+      }
+    })
   },
   commentTally: {
     top: 114.5,
@@ -143,7 +164,104 @@ const styles = StyleSheet.create({
     opacity: 0.2,
     marginTop: 2
   },
-  new: {
+  buttonStyles: {
+    ...Platform.select({
+      ios: {
+
+      },
+      android: {
+        flex: 1,
+        backgroundColor: "red",
+        width: 100,
+        height: 100,
+        zIndex: 10000
+      }
+    })
+  },
+  touchableopacityrange: {
+    ...Platform.select({
+      ios: {
+
+      },
+      android: {
+        top: 1,
+        bottom: 1, 
+        left: 1,
+        right: 1
+      }
+    })
+   
+  },
+  likebuttonfixer: {
+    ...Platform.select({
+      ios: {
+
+      },
+      android: {
+        zIndex: 1,
+        position: "absolute"
+      }
+    })
+  },
+  likebuttonclick: {
+    ...Platform.select({
+    ios: {
+
+    },
+    android: {
+      top: 115,
+      left: 64,
+      position: "absolute"
+    }
+  })
+  },
+  finallikebutton: {
+    ...Platform.select({
+    ios: {
+
+    },
+    android: {
+      top: 110, 
+      left: 0, 
+      zIndex: 1,
+      padding: 15
+    }
+  }) 
+  },
+  finallikehitslop: {
+    ...Platform.select({
+    ios: {
+
+    },
+    android: {
+      right: -250, 
+      left: -60
+    }
+  })
+  },
+  finalsharebutton: {
+    ...Platform.select({
+    ios: {
+
+    },
+    android: {
+      top: 85, 
+      left: 0, 
+      zIndex: 1,
+      padding: 10,
+    }
+  }) 
+  },
+  finalsharehitslop: {
+    ...Platform.select({
+    ios: {
+
+    },
+    android: {
+      right: -155, 
+      left: -135
+    }
+  })
   }
 });
 

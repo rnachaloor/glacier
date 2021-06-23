@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
 // Importing containers from react-native
 import { View, Text, Button, StyleSheet } from "react-native";
@@ -11,7 +12,6 @@ import {user} from './LoginScreen'
 const HomeScreen = ({navigation}) => {
     return (
       <View style={styles.container}>
-        <Text>{user}</Text>
         <PostList/>
       </View>
     );
