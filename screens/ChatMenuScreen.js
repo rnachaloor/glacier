@@ -7,16 +7,16 @@ import EntypoIcon from "react-native-vector-icons/Entypo";
 import { AuthContext } from "../AuthProvider";
 import UserItem from "../components/UserComponent";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import ChatList from "../components/ChatList";
 
 const getUsername = async () => {
     let token = await AsyncStorage.getItem("username");
     return token;
 }
 
-const ChatMenuScreen = async ({navigation}) => {
+const ChatMenuScreen = ({navigation}) => {
     const [popupOn, setPopupOn] = useState(false);
     const [recipient, setRecipient] = useState("")
-    let list = []
 
     async function onEnterUser() {
         const user = await getUsername();
@@ -28,37 +28,6 @@ const ChatMenuScreen = async ({navigation}) => {
         })
         setPopupOn(false);
     }
-
-    const collection = await firestore().collection('chats').orderBy("lastOpened", 'desc').get()
-    collection.forEach(doc => {
-        const usernames = getUsername()
-        const firstName = ""
-        const lastName = ""
-        if (doc.data().users[0] == usernames) {
-            const recipientInfoRes = firestore().collection('userInfo').where('username', '==', doc.data().users[1]);
-            recipientInfoRes.forEach(document => {
-                firstName = document.data().firstName.toString();
-                console.log(firstName);
-                lastName = document.data().lastName.toString();
-            })
-            list.push({
-                recipient: doc.data().users[1],
-                initials: firstName.substring(0, 1) + lastName.substring(0, 1)
-            })
-        } else if (doc.data().users[1] == usernames) {
-            const recipientInfoRes = firestore().collection('userInfo').where('username', '==', doc.data().users[0]);
-            recipientInfoRes.forEach(document => {
-                firstName = document.data().firstName;
-                lastName = document.data().lastName;
-            })
-            console.log(firstName);
-            list.push({
-                recipient: doc.data().users[0],
-                initials: firstName.substring(0, 1) + lastName.substring(0, 1)
-            })
-        }
-    })
-    console.log(list);
     return (
         <View>
             <Modal
@@ -76,21 +45,12 @@ const ChatMenuScreen = async ({navigation}) => {
                     </View>
                 </View>
             </Modal>
+            <ChatList navigation={navigation}/>
             <TouchableOpacity onPress={() => setPopupOn(true)}>
                 <View style={styles.submitRect}>
                 <Text style={styles.submitText}>Create New Chat</Text>
                 </View>
             </TouchableOpacity>
-            {
-                list.map((l, i) => (
-                    <ListItem key={i} bottomDivider>
-                        <Avatar rounded title={l.initials} />
-                        <ListItem.Content>
-                            <ListItem.Title>{l.recipient}</ListItem.Title>
-                        </ListItem.Content>
-                    </ListItem>
-                ))
-            }
         </View>
     )
 }
@@ -105,7 +65,7 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         borderRadius: 50,
         justifyContent:"center",
-        marginTop: 10
+        marginTop: 10,
     },
     submitText: {
         alignSelf: "center"

@@ -34,6 +34,7 @@ import {
 import PostScreen from './screens/PostScreen';
 import QuestionScreen from './screens/QuestionScreen';
 import ChatMenuScreen from './screens/ChatMenuScreen';
+import ChatScreen from './screens/ChatScreen';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -126,6 +127,7 @@ const ChatMenuStackScreen = () => {
         headerLeft: null
       }}>
         <Stack.Screen name="Chat Menu" component={ChatMenuScreen}  options={{title: 'Chat', headerTitleStyle: {color: 'white'}, cardStyle: {backgroundColor: "rgba(20,29,40,1)"}}}/>
+        <Stack.Screen name="Chat" component={ChatScreen} options={({route}) => ({title: route.params.userName, headerTitleStyle: {color: 'white'}, cardStyle: {backgroundColor: "rgba(20,29,40,1)"}})} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Settings" component={SettingScreen}/>

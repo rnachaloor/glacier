@@ -174,19 +174,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   rect2Stack: {
-    width:  375,
     height: 49,
     marginTop: 277,
-    ...Platform.select({
-      ios: {
-        width: 375
-      },
-      android: {
-       width: 400, 
-       justifyContent: "center",
-       alignItems: "center"
-      }
-    })
+    width: 414, 
+    justifyContent: "center",
+    alignItems: "center"
   },
   avatarText: {
     color: "white"

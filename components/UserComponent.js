@@ -6,30 +6,22 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { Avatar } from "react-native-elements";
 import firestore from '@react-native-firebase/firestore';
 import Svg, { Ellipse } from "react-native-svg";
+import { useNavigation } from "@react-navigation/native";
 
 export default class UserItem extends React.Component {
   //renders the blueprint for the post
   render(props) {
+
       return (
         <View style={[styles.container]}>
-          <View style={styles.rect}>
-            <View style={styles.content}>
-              <View style={styles.ellipseRow}>
-                <Svg viewBox="0 0 49.54 50.33" style={styles.ellipse}>
-                  <Ellipse
-                    stroke="rgba(230, 230, 230,1)"
-                    strokeWidth={0}
-                    fill="rgba(230, 230, 230,1)"
-                    cx={25}
-                    cy={25}
-                    rx={25}
-                    ry={25}
-                  ></Ellipse>
-                </Svg>
-                <Text style={styles.nameOfUser}>Name Of User</Text>
+            <View style={styles.rect}>
+              <View style={styles.content}>
+                <View style={styles.ellipseRow}>
+                <Avatar size="medium" rounded title={this.props.initial} overlayContainerStyle={styles.ellipse} activeOpacity={0.7} titleStyle={styles.avatarText}/>
+                  <Text style={styles.nameOfUser}>{this.props.username}</Text>
+                </View>
               </View>
             </View>
-          </View>
         </View>
       );
       
@@ -53,7 +45,8 @@ const styles = StyleSheet.create({
     },
     ellipse: {
       width: 50,
-      height: 50
+      height: 50,
+      backgroundColor: "gray"
     },
     nameOfUser: {
       fontFamily: "System",
@@ -72,5 +65,6 @@ const styles = StyleSheet.create({
 
 //parameters
 UserItem.propTypes = {
-    
+    username: PropTypes.string.isRequired,
+    initial: PropTypes.string.isRequired
 }
