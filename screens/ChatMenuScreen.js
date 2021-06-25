@@ -41,7 +41,9 @@ const ChatMenuScreen = ({navigation}) => {
                             placeholder="Recipient"
                             onChangeText={(value) => setRecipient(value)}
                         />
-                        <Button title="Hi" onPress={() => onEnterUser()}></Button>
+                        <TouchableOpacity style={styles.bg}>
+                            <Text style={{color: "white", fontWeight: "bold"}}>Submit</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </Modal>
@@ -85,6 +87,14 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderRadius: 50,
         shadowColor: "black"
+    },
+    bg: {
+        backgroundColor: "skyblue",
+        borderRadius: 50,
+        height: 50,
+        width: 200,
+        alignItems: "center",
+        justifyContent: "center"
     }
 
 })
